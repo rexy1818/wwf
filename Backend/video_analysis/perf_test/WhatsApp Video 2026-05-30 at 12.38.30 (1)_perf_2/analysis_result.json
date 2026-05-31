@@ -1,0 +1,251 @@
+{
+  "video_id": "perf_2",
+  "video_name": "WhatsApp Video 2026-05-30 at 12.38.30 (1)",
+  "status": "success",
+  "analyzer_version": "3.0-speciesnet-official",
+  "detector_version": "Google_SpeciesNet_v4.0.2a",
+  "features": [
+    "speciesnet_official",
+    "bottom_band_ocr",
+    "per_camera_results",
+    "per_camera_excel"
+  ],
+  "metadata": {
+    "filename": "WhatsApp Video 2026-05-30 at 12.38.30 (1).mp4",
+    "file_size": 1239201,
+    "duration": 9.999,
+    "fps": 30.003000300030003,
+    "resolution": "480x368",
+    "fecha_video": "2024-07-03",
+    "hora_video": "06:04:30",
+    "temperatura": 18.9,
+    "camara_id": "MADO4A",
+    "timestamp_original": null,
+    "ocr_info": {
+      "frames_procesados": 5,
+      "texto_detectado": true
+    }
+  },
+  "detecciones": [
+    {
+      "species": "Venado",
+      "especie": "Venado",
+      "confidence": 0.699664294719696,
+      "confianza": 0.699664294719696,
+      "bbox": [
+        387,
+        68,
+        479,
+        306
+      ],
+      "normalized_bbox": [
+        0.8083333075046539,
+        0.18478262424468994,
+        0.19166666269302368,
+        0.64673912525177
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\66a6a8a2\\frame_000060.jpg",
+      "timestamp_video": 1.9998,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "5c7ce479-8a45-40b3-ae21-7c97dfae22f5;mammalia;artiodactyla;cervidae;odocoileus;virginianus;white-tailed deer",
+      "camera_id": "MADO4A",
+      "fecha": "2024-07-03",
+      "hora": "06:04:32",
+      "temperatura_c": 18.9,
+      "ocr_raw_text": [
+        "0",
+        "Bushneu",
+        "Camera ID:MADO4A",
+        "66 'F 19 %C",
+        "03-07-2024 06 :04:32"
+      ],
+      "especie_final": "Venado",
+      "has_bounding_box": true,
+      "photo_rank": 1,
+      "photo_type": "with_bbox",
+      "nombre_archivo": "Venado_MADO4A_20240703_060432_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060432_bbox.jpg"
+    },
+    {
+      "species": "Venado",
+      "especie": "Venado",
+      "confidence": 0.6945111155509949,
+      "confianza": 0.6945111155509949,
+      "bbox": [
+        424,
+        128,
+        479,
+        306
+      ],
+      "normalized_bbox": [
+        0.8854166455566883,
+        0.34782610833644867,
+        0.1145833358168602,
+        0.4836956560611725
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\66a6a8a2\\frame_000000.jpg",
+      "timestamp_video": 0.0,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "b52529fa-320f-41e8-97ec-fa41ce26c86a;mammalia;artiodactyla;cervidae;odocoileus;;odocoileus species",
+      "camera_id": "MADO4A",
+      "fecha": "2024-07-03",
+      "hora": "06:04:30",
+      "temperatura_c": 19.0,
+      "ocr_raw_text": [
+        "0",
+        "Bushnev",
+        "Camera ID:MADO4A",
+        "66 'F 19 \"C",
+        "03-07-2024 06:04:30"
+      ],
+      "especie_final": "Venado",
+      "has_bounding_box": false,
+      "photo_rank": 2,
+      "photo_type": "clean",
+      "nombre_archivo": "Venado_MADO4A_20240703_060430_clean.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060430_clean.jpg"
+    },
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9958572308532894,
+      "confianza": 0.9958572308532894,
+      "bbox": [
+        303,
+        46,
+        480,
+        306
+      ],
+      "normalized_bbox": [
+        0.6312500089406967,
+        0.125,
+        0.3687500059604645,
+        0.70652174949646
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\66a6a8a2\\frame_000135.jpg",
+      "timestamp_video": 4.49955,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "7dfa5f8e-30b1-44f3-9959-6922a82cc20b;mammalia;perissodactyla;tapiridae;tapirus;;tapirus species",
+      "camera_id": "MADO4A",
+      "fecha": "2024-07-03",
+      "hora": "06:04:35",
+      "temperatura_c": 18.9,
+      "ocr_raw_text": [
+        "0",
+        "Bushnel",
+        "Camera ID:MADO4A",
+        "66 'F 19 %C",
+        "03-07-2024 06:04:35"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": true,
+      "photo_rank": 1,
+      "photo_type": "with_bbox",
+      "nombre_archivo": "Tapir_MADO4A_20240703_060435_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4A\\Tapir\\Tapir_MADO4A_20240703_060435_bbox.jpg"
+    },
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9823282188735902,
+      "confianza": 0.9823282188735902,
+      "bbox": [
+        307,
+        46,
+        480,
+        306
+      ],
+      "normalized_bbox": [
+        0.6395833343267441,
+        0.125,
+        0.3604166805744171,
+        0.70923912525177
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\66a6a8a2\\frame_000255.jpg",
+      "timestamp_video": 8.49915,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "7dfa5f8e-30b1-44f3-9959-6922a82cc20b;mammalia;perissodactyla;tapiridae;tapirus;;tapirus species",
+      "camera_id": "MADO4A",
+      "fecha": "2024-07-03",
+      "hora": "06:04:39",
+      "temperatura_c": 19.0,
+      "ocr_raw_text": [
+        "0",
+        "2",
+        "Bushnel]",
+        "Camera ID:MADO4A",
+        "66 'F 19 \"C",
+        "03-07-2024 06 :04:39"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": false,
+      "photo_rank": 2,
+      "photo_type": "clean",
+      "nombre_archivo": "Tapir_MADO4A_20240703_060439_clean.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4A\\Tapir\\Tapir_MADO4A_20240703_060439_clean.jpg"
+    },
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9665223360061646,
+      "confianza": 0.9665223360061646,
+      "bbox": [
+        307,
+        46,
+        479,
+        306
+      ],
+      "normalized_bbox": [
+        0.6416666656732559,
+        0.125,
+        0.3583333194255829,
+        0.70923912525177
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\66a6a8a2\\frame_000180.jpg",
+      "timestamp_video": 5.9994,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "39e5ea73-38f1-454a-8054-7c67f20fbced;mammalia;perissodactyla;tapiridae;tapirus;terrestris;lowland tapir",
+      "camera_id": "MADO4A",
+      "fecha": "2024-07-03",
+      "hora": "06:04:36",
+      "temperatura_c": 18.9,
+      "ocr_raw_text": [
+        "0",
+        "Bushneu",
+        "Camera ID",
+        "MaDo4A",
+        "66 'F 19 %C",
+        "03-07-2024 06:04:36"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": false,
+      "photo_rank": 3,
+      "photo_type": "clean",
+      "nombre_archivo": "Tapir_MADO4A_20240703_060436_clean.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4A\\Tapir\\Tapir_MADO4A_20240703_060436_clean.jpg"
+    }
+  ],
+  "estadisticas": {
+    "total_animales": 5,
+    "especies_encontradas": [
+      "Venado",
+      "Tapir"
+    ],
+    "detecciones_por_especie": {
+      "Venado": 2,
+      "Tapir": 3
+    },
+    "confianza_promedio": 0.868,
+    "calidad_promedio": 0.95
+  },
+  "excel_files": {
+    "MADO4A": "Resultados\\MADO4A\\excel_MADO4A.xlsx"
+  },
+  "analysis_dir": "video_analysis\\perf_test\\WhatsApp Video 2026-05-30 at 12.38.30 (1)_perf_2",
+  "procesado_en": "2026-05-31T04:07:53.923606"
+}

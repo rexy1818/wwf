@@ -1,136 +1,56 @@
-import cv2
-import re
+import json
 import logging
 import os
-from pathlib import Path
-from typing import Dict, Any, List, Optional
-from datetime import datetime
+import re
+import shutil
 import uuid
-import json
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from app.utils.video_metadata import VideoMetadataExtractor
-from app.utils.improved_yolo_detector import ImprovedYOLODetector
-from app.utils.smart_species_classifier import SmartSpeciesClassifier
+import cv2
+
 from app.utils.ocr_extractor import OCRExtractor
+from app.utils.speciesnet_detector import SpeciesNetDetector
 
 logger = logging.getLogger(__name__)
 
 
 class EnhancedVideoAnalyzer:
-    """Analizador de video con deteccion animal, clasificacion de especie y OCR."""
+    """Flujo activo: SpeciesNet oficial, OCR de banda inferior, carpetas y Excel por camara."""
 
-    def __init__(self):
-        self.metadata_extractor = VideoMetadataExtractor()
-        self.yolo_detector = ImprovedYOLODetector()
-        self.classifier = SmartSpeciesClassifier()
+    def __init__(self) -> None:
+        self.detector = SpeciesNetDetector()
         self.ocr_extractor = OCRExtractor()
         self.results_base = Path("Resultados")
 
-    def analyze_video_smart(self, video_path: str, output_dir: str = "video_analysis/analysis", video_id: str = None) -> Dict[str, Any]:
+    def analyze_video_smart(
+        self,
+        video_path: str,
+        output_dir: str = "video_analysis/analysis",
+        video_id: str = None,
+    ) -> Dict[str, Any]:
         try:
             video_name = Path(video_path).stem
             video_id = video_id or str(uuid.uuid4())[:8]
-
-            logger.info("Iniciando analisis inteligente: %s", video_name)
-            metadata = self._extract_enhanced_metadata(video_path)
-
             analysis_dir = Path(output_dir) / f"{video_name}_{video_id}"
             analysis_dir.mkdir(parents=True, exist_ok=True)
 
-            detections = self.yolo_detector.process_video_enhanced(video_path, str(analysis_dir), metadata)
+            logger.info("Analizando video con SpeciesNet: %s", video_name)
+            metadata = self._extract_enhanced_metadata(video_path)
+            detections = self.detector.process_video(video_path)
 
-            smart_detections = []
-            for det in detections:
-                frame = cv2.imread(det.get("ruta_evidencia", ""))
+            final_detections = self._select_final_detections(detections)
+            for detection in final_detections:
+                frame = cv2.imread(detection.get("ruta_evidencia", ""))
                 if frame is not None:
-                    det = self.classifier.classify_species_intelligently(det, frame)
-                    frame_ocr = self.ocr_extractor.extract_text_from_frame_band(
+                    ocr_data = self.ocr_extractor.extract_text_from_frame_band(
                         frame,
-                        float(det.get("timestamp_video", 0) or 0),
+                        float(detection.get("timestamp_video", 0) or 0),
                     )
-                    self._apply_ocr_to_detection(det, frame_ocr, metadata)
-                smart_detections.append(det)
+                    self._apply_ocr_to_detection(detection, ocr_data, metadata)
 
-            # 1. Validación de contexto inicial (eliminar duplicados temporales cercanos)
-            temp_detections = self.classifier.validate_detection_context(smart_detections, metadata)
-            
-            # 2. Normalización de especies antes de la selección final
-            for det in temp_detections:
-                det["especie_final"] = self._normalize_species(det.get("especie") or det.get("species"))
-
-            # 3. SELECCIÓN FINAL (Mejora Quirúrgica): Máximo 3 por especie_final, 1 con bbox
-            species_groups = {}
-            for det in temp_detections:
-                sp = det["especie_final"]
-                species_groups.setdefault(sp, []).append(det)
-            
-            final_detections = []
-            for sp, group in species_groups.items():
-                # Ordenar por confianza y calidad
-                group.sort(key=lambda x: (float(x.get("confianza", 0)) * float(x.get("calidad", 0.5))), reverse=True)
-                
-                # Tomar solo las 3 mejores
-                top_3 = group[:3]
-                
-                # Marcar la mejor para tener bounding box
-                for i, det in enumerate(top_3):
-                    det["has_bounding_box"] = (i == 0)
-                    det["photo_rank"] = i + 1
-                    det["photo_type"] = "with_bbox" if i == 0 else "clean"
-                
-                final_detections.extend(top_3)
-
-            # 4. Proceso de guardado final respetando la selección
-            for index, det in enumerate(final_detections, start=1):
-                ruta_original = det.get("ruta_evidencia", "")
-                if not ruta_original or not Path(ruta_original).exists():
-                    continue
-
-                species = det["especie_final"]
-                camera_id = self._sanitize_token(det.get("camera_id") or metadata.get("camara_id") or "UNKNOWN")
-                date_value = det.get("fecha") or metadata.get("fecha_video")
-                time_value = det.get("hora") or metadata.get("hora_video")
-                
-                # Mantener el tipo de foto (bbox o clean)
-                suffix = "_bbox" if det.get("has_bounding_box") else "_clean"
-                stamp = self._build_capture_stamp(date_value, time_value, index)
-
-                species_dir = self.results_base / camera_id / species
-                species_dir.mkdir(parents=True, exist_ok=True)
-                
-                evidence_name = f"{species}_{camera_id}_{stamp}{suffix}.jpg"
-                evidence_path = species_dir / evidence_name
-                
-                # Si necesita bounding box, lo generamos aquí mismo para asegurar que los metadatos estén correctos
-                if det.get("has_bounding_box"):
-                    frame = cv2.imread(ruta_original)
-                    if frame is not None:
-                        # Usar el detector para dibujar (centralizando la lógica visual)
-                        from app.utils.improved_yolo_detector import ImprovedYOLODetector
-                        # Preparamos los datos para el dibujo
-                        draw_det = {
-                            "species": species,
-                            "confidence": det.get("confianza", 0),
-                            "bbox": det.get("bbox")
-                        }
-                        # El detector tiene la lógica de dibujo
-                        roi_with_bbox = self.yolo_detector._add_professional_bounding_box(
-                            frame, draw_det, det.get("bbox"), (0, 0), metadata
-                        )
-                        cv2.imwrite(str(evidence_path), roi_with_bbox)
-                    else:
-                        import shutil
-                        shutil.copy2(ruta_original, evidence_path)
-                else:
-                    import shutil
-                    shutil.copy2(ruta_original, evidence_path)
-
-                det["especie"] = species
-                det["species"] = species
-                det["camera_id"] = camera_id
-                det["nombre_archivo"] = evidence_name
-                det["ruta_evidencia_final"] = str(evidence_path)
-                logger.info(f"✅ Evidencia final ({suffix}) guardada en: {evidence_path}")
+            self._save_final_evidence(final_detections, metadata)
 
             excel_files = self._write_camera_excels(final_detections)
             stats = self._generate_enhanced_statistics(final_detections)
@@ -138,13 +58,13 @@ class EnhancedVideoAnalyzer:
                 "video_id": video_id,
                 "video_name": video_name,
                 "status": "success",
-                "analyzer_version": "2.1-controlled-fixes",
-                "detector_version": "enhanced_v2.0",
+                "analyzer_version": "3.0-speciesnet-official",
+                "detector_version": "Google_SpeciesNet_v4.0.2a",
                 "features": [
-                    "improved_yolo_detection",
-                    "smart_species_classification",
+                    "speciesnet_official",
                     "bottom_band_ocr",
                     "per_camera_results",
+                    "per_camera_excel",
                 ],
                 "metadata": metadata,
                 "detecciones": final_detections,
@@ -154,50 +74,41 @@ class EnhancedVideoAnalyzer:
                 "procesado_en": datetime.now().isoformat(),
             }
 
-            with open(analysis_dir / "analysis_result.json", "w", encoding="utf-8") as f:
-                json.dump(result, f, indent=2, ensure_ascii=False, default=str)
+            with open(analysis_dir / "analysis_result.json", "w", encoding="utf-8") as handle:
+                json.dump(result, handle, indent=2, ensure_ascii=False, default=str)
 
             logger.info("Analisis completado. Especies: %s", stats["especies_encontradas"])
             return result
-        except Exception as e:
-            logger.error("Error en analisis inteligente: %s", e)
+        except Exception as exc:
+            logger.error("Error en analisis de video: %s", exc)
             raise
 
     def _extract_enhanced_metadata(self, video_path: str) -> Dict[str, Any]:
-        """Extraer datos tecnicos y OCR inicial sin usar EXIF para fecha/camara."""
-        try:
-            metadata = self._extract_video_technical_metadata(video_path)
-            ocr_data = {}
-            try:
-                ocr_data = self.ocr_extractor.extract_text_from_video(video_path)
-            except Exception as e:
-                logger.warning("OCR no disponible para %s: %s", video_path, e)
+        metadata = self._extract_video_technical_metadata(video_path)
+        return {
+            "filename": metadata.get("filename", Path(video_path).name),
+            "file_size": metadata.get("file_size", 0),
+            "duration": metadata.get("duration", 0),
+            "fps": metadata.get("fps", 0),
+            "resolution": f"{metadata.get('width', 0)}x{metadata.get('height', 0)}",
+            "fecha_video": None,
+            "hora_video": None,
+            "temperatura": None,
+            "camara_id": "UNKNOWN",
+            "timestamp_original": None,
+            "ocr_info": {
+                "frames_procesados": 0,
+                "texto_detectado": False,
+            },
+        }
 
-            ocr_camera_id = ocr_data.get("camera_id")
-            camera_id = ocr_camera_id if self._is_plausible_camera_id(ocr_camera_id) else "UNKNOWN"
-
-            return {
-                "filename": metadata.get("filename", Path(video_path).name),
-                "file_size": metadata.get("file_size", 0),
-                "duration": metadata.get("duration", 0),
-                "fps": metadata.get("fps", 0),
-                "resolution": f"{metadata.get('width', 0)}x{metadata.get('height', 0)}",
-                "fecha_video": ocr_data.get("fecha"),
-                "hora_video": ocr_data.get("hora"),
-                "temperatura": ocr_data.get("temperatura"),
-                "camara_id": camera_id,
-                "timestamp_original": None,
-                "ocr_info": {
-                    "frames_procesados": ocr_data.get("frames_procesados", 0),
-                    "texto_detectado": bool(ocr_data.get("raw_extractions")),
-                },
-            }
-        except Exception as e:
-            logger.error("Error metadatos: %s", e)
-            return {"filename": Path(video_path).name, "camara_id": "UNKNOWN"}
-
-    def _apply_ocr_to_detection(self, detection: Dict[str, Any], ocr_data: Dict[str, Any], metadata: Dict[str, Any]) -> None:
-        camera_id = ocr_data.get("camera_id") if ocr_data else None
+    def _apply_ocr_to_detection(
+        self,
+        detection: Dict[str, Any],
+        ocr_data: Dict[str, Any],
+        metadata: Dict[str, Any],
+    ) -> None:
+        camera_id = (ocr_data or {}).get("camera_id")
         if not self._is_plausible_camera_id(camera_id):
             camera_id = metadata.get("camara_id")
         detection["camera_id"] = camera_id or "UNKNOWN"
@@ -205,6 +116,106 @@ class EnhancedVideoAnalyzer:
         detection["hora"] = (ocr_data or {}).get("hora") or metadata.get("hora_video")
         detection["temperatura_c"] = (ocr_data or {}).get("temperatura", metadata.get("temperatura"))
         detection["ocr_raw_text"] = (ocr_data or {}).get("raw_text", [])
+
+    def _select_final_detections(self, detections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        deduped = self._dedupe_detections(detections)
+        species_groups: Dict[str, List[Dict[str, Any]]] = {}
+
+        for detection in deduped:
+            species = self._normalize_species(detection.get("especie") or detection.get("species"))
+            detection["especie_final"] = species
+            species_groups.setdefault(species, []).append(detection)
+
+        has_specific_species = any(species != "Otros" for species in species_groups)
+        if has_specific_species and "Otros" in species_groups:
+            species_groups["Otros"] = [
+                detection
+                for detection in species_groups["Otros"]
+                if float(detection.get("confianza") or detection.get("confidence") or 0) >= 0.8
+            ]
+            if not species_groups["Otros"]:
+                del species_groups["Otros"]
+
+        final_detections: List[Dict[str, Any]] = []
+        for species, group in species_groups.items():
+            group.sort(
+                key=lambda item: float(item.get("confianza") or item.get("confidence") or 0)
+                * float(item.get("calidad") or 0.5),
+                reverse=True,
+            )
+            for index, detection in enumerate(group[:3]):
+                detection["has_bounding_box"] = index == 0
+                detection["photo_rank"] = index + 1
+                detection["photo_type"] = "with_bbox" if index == 0 else "clean"
+                final_detections.append(detection)
+
+        return final_detections
+
+    def _save_final_evidence(self, detections: List[Dict[str, Any]], metadata: Dict[str, Any]) -> None:
+        for index, detection in enumerate(detections, start=1):
+            source_path = Path(detection.get("ruta_evidencia") or "")
+            if not source_path.exists():
+                continue
+
+            species = detection["especie_final"]
+            camera_id = self._sanitize_token(detection.get("camera_id") or metadata.get("camara_id") or "UNKNOWN")
+            date_value = detection.get("fecha") or metadata.get("fecha_video")
+            time_value = detection.get("hora") or metadata.get("hora_video")
+            suffix = "_bbox" if detection.get("has_bounding_box") else "_clean"
+            stamp = self._build_capture_stamp(date_value, time_value, index)
+
+            species_dir = self.results_base / camera_id / species
+            species_dir.mkdir(parents=True, exist_ok=True)
+            evidence_name = f"{species}_{camera_id}_{stamp}{suffix}.jpg"
+            evidence_path = species_dir / evidence_name
+
+            if detection.get("has_bounding_box"):
+                frame = cv2.imread(str(source_path))
+                if frame is not None:
+                    cv2.imwrite(str(evidence_path), self.detector.draw_bounding_box(frame, detection))
+                else:
+                    shutil.copy2(source_path, evidence_path)
+            else:
+                shutil.copy2(source_path, evidence_path)
+
+            detection["especie"] = species
+            detection["species"] = species
+            detection["camera_id"] = camera_id
+            detection["nombre_archivo"] = evidence_name
+            detection["ruta_evidencia_final"] = str(evidence_path)
+
+    def _dedupe_detections(self, detections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        selected: List[Dict[str, Any]] = []
+        for detection in sorted(detections, key=lambda item: item.get("timestamp_video", 0)):
+            species = self._normalize_species(detection.get("especie") or detection.get("species"))
+            timestamp = float(detection.get("timestamp_video", 0) or 0)
+            duplicate = False
+            for existing in selected:
+                existing_species = self._normalize_species(existing.get("especie") or existing.get("species"))
+                existing_timestamp = float(existing.get("timestamp_video", 0) or 0)
+                if species == existing_species and abs(timestamp - existing_timestamp) < 1.2:
+                    if self._bbox_iou(detection.get("bbox"), existing.get("bbox")) > 0.3:
+                        duplicate = True
+                        if float(detection.get("confianza") or 0) > float(existing.get("confianza") or 0):
+                            existing.update(detection)
+                        break
+            if not duplicate:
+                selected.append(detection)
+        return selected
+
+    def _bbox_iou(self, first: Optional[List[int]], second: Optional[List[int]]) -> float:
+        if not first or not second or len(first) != 4 or len(second) != 4:
+            return 0.0
+
+        ax1, ay1, ax2, ay2 = [float(value) for value in first]
+        bx1, by1, bx2, by2 = [float(value) for value in second]
+        inter_x1, inter_y1 = max(ax1, bx1), max(ay1, by1)
+        inter_x2, inter_y2 = min(ax2, bx2), min(ay2, by2)
+        inter_area = max(0.0, inter_x2 - inter_x1) * max(0.0, inter_y2 - inter_y1)
+        first_area = max(0.0, ax2 - ax1) * max(0.0, ay2 - ay1)
+        second_area = max(0.0, bx2 - bx1) * max(0.0, by2 - by1)
+        union = first_area + second_area - inter_area
+        return inter_area / union if union else 0.0
 
     def _extract_video_technical_metadata(self, video_path: str) -> Dict[str, Any]:
         metadata = {
@@ -228,13 +239,6 @@ class EnhancedVideoAnalyzer:
             cap.release()
         return metadata
 
-    def _extract_camera_id(self, video_path: str, metadata: Dict[str, Any]) -> Optional[str]:
-        path = Path(video_path)
-        parent_match = re.search(r"camara[-_\s]*(\w+)", path.parent.name, re.IGNORECASE)
-        if parent_match:
-            return parent_match.group(1)
-        return "UNKNOWN"
-
     def _is_plausible_camera_id(self, camera_id: Optional[str]) -> bool:
         if not camera_id:
             return False
@@ -245,7 +249,6 @@ class EnhancedVideoAnalyzer:
 
     def _normalize_species(self, species: Optional[str]) -> str:
         value = (species or "").strip().lower()
-        # Mapeo extendido para SpeciesNet
         aliases = {
             "jaguar": "Jaguar",
             "panthera onca": "Jaguar",
@@ -264,23 +267,24 @@ class EnhancedVideoAnalyzer:
             "mazama": "Venado",
             "agouti": "Agouti",
             "dasyprocta": "Agouti",
+            "peccary": "Pecari",
             "pecari": "Pecari",
             "tayassu": "Pecari",
-            "oso": "Oso",
             "bear": "Oso",
+            "oso": "Oso",
             "tremarctos": "Oso",
-            "ave": "Ave",
             "bird": "Ave",
-            "vaca": "Vaca",
+            "ave": "Ave",
             "cow": "Vaca",
-            "bos taurus": "Vaca"
+            "vaca": "Vaca",
+            "bos taurus": "Vaca",
+            "mammal": "Otros",
+            "animal": "Otros",
+            "unknown": "Otros",
         }
-        
-        # Buscar en el mapa de alias
         for key, display_name in aliases.items():
             if key in value:
                 return display_name
-                
         return value.capitalize() if value else "Otros"
 
     def _sanitize_token(self, value: Any) -> str:
@@ -298,21 +302,17 @@ class EnhancedVideoAnalyzer:
                 "total_animales": 0,
                 "especies_encontradas": [],
                 "confianza_promedio": 0,
-                "correcciones_aplicadas": 0,
                 "calidad_promedio": 0,
             }
 
-        species_count = {}
+        species_count: Dict[str, int] = {}
         confidences = []
         qualities = []
-        corrections = 0
         for detection in detections:
             species = detection.get("especie") or detection.get("species") or "Otros"
             species_count[species] = species_count.get(species, 0) + 1
-            confidences.append(detection.get("confianza") or detection.get("confidence") or 0)
-            qualities.append(detection.get("calidad") or detection.get("quality_score") or 0)
-            if detection.get("correction_applied"):
-                corrections += 1
+            confidences.append(float(detection.get("confianza") or detection.get("confidence") or 0))
+            qualities.append(float(detection.get("calidad") or 0))
 
         return {
             "total_animales": len(detections),
@@ -320,8 +320,6 @@ class EnhancedVideoAnalyzer:
             "detecciones_por_especie": species_count,
             "confianza_promedio": round(sum(confidences) / len(confidences), 3),
             "calidad_promedio": round(sum(qualities) / len(qualities), 3),
-            "correcciones_aplicadas": corrections,
-            "porcentaje_correcciones": round((corrections / len(detections)) * 100, 1),
         }
 
     def _write_camera_excels(self, detections: List[Dict[str, Any]]) -> Dict[str, str]:

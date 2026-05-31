@@ -22,7 +22,7 @@ El OCR corregido ya fue validado con el video de `camara-1`:
 - Temperatura: `20.0` a `21.0`
 - Especie validada con SpeciesNet: `Jaguar`
 
-Nota importante: el flujo SpeciesNet fue probado localmente sobre frames extraidos del video. Si el endpoint `/analyze/upload` debe usar SpeciesNet en produccion, el siguiente cambio tecnico es integrar SpeciesNet como clasificador dentro de `EnhancedVideoAnalyzer`.
+Nota importante: el endpoint `/analyze/upload` ya usa SpeciesNet oficial mediante `SpeciesNetDetector`.
 
 ## Instalacion
 
@@ -30,13 +30,6 @@ Usa Python 3.12.
 
 ```powershell
 pip install -r requirements.txt
-pip install speciesnet
-```
-
-Opcional, si quieres usar el paquete completo de MegaDetector:
-
-```powershell
-pip install megadetector
 ```
 
 Si `megadetector` falla por `onnx`/`cmake` en Windows, instala primero una rueda precompilada:
@@ -51,8 +44,6 @@ pip install speciesnet
 Estas variables evitan errores de permisos al descargar modelos o crear cache fuera del proyecto.
 
 ```powershell
-$env:YOLOV5_CONFIG_DIR="D:\backend-v2\wwf\Backend\.yolo_config"
-$env:YOLO_CONFIG_DIR="D:\backend-v2\wwf\Backend\.yolo_config"
 $env:MPLCONFIGDIR="D:\backend-v2\wwf\Backend\.matplotlib"
 $env:EASYOCR_MODULE_PATH="D:\backend-v2\wwf\Backend\video_analysis\ocr_models"
 $env:KAGGLEHUB_CACHE="D:\backend-v2\wwf\Backend\video_analysis\speciesnet_models"
@@ -419,8 +410,6 @@ cap.release(); print({'fps':fps,'total_frames':total,'saved_frames':saved,'folde
 ### 2. Ejecutar SpeciesNet con geofencing Bolivia
 
 ```powershell
-$env:YOLOV5_CONFIG_DIR="D:\backend-v2\wwf\Backend\.yolo_config"
-$env:YOLO_CONFIG_DIR="D:\backend-v2\wwf\Backend\.yolo_config"
 $env:MPLCONFIGDIR="D:\backend-v2\wwf\Backend\.matplotlib"
 $env:KAGGLEHUB_CACHE="D:\backend-v2\wwf\Backend\video_analysis\speciesnet_models"
 

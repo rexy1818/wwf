@@ -72,6 +72,7 @@ La API estará disponible en: http://localhost:8000
 
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
+- **Guia para frontend y pruebas**: `APIDOG_TESTING_GUIDE.md`
 
 ## 🎮 Uso del Sistema
 

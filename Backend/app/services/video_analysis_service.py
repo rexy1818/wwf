@@ -54,7 +54,8 @@ class VideoAnalysisService:
             logger.info(f"🧠 Iniciando análisis con detector mejorado...")
             analysis_result = self.video_analyzer.analyze_video_smart(
                 str(temp_video_path), 
-                str(self.storage_dir / "analysis")
+                str(self.storage_dir / "analysis"),
+                video_id=video_id
             )
             
             # Log de mejoras aplicadas
@@ -90,6 +91,35 @@ class VideoAnalysisService:
         except Exception as e:
             logger.error(f"Error analizando video {filename}: {e}")
             raise
+
+    async def upload_and_analyze_videos(self, files: List[Any]) -> Dict[str, Any]:
+        """
+        Subir y analizar de 1 a n videos en una sola operacion.
+        """
+        results = []
+        errors = []
+
+        for index, file in enumerate(files, start=1):
+            filename = getattr(file, "filename", None) or f"video_{index}"
+            try:
+                result = await self.upload_and_analyze_video(file, filename)
+                results.append(result)
+            except Exception as e:
+                logger.error(f"Error analizando video en lote {filename}: {e}")
+                errors.append({
+                    "filename": filename,
+                    "error": str(e)
+                })
+
+        return {
+            "status": "completed_with_errors" if errors else "completed",
+            "total_recibidos": len(files),
+            "total_procesados": len(results),
+            "total_errores": len(errors),
+            "results": results,
+            "errors": errors,
+            "processed_at": datetime.now().isoformat()
+        }
     
     def get_analysis_result(self, video_id: str) -> Dict[str, Any]:
         """Obtener resultado de análisis por ID"""

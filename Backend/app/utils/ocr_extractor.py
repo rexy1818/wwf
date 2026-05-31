@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import re
+import os
 from typing import Dict, Any, Optional, List, Tuple
 import logging
 from datetime import datetime
@@ -18,18 +19,21 @@ class OCRExtractor:
         try:
             # Intentar usar EasyOCR (más preciso para texto en imágenes)
             import easyocr
+            os.environ.setdefault("EASYOCR_MODULE_PATH", str(Path("video_analysis") / "ocr_models"))
+            Path(os.environ["EASYOCR_MODULE_PATH"]).mkdir(parents=True, exist_ok=True)
             self.ocr_engine = easyocr.Reader(['en', 'es'], gpu=False)
             self.ocr_method = 'easyocr'
             logger.info("OCR inicializado con EasyOCR")
-        except ImportError:
+        except Exception as e:
+            logger.warning(f"No se pudo inicializar EasyOCR: {e}")
             try:
                 # Fallback a Tesseract
                 import pytesseract
                 self.ocr_engine = pytesseract
                 self.ocr_method = 'tesseract'
                 logger.info("OCR inicializado con Tesseract")
-            except ImportError:
-                logger.warning("No se pudo inicializar OCR. Instalar easyocr o pytesseract")
+            except Exception as e:
+                logger.warning(f"No se pudo inicializar OCR. Instalar/configurar easyocr o pytesseract: {e}")
                 self.ocr_method = None
     
     def extract_text_from_video(self, video_path: str, sample_frames: int = 5) -> Dict[str, Any]:
@@ -53,8 +57,9 @@ class OCRExtractor:
             total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
             fps = cap.get(cv2.CAP_PROP_FPS)
             
-            # Seleccionar frames distribuidos a lo largo del video
-            frame_indices = np.linspace(0, total_frames - 1, sample_frames, dtype=int)
+            # Priorizar el arranque: en camaras trampa la sobreimpresion suele estar
+            # visible desde el frame 0 y el animal puede aparecer solo en 0-1s.
+            frame_indices = self._build_ocr_frame_indices(total_frames, fps, sample_frames)
             
             all_extractions = []
             
@@ -79,6 +84,25 @@ class OCRExtractor:
         except Exception as e:
             logger.error(f"Error en OCR de video {video_path}: {e}")
             return {}
+
+    def _build_ocr_frame_indices(self, total_frames: int, fps: float, sample_frames: int) -> np.ndarray:
+        """Seleccionar frames para OCR con mas peso en el primer segundo."""
+        if total_frames <= 0:
+            return np.array([], dtype=int)
+
+        safe_fps = fps if fps and fps > 0 else 30.0
+        indices = {0, total_frames - 1}
+
+        first_second_limit = min(total_frames - 1, int(round(safe_fps)))
+        early_step = max(1, int(round(safe_fps * 0.25)))
+        indices.update(range(0, first_second_limit + 1, early_step))
+
+        remaining_slots = max(0, sample_frames - len(indices))
+        if remaining_slots > 0:
+            distributed = np.linspace(0, total_frames - 1, remaining_slots + 2, dtype=int)[1:-1]
+            indices.update(int(i) for i in distributed)
+
+        return np.array(sorted(i for i in indices if 0 <= i < total_frames), dtype=int)
     
     def _extract_text_from_frame(self, frame: np.ndarray, timestamp: float) -> Dict[str, Any]:
         """Extraer texto de un frame específico"""
@@ -214,25 +238,36 @@ class OCRExtractor:
         try:
             # Patrones comunes para ID de cámara
             patterns = [
-                r'CAM\s*(\d+)',           # CAM001, CAM 001
-                r'CAMERA\s*(\w+)',        # CAMERA A1
-                r'ID\s*(\w+)',            # ID 001
-                r'TRAP\s*(\d+)',          # TRAP001
-                r'(\w+)\s*CAM',           # SITE1 CAM
-                r'C(\d+)',                # C001
-                r'([A-Z]\d+)',            # A1, B2
+                r'\bCAM\s*(\d+)\b',           # CAM001, CAM 001
+                r'\bCAMERA\s*(\w+)\b',        # CAMERA A1
+                r'\bID\s*(\w+)\b',            # ID 001
+                r'\bTRAP\s*(\d+)\b',          # TRAP001
+                r'\b(\w+)\s*CAM\b',           # SITE1 CAM
+                r'\bC(\d+)\b',                # C001
+                r'\b([A-Z]\d+)\b',            # A1, B2
             ]
             
             for pattern in patterns:
                 match = re.search(pattern, text.upper())
                 if match:
-                    return match.group(1)
+                    camera_id = match.group(1).strip("_- ")
+                    if self._is_plausible_camera_id(camera_id):
+                        return camera_id
             
             return None
         
         except Exception as e:
             logger.debug(f"Error extrayendo camera ID: {e}")
             return None
+
+    def _is_plausible_camera_id(self, camera_id: str) -> bool:
+        """Evitar falsos positivos de OCR como palabras cortas o ruido."""
+        if not camera_id:
+            return False
+        normalized = re.sub(r'[^A-Z0-9_-]', '', camera_id.upper())
+        if len(normalized) < 2 or len(normalized) > 20:
+            return False
+        return any(ch.isdigit() for ch in normalized) or len(normalized) >= 3
     
     def _extract_datetime(self, text: str) -> Tuple[Optional[str], Optional[str]]:
         """Extraer fecha y hora del texto"""

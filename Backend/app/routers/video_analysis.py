@@ -81,6 +81,36 @@ async def upload_and_analyze_video(
             detail=f"Error analizando video: {str(e)}"
         )
 
+@router.post("/upload/batch", response_model=Dict[str, Any], status_code=status.HTTP_201_CREATED)
+async def upload_and_analyze_videos(
+    files: List[UploadFile] = File(..., description="Uno o varios videos a analizar")
+):
+    """
+    Subir y analizar de 1 a n videos en una sola peticion.
+
+    Mantiene el mismo flujo del endpoint individual:
+    metadatos/OCR, deteccion animal, fotograma de evidencia y clasificacion.
+    """
+    try:
+        if not files:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="No se proporciono ningun archivo"
+            )
+
+        result = await video_analysis_service.upload_and_analyze_videos(files)
+        logger.info(f"Lote analizado: {result['total_procesados']} procesados, {result['total_errores']} errores")
+        return result
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error analizando lote de videos: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error analizando lote de videos: {str(e)}"
+        )
+
 @router.get("/results/{video_id}", response_model=Dict[str, Any])
 async def get_analysis_result(video_id: str):
     """

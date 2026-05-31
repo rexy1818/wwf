@@ -1,0 +1,559 @@
+/* ==========================================================
+   Statistics Dashboard - Fauna Silvestre
+   Solo estilos visuales. No cambia lógica ni rutas.
+   ========================================================== */
+
+:root {
+  --stats-bg: #f3f1e8;
+  --stats-bg-2: #f8f6ee;
+  --stats-surface: #ffffff;
+  --stats-surface-soft: #fbfaf4;
+
+  --stats-forest: #063d2e;
+  --stats-green: #2f7d32;
+  --stats-blue: #144a9a;
+  --stats-teal: #149a8a;
+  --stats-amber: #f28c00;
+  --stats-terracotta: #b85c38;
+  --stats-lime: #9acd18;
+
+  --stats-text: #173026;
+  --stats-muted: #66736b;
+  --stats-border: #e2ded2;
+
+  --stats-shadow: 0 18px 42px rgba(6, 61, 46, 0.12);
+  --stats-shadow-soft: 0 10px 24px rgba(6, 61, 46, 0.08);
+}
+
+/* Contenedor principal: conserva el espacio del sidebar */
+.statistics-container {
+  margin-left: 260px;
+  min-height: 100vh;
+  padding: 36px 40px 44px;
+  box-sizing: border-box;
+  color: var(--stats-text);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(154, 205, 24, 0.15), transparent 28%),
+    radial-gradient(circle at top right, rgba(20, 154, 138, 0.12), transparent 26%),
+    linear-gradient(135deg, var(--stats-bg-2) 0%, var(--stats-bg) 100%);
+}
+
+/* Header tipo dashboard institucional */
+.statistics-header {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 26px;
+  padding: 30px 34px;
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, rgba(6, 61, 46, 0.98), rgba(11, 74, 52, 0.94)),
+    radial-gradient(circle at 85% 20%, rgba(154, 205, 24, 0.28), transparent 28%);
+  box-shadow: var(--stats-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.statistics-header::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -90px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: rgba(154, 205, 24, 0.18);
+}
+
+.statistics-header h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: 36px;
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+}
+
+.statistics-header p {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* Resumen */
+.statistics-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.statistics-card,
+.statistics-main-card,
+.statistics-option-card,
+.statistics-chart-card,
+.statistics-table-card,
+.statistics-ranking-card,
+.statistics-filter-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(226, 222, 210, 0.95);
+  box-shadow: var(--stats-shadow-soft);
+  backdrop-filter: blur(8px);
+}
+
+.statistics-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 112px;
+  padding: 22px 22px 20px;
+  border-radius: 22px;
+}
+
+.statistics-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--stats-blue), var(--stats-teal));
+}
+
+.statistics-card:nth-child(2)::before {
+  background: linear-gradient(180deg, var(--stats-teal), var(--stats-lime));
+}
+
+.statistics-card:nth-child(3)::before {
+  background: linear-gradient(180deg, var(--stats-amber), var(--stats-terracotta));
+}
+
+.statistics-card:nth-child(4)::before {
+  background: linear-gradient(180deg, var(--stats-forest), var(--stats-green));
+}
+
+.statistics-card span,
+.statistics-main-card span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--stats-muted);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.statistics-card h2,
+.statistics-main-card h2 {
+  margin: 0;
+  color: var(--stats-text);
+  font-size: 31px;
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+}
+
+.statistics-card:hover,
+.statistics-option-card:hover,
+.statistics-chart-card:hover,
+.statistics-table-card:hover,
+.statistics-ranking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(6, 61, 46, 0.13);
+}
+
+.statistics-card,
+.statistics-option-card,
+.statistics-chart-card,
+.statistics-table-card,
+.statistics-ranking-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* Tarjeta principal de especie más registrada */
+.statistics-main-card {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: 26px 28px;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #fbfaf4 100%);
+}
+
+.statistics-main-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 7px;
+  background: linear-gradient(180deg, var(--stats-amber), var(--stats-terracotta));
+}
+
+.statistics-main-card h2 {
+  color: var(--stats-forest);
+}
+
+/* Opciones del dashboard principal */
+.statistics-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.statistics-option-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  padding: 26px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #fbfaf4 100%);
+}
+
+.statistics-option-card::before {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(20, 154, 138, 0.12);
+  border: 1px solid rgba(20, 154, 138, 0.18);
+}
+
+.statistics-option-card:nth-child(2)::before {
+  background: rgba(242, 140, 0, 0.13);
+  border-color: rgba(242, 140, 0, 0.18);
+}
+
+.statistics-option-card:nth-child(3)::before {
+  background: rgba(20, 74, 154, 0.12);
+  border-color: rgba(20, 74, 154, 0.18);
+}
+
+.statistics-option-card h2 {
+  max-width: calc(100% - 66px);
+  margin: 0 0 12px;
+  color: var(--stats-forest);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.statistics-option-card p {
+  margin: 0 0 22px;
+  color: var(--stats-muted);
+  line-height: 1.58;
+  font-size: 15px;
+}
+
+.statistics-option-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 11px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  background: var(--stats-forest);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 10px 18px rgba(6, 61, 46, 0.18);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.statistics-option-card a:hover {
+  transform: translateY(-1px);
+  background: #0b4a34;
+  box-shadow: 0 14px 26px rgba(6, 61, 46, 0.22);
+}
+
+/* Cards de gráficos, tablas y ranking */
+.statistics-chart-card,
+.statistics-table-card,
+.statistics-ranking-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 26px;
+  margin-bottom: 24px;
+}
+
+.statistics-chart-card::before,
+.statistics-table-card::before,
+.statistics-ranking-card::before {
+  content: "";
+  position: absolute;
+  left: 26px;
+  top: 0;
+  width: 78px;
+  height: 5px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, var(--stats-blue), var(--stats-teal), var(--stats-amber));
+}
+
+.statistics-chart-card h2,
+.statistics-table-card h2,
+.statistics-ranking-card h2 {
+  margin: 0 0 20px;
+  color: var(--stats-forest);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.statistics-chart {
+  width: 100%;
+  height: 360px;
+}
+
+/* Recharts - mejora visual global */
+.statistics-chart .recharts-cartesian-grid line {
+  stroke: rgba(226, 222, 210, 0.9);
+}
+
+.statistics-chart .recharts-text {
+  fill: #66736b;
+  font-size: 12px;
+}
+
+.statistics-chart .recharts-default-tooltip {
+  border-radius: 14px !important;
+  border: 1px solid var(--stats-border) !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 14px 30px rgba(6, 61, 46, 0.14) !important;
+}
+
+/* Layout contenido */
+.statistics-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+/* Tablas */
+.statistics-table-card {
+  overflow-x: auto;
+}
+
+.statistics-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+.statistics-table th {
+  background: #f1efe5;
+  color: var(--stats-forest);
+  padding: 15px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--stats-border);
+}
+
+.statistics-table th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.statistics-table th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.statistics-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid rgba(226, 222, 210, 0.75);
+  color: var(--stats-text);
+  vertical-align: middle;
+}
+
+.statistics-table tbody tr {
+  transition: background 160ms ease;
+}
+
+.statistics-table tbody tr:hover {
+  background: rgba(20, 154, 138, 0.07);
+}
+
+.statistics-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Ranking */
+.statistics-ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statistics-ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  border-radius: 16px;
+  color: var(--stats-text);
+  background:
+    linear-gradient(90deg, rgba(20, 154, 138, 0.09), rgba(255, 255, 255, 0.85));
+  border: 1px solid rgba(226, 222, 210, 0.9);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.statistics-ranking-item:hover {
+  transform: translateX(3px);
+  background:
+    linear-gradient(90deg, rgba(242, 140, 0, 0.10), rgba(255, 255, 255, 0.9));
+  border-color: rgba(242, 140, 0, 0.22);
+}
+
+.statistics-ranking-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.statistics-ranking-item strong {
+  color: var(--stats-forest);
+  font-weight: 850;
+}
+
+.statistics-ranking-item > strong {
+  min-width: 44px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  text-align: center;
+  color: #ffffff;
+  background: var(--stats-blue);
+  box-shadow: 0 8px 16px rgba(20, 74, 154, 0.18);
+}
+
+.statistics-ranking-item span {
+  color: var(--stats-muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* Badges */
+.statistics-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.025em;
+}
+
+.statistics-badge-success {
+  background: rgba(20, 154, 138, 0.13);
+  color: #075e54;
+  border: 1px solid rgba(20, 154, 138, 0.24);
+}
+
+.statistics-badge-muted {
+  background: #eeeeee;
+  color: #555555;
+  border: 1px solid #dddddd;
+}
+
+/* Filtro */
+.statistics-filter-card {
+  border-radius: 22px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.statistics-filter-card label {
+  display: block;
+  color: var(--stats-forest);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.statistics-filter-card select {
+  width: 280px;
+  max-width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--stats-border);
+  background: #fbfaf4;
+  color: var(--stats-text);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.statistics-filter-card select:focus {
+  background: #ffffff;
+  border-color: var(--stats-teal);
+  box-shadow: 0 0 0 4px rgba(20, 154, 138, 0.13);
+}
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .statistics-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .statistics-options-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .statistics-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .statistics-container {
+    margin-left: 0;
+    padding: 22px;
+  }
+
+  .statistics-header {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .statistics-header h1 {
+    font-size: 28px;
+  }
+
+  .statistics-summary-grid,
+  .statistics-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .statistics-chart-card,
+  .statistics-table-card,
+  .statistics-ranking-card,
+  .statistics-filter-card,
+  .statistics-main-card,
+  .statistics-option-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .statistics-chart {
+    height: 320px;
+  }
+}

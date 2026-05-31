@@ -1,0 +1,282 @@
+[
+  {
+    "station": "1",
+    "cameraId": "CAM-01",
+    "zone": "Palmarito",
+    "latitude": -15.64838,
+    "longitude": -61.6061,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "2",
+    "cameraId": "CAM-02",
+    "zone": "Palmarito",
+    "latitude": -15.63203,
+    "longitude": -61.60245,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "3",
+    "cameraId": "CAM-03",
+    "zone": "Palmarito",
+    "latitude": -15.61062,
+    "longitude": -61.60323,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "4",
+    "cameraId": "CAM-04",
+    "zone": "Palmarito",
+    "latitude": -15.61422,
+    "longitude": -61.61999,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "5",
+    "cameraId": "CAM-05",
+    "zone": "Palmarito",
+    "latitude": -15.59717,
+    "longitude": -61.59055,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "6",
+    "cameraId": "CAM-06",
+    "zone": "Palmarito",
+    "latitude": -15.59531,
+    "longitude": -61.60614,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "7",
+    "cameraId": "CAM-07",
+    "zone": "Palmarito",
+    "latitude": -15.64842,
+    "longitude": -61.677,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "8",
+    "cameraId": "CAM-08",
+    "zone": "Palmarito",
+    "latitude": -15.63141,
+    "longitude": -61.68107,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "9",
+    "cameraId": "CAM-09",
+    "zone": "Palmarito",
+    "latitude": -15.61368,
+    "longitude": -61.66241,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "10",
+    "cameraId": "CAM-10",
+    "zone": "Palmarito",
+    "latitude": -15.59419,
+    "longitude": -61.66152,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "11",
+    "cameraId": "CAM-11",
+    "zone": "Palmarito",
+    "latitude": -15.57871,
+    "longitude": -61.65882,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "12",
+    "cameraId": "CAM-12",
+    "zone": "Palmarito",
+    "latitude": -15.57819,
+    "longitude": -61.64395,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "13",
+    "cameraId": "CAM-13",
+    "zone": "Palmarito",
+    "latitude": -15.57912,
+    "longitude": -61.62682,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "14",
+    "cameraId": "CAM-14",
+    "zone": "Palmarito",
+    "latitude": -15.5934,
+    "longitude": -61.62594,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "15",
+    "cameraId": "CAM-15",
+    "zone": "Palmarito",
+    "latitude": -15.63232,
+    "longitude": -61.66499,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "16",
+    "cameraId": "CAM-16",
+    "zone": "Palmarito",
+    "latitude": -15.64282,
+    "longitude": -61.6637,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "17",
+    "cameraId": "CAM-17",
+    "zone": "Palmarito",
+    "latitude": -15.63314,
+    "longitude": -61.69782,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "18",
+    "cameraId": "CAM-18",
+    "zone": "Palmarito",
+    "latitude": -15.61311,
+    "longitude": -61.64719,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "19",
+    "cameraId": "CAM-19",
+    "zone": "Palmarito",
+    "latitude": -15.61493,
+    "longitude": -61.67994,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "20",
+    "cameraId": "CAM-20",
+    "zone": "Palmarito",
+    "latitude": -15.64953,
+    "longitude": -61.64408,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "21",
+    "cameraId": "CAM-21",
+    "zone": "Palmarito",
+    "latitude": -15.65034,
+    "longitude": -61.6956,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "22",
+    "cameraId": "CAM-22",
+    "zone": "Palmarito",
+    "latitude": -15.59298,
+    "longitude": -61.64637,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "23",
+    "cameraId": "CAM-23",
+    "zone": "Palmarito",
+    "latitude": -15.59554,
+    "longitude": -61.67686,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "24",
+    "cameraId": "CAM-24",
+    "zone": "Palmarito",
+    "latitude": -15.63327,
+    "longitude": -61.73554,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "25",
+    "cameraId": "CAM-25",
+    "zone": "Palmarito",
+    "latitude": -15.63288,
+    "longitude": -61.71947,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "26",
+    "cameraId": "CAM-26",
+    "zone": "Palmarito",
+    "latitude": -15.65112,
+    "longitude": -61.71971,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "27",
+    "cameraId": "CAM-27",
+    "zone": "Palmarito",
+    "latitude": -15.6499,
+    "longitude": -61.73732,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "28",
+    "cameraId": "CAM-28",
+    "zone": "Palmarito",
+    "latitude": -15.64921,
+    "longitude": -61.62296,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "29",
+    "cameraId": "CAM-29",
+    "zone": "Palmarito",
+    "latitude": -15.57953,
+    "longitude": -61.60753,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "30",
+    "cameraId": "CAM-30",
+    "zone": "Palmarito",
+    "latitude": -15.63277,
+    "longitude": -61.62262,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "31",
+    "cameraId": "CAM-31",
+    "zone": "Palmarito",
+    "latitude": -15.63136,
+    "longitude": -61.64024,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "32",
+    "cameraId": "CAM-32",
+    "zone": "Palmarito",
+    "latitude": -15.61398,
+    "longitude": -61.70239,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "33",
+    "cameraId": "CAM-33",
+    "zone": "Palmarito",
+    "latitude": -15.61449,
+    "longitude": -61.7156,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "34",
+    "cameraId": "CAM-34",
+    "zone": "Palmarito",
+    "latitude": -15.61503,
+    "longitude": -61.73501,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  },
+  {
+    "station": "16C",
+    "cameraId": "CAM-16C",
+    "zone": "Palmarito",
+    "latitude": -15.64955,
+    "longitude": -61.66099,
+    "coordinateSource": "Informe Villarroel et al. 2025 - Anexo 1"
+  }
+]

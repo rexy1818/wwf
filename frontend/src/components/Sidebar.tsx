@@ -1,5 +1,15 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../styles/sidebar.css";
+
+const menuItems = [
+  { label: "Dashboard", path: "/dashboard" },
+  { label: "Videos", path: "/videos" },
+  { label: "Validaciones", path: "/validaciones" },
+  { label: "Estadisticas", path: "/statistics" },
+  { label: "Frecuencia y abundancia", path: "/statistics/frequency" },
+  { label: "Diversidad y gremios", path: "/statistics/diversity" },
+  { label: "Tendencias temporales", path: "/statistics/trends" },
+];
 
 export default function Sidebar() {
   return (
@@ -9,52 +19,20 @@ export default function Sidebar() {
         <h2>WWF</h2>
       </div>
 
-      <div className="sidebar-title">
-        MENÚ PRINCIPAL
-      </div>
+      <div className="sidebar-title">MENU PRINCIPAL</div>
 
       <ul className="sidebar-menu">
-        <li>
-          <Link to="/dashboard" className="sidebar-link">
-            Dashboard
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/estudios" className="sidebar-link">
-            Mis Estudios
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/videos" className="sidebar-link">
-            Videos
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/validaciones" className="sidebar-link">
-            Validaciones
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/estadisticas" className="sidebar-link">
-            Estadísticas
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/reportes" className="sidebar-link">
-            Reportes
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/configuracion" className="sidebar-link">
-            Configuración
-          </Link>
-        </li>
+        {menuItems.map((item) => (
+          <li key={item.path}>
+            <NavLink
+              to={item.path}
+              end={item.path === "/statistics"}
+              className={({ isActive }) => `sidebar-link ${isActive ? "active" : ""}`}
+            >
+              {item.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
 
       <div className="sidebar-user">
@@ -62,7 +40,7 @@ export default function Sidebar() {
 
         <div>
           <h4>Jane Doe</h4>
-          <span>Bióloga Investigadora</span>
+          <span>Biologa Investigadora</span>
         </div>
       </div>
     </aside>

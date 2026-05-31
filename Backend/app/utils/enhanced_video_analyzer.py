@@ -50,10 +50,11 @@ class EnhancedVideoAnalyzer:
                 "video_id": video_id,
                 "video_name": video_name,
                 "status": "success",
-                "analyzer_version": "3.0-speciesnet-official-nodemand",
+                "analyzer_version": "3.1-speciesnet-official-first-frame-ocr",
                 "detector_version": "Google_SpeciesNet_v4.0.2a",
                 "features": [
                     "speciesnet_official",
+                    "first_frame_ocr_metadata",
                     "on_demand_ocr",
                     "per_camera_results",
                     "per_camera_excel",
@@ -78,7 +79,7 @@ class EnhancedVideoAnalyzer:
     def extract_ocr_for_detection(
         self, detection: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """Extraer OCR para una detección específica bajo demanda, sin usar metadata."""
+        """Extraer OCR para una deteccion especifica bajo demanda, sin usar metadata."""
         frame = cv2.imread(detection.get("ruta_evidencia", ""))
         ocr_data = {}
         if frame is not None:
@@ -91,20 +92,29 @@ class EnhancedVideoAnalyzer:
 
     def _extract_enhanced_metadata(self, video_path: str) -> Dict[str, Any]:
         metadata = self._extract_video_technical_metadata(video_path)
+        if hasattr(self.ocr_extractor, "extract_metadata_from_first_frame"):
+            ocr_data = self.ocr_extractor.extract_metadata_from_first_frame(video_path)
+        else:
+            ocr_data = self.ocr_extractor.extract_text_from_video(video_path)
+        camera_id = ocr_data.get("camara_id") or ocr_data.get("camera_id") or "UNKNOWN"
         return {
             "filename": metadata.get("filename", Path(video_path).name),
             "file_size": metadata.get("file_size", 0),
             "duration": metadata.get("duration", 0),
+            "duracion_seg": metadata.get("duration", 0),
             "fps": metadata.get("fps", 0),
+            "ancho": metadata.get("width", 0),
+            "alto": metadata.get("height", 0),
             "resolution": f"{metadata.get('width', 0)}x{metadata.get('height', 0)}",
-            "fecha_video": None,
-            "hora_video": None,
-            "temperatura": None,
-            "camara_id": "UNKNOWN",
+            "fecha_video": ocr_data.get("fecha"),
+            "hora_video": ocr_data.get("hora"),
+            "temperatura": ocr_data.get("temperatura"),
+            "camara_id": camera_id,
             "timestamp_original": None,
             "ocr_info": {
-                "frames_procesados": 0,
-                "texto_detectado": False,
+                "frames_procesados": 1 if ocr_data else 0,
+                "texto_detectado": bool(ocr_data.get("raw_text")),
+                "raw_text": ocr_data.get("raw_text", []),
             },
         }
 
@@ -113,7 +123,7 @@ class EnhancedVideoAnalyzer:
         detection: Dict[str, Any],
         ocr_data: Dict[str, Any],
     ) -> None:
-        """Aplicar OCR extraído a la detección, ignorando metadata externa."""
+        """Aplicar OCR extraido a la deteccion, ignorando metadata externa."""
         detection["camera_id"] = (ocr_data or {}).get("camera_id") or "UNKNOWN"
         detection["fecha"] = (ocr_data or {}).get("fecha")
         detection["hora"] = (ocr_data or {}).get("hora")
@@ -184,6 +194,9 @@ class EnhancedVideoAnalyzer:
             detection["especie"] = species
             detection["species"] = species
             detection["camera_id"] = camera_id
+            detection["fecha"] = detection.get("fecha") or date_value
+            detection["hora"] = detection.get("hora") or time_value
+            detection["temperatura_c"] = detection.get("temperatura_c") or metadata.get("temperatura")
             detection["nombre_archivo"] = evidence_name
             detection["ruta_evidencia_final"] = str(evidence_path)
 
@@ -378,3 +391,4 @@ class EnhancedVideoAnalyzer:
             pd.DataFrame(rows, columns=self._excel_columns()).to_excel(output_file, index=False)
             return output_file
         return next(iter(excel_files.values()), "")
+

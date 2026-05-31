@@ -166,7 +166,7 @@ class SpeciesNetDetector:
 
     def _is_non_animal_prediction(self, species_name: str, prediction: Any) -> bool:
         value = f"{species_name} {prediction or ''}".lower()
-        return any(token in value for token in ("blank", "vehicle", "human", "person"))
+        return any(token in value for token in ("blank", "vehicle", "human", "person", "no cv result"))
 
     def _bbox_to_pixels(self, bbox: Any, width: int, height: int) -> List[int]:
         if not bbox or len(bbox) != 4:

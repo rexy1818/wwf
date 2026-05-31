@@ -48,6 +48,15 @@ async def extract_ocr_for_detection(video_id: str, detection_index: int):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc))
 
 
+@router.get("/results/{video_id}", response_model=Dict[str, Any])
+async def get_analysis_result(video_id: str):
+    """Obtener resultado completo de analisis por ID de video."""
+    try:
+        return video_analysis_service.get_analysis_result(video_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc))
+
+
 @router.get("/list", response_model=List[Dict[str, Any]])
 async def list_all_analyses():
     """Listar los analisis almacenados."""

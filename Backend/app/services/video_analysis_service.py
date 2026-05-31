@@ -87,6 +87,12 @@ class VideoAnalysisService:
             "processed_at": datetime.now().isoformat(),
         }
 
+    def get_analysis_result(self, video_id: str) -> Dict[str, Any]:
+        all_analyses = json_storage.data.get("video_analyses", {})
+        if video_id in all_analyses:
+            return all_analyses[video_id]
+        raise ValueError(f"Analisis no encontrado: {video_id}")
+
     def extract_ocr_on_demand(self, video_id: str, detection_index: int) -> Dict[str, Any]:
         """Extraer OCR para una detección específica y actualizar el almacenamiento."""
         analysis = self.get_analysis_result(video_id)

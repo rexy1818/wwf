@@ -2,7 +2,7 @@
   "cameras": {},
   "processing_history": {},
   "created_at": "2026-05-31T01:59:55.223235",
-  "last_updated": "2026-05-31T07:06:04.631133",
+  "last_updated": "2026-05-31T09:30:59.895270",
   "video_analyses": {
     "71d8021a-b89": {
       "video_id": "71d8021a-b89",
@@ -1610,6 +1610,652 @@
       },
       "analysis_dir": "video_analysis\\analysis\\3b334a95-54a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_3b334a95-54a",
       "procesado_en": "2026-05-31T07:06:04.629696"
+    },
+    "91f15c9a-9b2": {
+      "video_id": "91f15c9a-9b2",
+      "video_name": "91f15c9a-9b2_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "91f15c9a-9b2_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9912801384925842,
+          "confianza": 0.9912801384925842,
+          "bbox": [
+            422.4035949707031,
+            208.28152465820312,
+            552.1311645507812,
+            372.40771484375
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\80693019\\frame_000030.jpg",
+          "timestamp_video": 2.062937062937063,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg"
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.8534722328186035,
+          "confianza": 0.8534722328186035,
+          "bbox": [
+            487.4440612792969,
+            213.83970642089844,
+            606.952880859375,
+            336.6951904296875
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\80693019\\frame_000000.jpg",
+          "timestamp_video": 0.0,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 2,
+        "especies_encontradas": [
+          "Jaguar"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 2
+        },
+        "confianza_promedio": 0.922,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\91f15c9a-9b2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_91f15c9a-9b2",
+      "procesado_en": "2026-05-31T07:17:20.240196"
+    },
+    "11cc98f3-ab7": {
+      "video_id": "11cc98f3-ab7",
+      "video_name": "11cc98f3-ab7_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "11cc98f3-ab7_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9912801384925842,
+          "confianza": 0.9912801384925842,
+          "bbox": [
+            422.4035949707031,
+            208.28152465820312,
+            552.1311645507812,
+            372.40771484375
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\efd4047c\\frame_000030.jpg",
+          "timestamp_video": 2.062937062937063,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "BushocilSiMNECaneralllDESTi2Balm6SKEH20SCHRMDmt0723-122025M182021"
+          ]
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.8534718751907349,
+          "confianza": 0.8534718751907349,
+          "bbox": [
+            487.4440612792969,
+            213.83970642089844,
+            606.952880859375,
+            336.6951904296875
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\efd4047c\\frame_000000.jpg",
+          "timestamp_video": 0.0,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "BushnelllimamantComeraDESTi2B3 69y6S218CiaieYM072312025818720919"
+          ]
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 2,
+        "especies_encontradas": [
+          "Jaguar"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 2
+        },
+        "confianza_promedio": 0.922,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\11cc98f3-ab7_WhatsApp Video 2026-05-30 at 12.38.25 (1)_11cc98f3-ab7",
+      "procesado_en": "2026-05-31T08:58:34.857449"
+    },
+    "18e2a321-475": {
+      "video_id": "18e2a321-475",
+      "video_name": "18e2a321-475_WhatsApp Video 2026-05-30 at 12.38.30",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "18e2a321-475_WhatsApp Video 2026-05-30 at 12.38.30.mp4",
+        "file_size": 1697793,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Tapir",
+          "especie": "Tapir",
+          "confidence": 0.9957232475280762,
+          "confianza": 0.9957232475280762,
+          "bbox": [
+            145.1641845703125,
+            106.4150161743164,
+            471.7408752441406,
+            300.35595703125
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\f993b243\\frame_000120.jpg",
+          "timestamp_video": 3.9996,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Tapir",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Tapir_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Tapir\\Tapir_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "senicedgmCavtart3105WADI63puam686470CmCamm0304:7076223377210"
+          ]
+        },
+        {
+          "species": "Tapir",
+          "especie": "Tapir",
+          "confidence": 0.9930053353309631,
+          "confianza": 0.9930053353309631,
+          "bbox": [
+            159.79124450683594,
+            148.89395141601562,
+            421.4349060058594,
+            300.43756103515625
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\f993b243\\frame_000060.jpg",
+          "timestamp_video": 1.9998,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Tapir",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "COCMK03-01",
+          "nombre_archivo": "Tapir_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Tapir\\Tapir_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "fecha": "9076-01-03",
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "Oss DNareeROLeOCODEIOE",
+            "dcanCanccec10iWA036mm081270-CoCmk03-01-90767757F2TON"
+          ]
+        },
+        {
+          "species": "Otros",
+          "especie": "Otros",
+          "confidence": 0.9424593597650528,
+          "confianza": 0.9424593597650528,
+          "bbox": [
+            150.7244110107422,
+            119.67313385009766,
+            262.0908508300781,
+            238.38038635253906
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\f993b243\\frame_000180.jpg",
+          "timestamp_video": 5.9994,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Otros",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Otros_UNKNOWN_UNKNOWN_0003_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Otros\\Otros_UNKNOWN_UNKNOWN_0003_bbox.jpg",
+          "fecha": "7076-04-03",
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "CBDSoASdndfineeeetweerepataetnNeS",
+            "cwnmeedguanCartart310:MADI23saiG86270Cammme03-04-7076223277210"
+          ]
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 3,
+        "especies_encontradas": [
+          "Tapir",
+          "Otros"
+        ],
+        "detecciones_por_especie": {
+          "Tapir": 2,
+          "Otros": 1
+        },
+        "confianza_promedio": 0.977,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\18e2a321-475_WhatsApp Video 2026-05-30 at 12.38.30_18e2a321-475",
+      "procesado_en": "2026-05-31T09:00:20.378036"
+    },
+    "6587a7c4-d57": {
+      "video_id": "6587a7c4-d57",
+      "video_name": "6587a7c4-d57_WhatsApp Video 2026-05-30 at 12.38.30 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "6587a7c4-d57_WhatsApp Video 2026-05-30 at 12.38.30 (1).mp4",
+        "file_size": 1239201,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Tapir",
+          "especie": "Tapir",
+          "confidence": 0.9665223360061646,
+          "confianza": 0.9665223360061646,
+          "bbox": [
+            302.2118225097656,
+            47.716278076171875,
+            479.58892822265625,
+            281.5173645019531
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\376c7541\\frame_000180.jpg",
+          "timestamp_video": 5.9994,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Tapir",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Tapir_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Tapir\\Tapir_UNKNOWN_UNKNOWN_0001_bbox.jpg"
+        },
+        {
+          "species": "Tapir",
+          "especie": "Tapir",
+          "confidence": 0.9295974373817444,
+          "confianza": 0.9295974373817444,
+          "bbox": [
+            388.1958923339844,
+            78.63546752929688,
+            479.73004150390625,
+            273.6329345703125
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\376c7541\\frame_000030.jpg",
+          "timestamp_video": 0.9999,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Tapir",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Tapir_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Tapir\\Tapir_UNKNOWN_UNKNOWN_0002_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 2,
+        "especies_encontradas": [
+          "Tapir"
+        ],
+        "detecciones_por_especie": {
+          "Tapir": 2
+        },
+        "confianza_promedio": 0.948,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\6587a7c4-d57_WhatsApp Video 2026-05-30 at 12.38.30 (1)_6587a7c4-d57",
+      "procesado_en": "2026-05-31T09:02:09.857262"
+    },
+    "ba636b27-369": {
+      "video_id": "ba636b27-369",
+      "video_name": "ba636b27-369_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "ba636b27-369_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9912801384925842,
+          "confianza": 0.9912801384925842,
+          "bbox": [
+            422.4035949707031,
+            208.28152465820312,
+            552.1311645507812,
+            372.40771484375
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\d1ec5e5d\\frame_000030.jpg",
+          "timestamp_video": 2.062937062937063,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "BushocilSiMNECaneralllDESTi2Balm6SKEH20SCHRMDmt0723-122025M182021"
+          ]
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.8534722328186035,
+          "confianza": 0.8534722328186035,
+          "bbox": [
+            487.4440612792969,
+            213.83970642089844,
+            606.952880859375,
+            336.6951904296875
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\d1ec5e5d\\frame_000000.jpg",
+          "timestamp_video": 0.0,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "BushnelllimamantComeraDESTi2B3 69y6S218CiaieYM072312025818720919"
+          ]
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 2,
+        "especies_encontradas": [
+          "Jaguar"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 2
+        },
+        "confianza_promedio": 0.922,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\ba636b27-369_WhatsApp Video 2026-05-30 at 12.38.25 (1)_ba636b27-369",
+      "procesado_en": "2026-05-31T09:05:06.280970"
+    },
+    "39d739be-a2a": {
+      "video_id": "39d739be-a2a",
+      "video_name": "39d739be-a2a_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.1-speciesnet-official-first-frame-ocr",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "first_frame_ocr_metadata",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "39d739be-a2a_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "duracion_seg": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "ancho": 848,
+        "alto": 480,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "EST12B",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 1,
+          "texto_detectado": true,
+          "raw_text": [
+            "BushnellliammCanierawlD:ESTI2B 69e6H21nCHeMEO753122025818220519"
+          ]
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9912801384925842,
+          "confianza": 0.9912801384925842,
+          "bbox": [
+            422.4035949707031,
+            208.28152465820312,
+            552.1311645507812,
+            372.40771484375
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\fa4257cb\\frame_000030.jpg",
+          "timestamp_video": 2.062937062937063,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "nombre_archivo": "Jaguar_EST12B_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Jaguar\\Jaguar_EST12B_UNKNOWN_0001_bbox.jpg",
+          "ocr_raw_text": [
+            "BushocilSiMNECaneralllDESTi2Balm6SKEH20SCHRMDmt0723-122025M182021"
+          ]
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.8534718751907349,
+          "confianza": 0.8534718751907349,
+          "bbox": [
+            487.4440612792969,
+            213.83970642089844,
+            606.952880859375,
+            336.6951904296875
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\fa4257cb\\frame_000000.jpg",
+          "timestamp_video": 0.0,
+          "calidad": 0.95,
+          "detector_source": "YOLOv8n + Google_SpeciesNet_v4.0.2a",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "fecha": null,
+          "hora": null,
+          "temperatura_c": null,
+          "nombre_archivo": "Jaguar_EST12B_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Jaguar\\Jaguar_EST12B_UNKNOWN_0002_clean.jpg",
+          "ocr_raw_text": [
+            "BushnelllimamantComeraDESTi2B3 69y6S218CiaieYM072312025818720919"
+          ]
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 2,
+        "especies_encontradas": [
+          "Jaguar"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 2
+        },
+        "confianza_promedio": 0.922,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "EST12B": "Resultados\\EST12B\\excel_EST12B.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\39d739be-a2a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_39d739be-a2a",
+      "procesado_en": "2026-05-31T09:30:59.292123"
     }
   }
 }

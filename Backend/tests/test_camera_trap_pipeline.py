@@ -89,6 +89,9 @@ class FakeDetector:
 
 
 class FakeOCR:
+    def extract_metadata_from_first_frame(self, video_path):
+        return self.extract_text_from_video(video_path)
+
     def extract_text_from_video(self, video_path):
         return {
             "camera_id": "EST12B",

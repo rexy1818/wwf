@@ -86,6 +86,29 @@ class OCRExtractor:
             logger.error("Error en OCR de video %s: %s", video_path, exc)
             return {}
 
+    def extract_metadata_from_first_frame(self, video_path: str) -> Dict[str, Any]:
+        """Leer solo el primer frame y extraer datos impresos por OCR."""
+        cap = cv2.VideoCapture(video_path)
+        try:
+            ok, frame = cap.read()
+            if not ok:
+                return {}
+
+            parsed = self.extract_text_from_frame_band(frame, 0)
+            return {
+                "camara_id": parsed.get("camera_id"),
+                "camera_id": parsed.get("camera_id"),
+                "fecha": parsed.get("fecha"),
+                "hora": parsed.get("hora"),
+                "temperatura": parsed.get("temperatura"),
+                "raw_text": parsed.get("raw_text", []),
+            }
+        except Exception as exc:
+            logger.warning("No se pudo extraer OCR del primer frame de %s: %s", video_path, exc)
+            return {}
+        finally:
+            cap.release()
+
     def _build_ocr_frame_indices(self, total_frames: int, fps: float, sample_frames: int) -> np.ndarray:
         if total_frames <= 0:
             return np.array([], dtype=int)
@@ -175,6 +198,7 @@ class OCRExtractor:
                 text_threshold=0.3,
                 low_text=0.2,
                 width_ths=1.0,
+                allowlist="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz:-/°º'\" ",
             )
             return [(text.strip(), float(confidence)) for _, text, confidence in results if confidence > 0.12 and text.strip()]
         except Exception as exc:

@@ -1,0 +1,21 @@
+{
+  "settings_version": "0.0.6",
+  "datasets_dir": "C:\\Users\\Hp\\Desktop\\innova2\\datasets",
+  "weights_dir": "C:\\Users\\Hp\\Desktop\\innova2\\wwf\\weights",
+  "runs_dir": "C:\\Users\\Hp\\Desktop\\innova2\\wwf\\runs",
+  "uuid": "2c403c0d4a77c489a9ca5a879b89717a1a676aede19fc81d84871ff1a18a4119",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "hub": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}

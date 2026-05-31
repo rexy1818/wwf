@@ -58,3 +58,17 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Additional ignored files/dirs
+Resultados/UNKNOWN/
+app/utils/db_storage.py
+benchmark_easyocr_crop.py
+benchmark_ocr.py
+cameras_db.sqlite
+test_yolo_perf.py
+tests/jaguar.png
+verify_optimized_detector.py
+video_analysis/91f15c9a-9b2_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4
+video_analysis/analysis/
+video_analysis/temp_frames/80693019/
+video_analysis/temp_frames/d29920ad/

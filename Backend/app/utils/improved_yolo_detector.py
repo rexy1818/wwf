@@ -209,6 +209,7 @@ class ImprovedYOLODetector:
     def select_best_detections(
         self, all_detections: List[Tuple[np.ndarray, int, float, List[Dict[str, Any]]]]
     ) -> List[Dict[str, Any]]:
+        """Compatibilidad: conservar una mejor deteccion por especie."""
         species_detections = {}
         for frame, frame_num, timestamp, detections in all_detections:
             for d in detections:
@@ -222,6 +223,59 @@ class ImprovedYOLODetector:
             dets.sort(key=lambda x: x["adjusted_confidence"], reverse=True)
             best_detections.append(dets[0])
         return best_detections
+
+    def select_representative_detections(
+        self, all_detections: List[Tuple[np.ndarray, int, float, List[Dict[str, Any]]]],
+        min_time_gap_seconds: float = 1.0,
+    ) -> List[Dict[str, Any]]:
+        """Conservar eventos separados en el tiempo y reducir duplicados inmediatos."""
+        candidates = []
+        for frame, frame_num, timestamp, detections in all_detections:
+            for detection in detections:
+                candidates.append({**detection, "frame": frame, "frame_number": frame_num, "timestamp": timestamp})
+
+        candidates.sort(key=lambda x: (x["timestamp"], -(x.get("adjusted_confidence") or x.get("confidence") or 0)))
+        selected = []
+        for candidate in candidates:
+            species = candidate.get("species", "animal_silvestre")
+            duplicate_index = None
+            for index, current in enumerate(selected):
+                if current.get("species") != species:
+                    continue
+                if abs(float(candidate["timestamp"]) - float(current["timestamp"])) > min_time_gap_seconds:
+                    continue
+                if self._bbox_iou(candidate.get("bbox"), current.get("bbox")) >= 0.35:
+                    duplicate_index = index
+                    break
+
+            if duplicate_index is None:
+                selected.append(candidate)
+                continue
+
+            candidate_score = candidate.get("adjusted_confidence") or candidate.get("confidence") or 0
+            current_score = selected[duplicate_index].get("adjusted_confidence") or selected[duplicate_index].get("confidence") or 0
+            if candidate_score > current_score:
+                selected[duplicate_index] = candidate
+
+        selected.sort(key=lambda x: x["timestamp"])
+        return selected
+
+    def _bbox_iou(self, bbox_a: List[int], bbox_b: List[int]) -> float:
+        if not bbox_a or not bbox_b:
+            return 0.0
+        ax1, ay1, ax2, ay2 = bbox_a
+        bx1, by1, bx2, by2 = bbox_b
+        inter_x1 = max(ax1, bx1)
+        inter_y1 = max(ay1, by1)
+        inter_x2 = min(ax2, bx2)
+        inter_y2 = min(ay2, by2)
+        inter_w = max(0, inter_x2 - inter_x1)
+        inter_h = max(0, inter_y2 - inter_y1)
+        inter_area = inter_w * inter_h
+        area_a = max(0, ax2 - ax1) * max(0, ay2 - ay1)
+        area_b = max(0, bx2 - bx1) * max(0, by2 - by1)
+        union = area_a + area_b - inter_area
+        return inter_area / union if union else 0.0
 
     def save_enhanced_evidence(
         self, detection: Dict[str, Any], evidence_path: Path, evidence_name: str, metadata: Dict[str, Any] = None
@@ -245,7 +299,7 @@ class ImprovedYOLODetector:
             if not all_detections:
                 return []
 
-            best_detections = self.select_best_detections(all_detections)
+            best_detections = self.select_representative_detections(all_detections)
             final_detections = []
             evidencias_dir = Path(output_dir) / "evidencias"
             for det in best_detections:

@@ -34,6 +34,7 @@ class SmartSpeciesClassifier:
             original_species = detection.get('especie') or detection.get('species') or 'animal_silvestre'
             species = original_species
             confidence_boost = 1.0
+            detection['original_species'] = original_species
 
             if traits['has_rosettes'] or traits['large_spotted_cat']:
                 species = 'jaguar'
@@ -48,13 +49,13 @@ class SmartSpeciesClassifier:
                 species = 'venado'
                 confidence_boost = 1.3
             elif traits['is_bulky'] and traits['short_tail'] and traits['dark_color']:
-                species = 'danta' if traits['is_very_large'] else 'pecari'
+                species = 'tapir' if traits['is_very_large'] else 'otros'
                 confidence_boost = 1.4
             elif traits['hunched_back'] and not traits['has_visible_tail']:
-                species = 'agouti'
+                species = 'otros'
                 confidence_boost = 1.2
             elif traits['pointed_ears'] and traits['long_snout']:
-                species = 'zorro'
+                species = 'otros'
                 confidence_boost = 1.2
 
             base_confidence = detection.get('confidence', detection.get('confianza', 0)) or 0
@@ -62,6 +63,7 @@ class SmartSpeciesClassifier:
             detection['species'] = species
             detection['confidence'] = min(0.99, float(base_confidence) * confidence_boost)
             detection['confianza'] = detection['confidence']
+            detection['correction_applied'] = species != original_species
             detection['biological_traits'] = traits
             return detection
         except Exception as e:
@@ -105,15 +107,26 @@ class SmartSpeciesClassifier:
         }
 
     def validate_detection_context(self, detections: List[Dict[str, Any]], metadata: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        """Dejar un solo mejor fotograma por especie final."""
-        best_by_species = {}
-        for detection in detections:
+        """Reducir duplicados inmediatos sin colapsar todos los eventos de una especie."""
+        ordered = sorted(detections, key=lambda det: float(det.get('timestamp_video', det.get('timestamp', 0)) or 0))
+        selected = []
+        for detection in ordered:
             species = detection.get('especie') or detection.get('species') or 'animal_silvestre'
-            score = (
-                float(detection.get('confidence', detection.get('confianza', 0)) or 0),
-                float(detection.get('calidad', detection.get('quality_score', 0)) or 0),
-            )
-            current = best_by_species.get(species)
-            if current is None or score > current[0]:
-                best_by_species[species] = (score, detection)
-        return [item[1] for item in best_by_species.values()]
+            timestamp = float(detection.get('timestamp_video', detection.get('timestamp', 0)) or 0)
+            duplicate_index = None
+            for index, current in enumerate(selected):
+                current_species = current.get('especie') or current.get('species') or 'animal_silvestre'
+                current_timestamp = float(current.get('timestamp_video', current.get('timestamp', 0)) or 0)
+                if species == current_species and abs(timestamp - current_timestamp) <= 1.0:
+                    duplicate_index = index
+                    break
+
+            if duplicate_index is None:
+                selected.append(detection)
+                continue
+
+            new_score = float(detection.get('confidence', detection.get('confianza', 0)) or 0)
+            old_score = float(selected[duplicate_index].get('confidence', selected[duplicate_index].get('confianza', 0)) or 0)
+            if new_score > old_score:
+                selected[duplicate_index] = detection
+        return selected

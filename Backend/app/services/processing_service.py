@@ -1,4 +1,5 @@
 import asyncio
+import cv2
 from pathlib import Path
 from typing import List, Dict, Any
 import logging

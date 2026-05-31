@@ -1,0 +1,40 @@
+{
+  "video_id": "testcam1",
+  "video_name": "WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+  "status": "success",
+  "analyzer_version": "2.1-controlled-fixes",
+  "detector_version": "enhanced_v2.0",
+  "features": [
+    "improved_yolo_detection",
+    "smart_species_classification",
+    "bottom_band_ocr",
+    "per_camera_results"
+  ],
+  "metadata": {
+    "filename": "WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+    "file_size": 936335,
+    "duration": 9.833333333333334,
+    "fps": 14.542372881355933,
+    "resolution": "848x480",
+    "fecha_video": null,
+    "hora_video": null,
+    "temperatura": null,
+    "camara_id": "ESTHN2B",
+    "timestamp_original": null,
+    "ocr_info": {
+      "frames_procesados": 5,
+      "texto_detectado": true
+    }
+  },
+  "detecciones": [],
+  "estadisticas": {
+    "total_animales": 0,
+    "especies_encontradas": [],
+    "confianza_promedio": 0,
+    "correcciones_aplicadas": 0,
+    "calidad_promedio": 0
+  },
+  "excel_files": {},
+  "analysis_dir": "video_analysis\\analysis\\WhatsApp Video 2026-05-30 at 12.38.25 (1)_testcam1",
+  "procesado_en": "2026-05-31T00:19:35.863983"
+}

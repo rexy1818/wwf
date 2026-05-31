@@ -1,359 +1,504 @@
-# Guía de Pruebas con Apidog - Sistema de Monitoreo de Fauna
+# Guia de API y pruebas - Camaras trampa
 
-Esta guía te ayudará a probar todos los endpoints del sistema usando Apidog.
+Esta guia sirve para integrar el backend con un frontend y para probar el flujo con Apidog, cURL o scripts locales.
 
-## 🚀 Configuración Inicial
+## Estado actual
 
-### 1. Iniciar el Servidor
-```bash
+El backend expone endpoints FastAPI para:
+
+- Subir uno o varios videos.
+- Procesar videos.
+- Detectar animales.
+- Clasificar especie.
+- Extraer OCR desde la banda inferior de la imagen.
+- Guardar evidencias en `Resultados/<CAMERA_ID>/<Especie>/`.
+- Generar Excel por camara: `Resultados/<CAMERA_ID>/excel_<CAMERA_ID>.xlsx`.
+
+El OCR corregido ya fue validado con el video de `camara-1`:
+
+- Camera ID: `EST12B`
+- Fecha: `2025-07-31`
+- Hora: `18:20:19` a `18:20:25`
+- Temperatura: `20.0` a `21.0`
+- Especie validada con SpeciesNet: `Jaguar`
+
+Nota importante: el endpoint `/analyze/upload` ya usa SpeciesNet oficial mediante `SpeciesNetDetector`.
+
+## Instalacion
+
+Usa Python 3.12.
+
+```powershell
+pip install -r requirements.txt
+```
+
+Si `megadetector` falla por `onnx`/`cmake` en Windows, instala primero una rueda precompilada:
+
+```powershell
+pip install onnx==1.19.1
+pip install speciesnet
+```
+
+## Variables recomendadas en Windows
+
+Estas variables evitan errores de permisos al descargar modelos o crear cache fuera del proyecto.
+
+```powershell
+$env:MPLCONFIGDIR="D:\backend-v2\wwf\Backend\.matplotlib"
+$env:EASYOCR_MODULE_PATH="D:\backend-v2\wwf\Backend\video_analysis\ocr_models"
+$env:KAGGLEHUB_CACHE="D:\backend-v2\wwf\Backend\video_analysis\speciesnet_models"
+```
+
+## Iniciar servidor
+
+```powershell
 python main.py
 ```
-El servidor estará disponible en: `http://localhost:8000`
 
-### 2. Verificar que el Servidor Funciona
-Abrir en navegador: http://localhost:8000/health
+URL base:
 
-## 📋 Colección de Pruebas para Apidog
-
-### Configuración Base
-- **Base URL**: `http://localhost:8000`
-- **Headers comunes**: `Content-Type: application/json`
-
----
-
-## 🎯 FASE 1: GESTIÓN DE CÁMARAS
-
-### 1.1 Crear Cámara
-```
-POST {{baseUrl}}/cameras
-Content-Type: application/json
-
-{
-  "nombre": "Cámara Bosque Norte",
-  "ubicacion": "Sector A - Reserva Natural"
-}
+```text
+http://localhost:8000
 ```
 
-**Respuesta esperada (201):**
-```json
-{
-  "id": "camara_bosque_norte_abc12345",
-  "nombre": "Cámara Bosque Norte",
-  "ubicacion": "Sector A - Reserva Natural",
-  "fecha_creacion": "2026-05-30T14:51:00",
-  "ruta_storage": "storage/camara_bosque_norte_abc12345"
-}
+Documentacion interactiva:
+
+```text
+http://localhost:8000/docs
+http://localhost:8000/redoc
 ```
 
-**⚠️ IMPORTANTE**: Guardar el `id` de la cámara para usar en las siguientes pruebas.
+Health check:
 
-### 1.2 Listar Todas las Cámaras
-```
-GET {{baseUrl}}/cameras
-```
-
-**Respuesta esperada (200):**
-```json
-[
-  {
-    "id": "camara_bosque_norte_abc12345",
-    "nombre": "Cámara Bosque Norte",
-    "ubicacion": "Sector A - Reserva Natural",
-    "fecha_creacion": "2026-05-30T14:51:00",
-    "ruta_storage": "storage/camara_bosque_norte_abc12345",
-    "videos_procesados": 0,
-    "total_detecciones": 0
-  }
-]
+```http
+GET /health
 ```
 
-### 1.3 Obtener Información de Cámara Específica
-```
-GET {{baseUrl}}/cameras/{{camera_id}}
-```
+## Endpoints principales para frontend
 
-Reemplazar `{{camera_id}}` con el ID obtenido en el paso 1.1.
+### 1. Subir y analizar un video
 
----
-
-## 🎬 FASE 2: GESTIÓN DE VIDEOS
-
-### 2.1 Subir Video
-```
-POST {{baseUrl}}/videos/upload
+```http
+POST /analyze/upload
 Content-Type: multipart/form-data
-
-Form Data:
-- camera_id: {{camera_id}}
-- file: [SELECCIONAR ARCHIVO DE VIDEO]
 ```
 
-**Formatos soportados**: mp4, avi, mov, mkv, wmv, flv, webm
+Form data:
 
-**Respuesta esperada (201):**
-```json
-{
-  "filename": "video_prueba.mp4",
-  "original_filename": "video_prueba.mp4",
-  "file_path": "storage/camara_bosque_norte_abc12345/videos/video_prueba.mp4",
-  "file_size": 15728640,
-  "camera_id": "camara_bosque_norte_abc12345",
-  "status": "uploaded"
+| Campo | Tipo | Requerido | Descripcion |
+|---|---|---:|---|
+| `file` | File | Si | Video de camara trampa (`mp4`, `avi`, `mov`, `mkv`, `wmv`, `flv`, `webm`, `m4v`) |
+
+Ejemplo `fetch`:
+
+```js
+async function analyzeVideo(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch("http://localhost:8000/analyze/upload", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+
+  return response.json();
 }
 ```
 
-### 2.2 Listar Videos de una Cámara
-```
-GET {{baseUrl}}/videos/{{camera_id}}
-```
+Respuesta esperada:
 
-**Respuesta esperada (200):**
-```json
-[
-  {
-    "filename": "video_prueba.mp4",
-    "file_path": "storage/camara_bosque_norte_abc12345/videos/video_prueba.mp4",
-    "file_size": 15728640,
-    "created_at": 1717077060.0,
-    "modified_at": 1717077060.0
-  }
-]
-```
-
-### 2.3 Obtener Información de Video Específico
-```
-GET {{baseUrl}}/videos/{{camera_id}}/video_prueba.mp4
-```
-
----
-
-## 🔍 FASE 3: PROCESAMIENTO CON YOLO
-
-### 3.1 Procesar Videos de una Cámara
-```
-POST {{baseUrl}}/process/camera/{{camera_id}}?interval_seconds=5&confidence_threshold=0.5
-```
-
-**Parámetros opcionales:**
-- `interval_seconds`: Intervalo entre frames (1-60, default: 5)
-- `confidence_threshold`: Umbral de confianza (0.1-1.0, default: 0.5)
-
-**⏱️ Nota**: Este proceso puede tomar varios minutos dependiendo del tamaño del video.
-
-**Respuesta esperada (200):**
 ```json
 {
-  "videos_procesados": 1,
-  "animales_detectados": 3,
-  "especies_encontradas": ["ave", "felino"],
-  "ruta_excel": "storage/camara_bosque_norte_abc12345/excel/reporte_20260530_145100.xlsx",
-  "total_evidencias": 3,
-  "detecciones": [
-    {
-      "video": "video_prueba",
-      "especie": "ave",
-      "confianza": 0.847,
-      "fecha": "2026-05-30",
-      "hora": "14:51:30",
-      "frame": 0,
-      "timestamp": 0.0,
-      "ruta_evidencia": "storage/camara_bosque_norte_abc12345/evidencias/ave/ave_video_prueba_frame_0_20260530_145130.jpg"
+  "video_id": "abc123def456",
+  "filename": "video.mp4",
+  "status": "analyzed",
+  "analysis": {
+    "video_id": "abc123def456",
+    "status": "success",
+    "metadata": {
+      "filename": "video.mp4",
+      "duration": 9.83,
+      "fps": 14.54,
+      "resolution": "848x480",
+      "fecha_video": "2025-07-31",
+      "hora_video": "18:20:19",
+      "temperatura": 21.0,
+      "camara_id": "EST12B"
+    },
+    "detecciones": [
+      {
+        "camera_id": "EST12B",
+        "especie": "Jaguar",
+        "fecha": "2025-07-31",
+        "hora": "18:20:19",
+        "temperatura_c": 21.0,
+        "nombre_archivo": "Jaguar_EST12B_20250731_182019.jpg",
+        "ruta_evidencia_final": "Resultados/EST12B/Jaguar/Jaguar_EST12B_20250731_182019.jpg",
+        "confianza": 0.8535
+      }
+    ],
+    "estadisticas": {
+      "total_animales": 1,
+      "especies_encontradas": ["Jaguar"],
+      "detecciones_por_especie": {
+        "Jaguar": 1
+      }
+    },
+    "excel_files": {
+      "EST12B": "Resultados/EST12B/excel_EST12B.xlsx"
     }
-  ],
-  "configuracion": {
-    "intervalo_segundos": 5,
-    "umbral_confianza": 0.5
   }
 }
 ```
 
-### 3.2 Procesar con Configuración Personalizada
-```
-POST {{baseUrl}}/process/camera/{{camera_id}}?interval_seconds=3&confidence_threshold=0.7
-```
+Campos que el frontend normalmente necesita:
 
-Para mayor precisión (más lento):
-- `interval_seconds=3` (más frames)
-- `confidence_threshold=0.7` (mayor confianza)
+| Campo | Uso |
+|---|---|
+| `video_id` | Consultar el resultado despues |
+| `analysis.detecciones[]` | Tabla/listado de detecciones |
+| `analysis.detecciones[].ruta_evidencia_final` | Imagen de evidencia |
+| `analysis.excel_files` | Ruta del Excel generado por camara |
+| `analysis.estadisticas` | Resumen para cards/dashboard |
 
----
+### 2. (Nuevo) Extraer OCR bajo demanda
 
-## 📊 FASE 4: CONSULTA DE RESULTADOS
+Este endpoint realiza la extracción de OCR para una detección específica, actualizando los resultados almacenados. Es más rápido que el flujo original porque el análisis principal ahora omite el OCR.
 
-### 4.1 Obtener Resultados del Último Procesamiento
-```
-GET {{baseUrl}}/process/camera/{{camera_id}}/results
-```
-
-**Respuesta esperada (200):**
-```json
-{
-  "videos_procesados": 1,
-  "animales_detectados": 3,
-  "especies_encontradas": ["ave", "felino"],
-  "ruta_excel": "storage/camara_bosque_norte_abc12345/excel/reporte_20260530_145100.xlsx",
-  "total_evidencias": 3,
-  "fecha_procesamiento": "2026-05-30T14:51:00",
-  "camera_id": "camara_bosque_norte_abc12345",
-  "detecciones": [...]
-}
+```http
+POST /analyze/detection/{video_id}/{detection_index}/extract-ocr
 ```
 
-### 4.2 Obtener Historial de Procesamientos
-```
-GET {{baseUrl}}/process/camera/{{camera_id}}/history
-```
+Parámetros:
+- `video_id`: ID del análisis retornado en `/analyze/upload`.
+- `detection_index`: Índice de la detección en el array `detecciones`.
 
-**Respuesta esperada (200):**
-```json
-[
-  {
-    "fecha_procesamiento": "2026-05-30T14:51:00",
-    "videos_procesados": 1,
-    "animales_detectados": 3,
-    "especies_encontradas": ["ave", "felino"],
-    "archivo": "procesamiento_20260530_145100.json"
+Respuesta:
+Retorna el objeto de la detección actualizado con los campos `camera_id`, `fecha`, `hora`, `temperatura_c` y `ocr_raw_text`.
+
+Form data:
+
+| Campo | Tipo | Requerido | Descripcion |
+|---|---|---:|---|
+| `files` | File[] | Si | Uno o varios videos |
+
+Ejemplo `fetch`:
+
+```js
+async function analyzeVideos(files) {
+  const formData = new FormData();
+  for (const file of files) {
+    formData.append("files", file);
   }
-]
-```
 
----
+  const response = await fetch("http://localhost:8000/analyze/upload/batch", {
+    method: "POST",
+    body: formData,
+  });
 
-## 🔧 ENDPOINTS DE UTILIDAD
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
 
-### Health Check
-```
-GET {{baseUrl}}/health
-```
-
-### Información General del Sistema
-```
-GET {{baseUrl}}/
-```
-
-### Documentación Swagger
-```
-GET {{baseUrl}}/docs
-```
-
----
-
-## 🧪 CASOS DE PRUEBA ADICIONALES
-
-### Caso 1: Error - Cámara No Existe
-```
-GET {{baseUrl}}/cameras/camara_inexistente
-```
-**Respuesta esperada (404):**
-```json
-{
-  "detail": "Cámara no encontrada: camara_inexistente"
+  return response.json();
 }
 ```
 
-### Caso 2: Error - Formato de Video No Soportado
-```
-POST {{baseUrl}}/videos/upload
-Content-Type: multipart/form-data
+Respuesta esperada:
 
-Form Data:
-- camera_id: {{camera_id}}
-- file: [ARCHIVO .txt o .pdf]
-```
-**Respuesta esperada (400):**
 ```json
 {
-  "detail": "Formato no soportado: .txt. Formatos válidos: .mp4, .avi, .mov, .mkv, .wmv, .flv, .webm"
+  "status": "completed",
+  "total_recibidos": 2,
+  "total_procesados": 2,
+  "total_errores": 0,
+  "results": [],
+  "errors": [],
+  "processed_at": "2026-05-31T00:00:00"
 }
 ```
 
-### Caso 3: Procesar Cámara Sin Videos
+### 3. Obtener resultado por video
+
+```http
+GET /analyze/results/{video_id}
 ```
-POST {{baseUrl}}/process/camera/{{camera_id_sin_videos}}
-```
-**Respuesta esperada (200):**
-```json
-{
-  "videos_procesados": 0,
-  "animales_detectados": 0,
-  "especies_encontradas": [],
-  "ruta_excel": "",
-  "total_evidencias": 0
+
+Ejemplo:
+
+```js
+async function getAnalysis(videoId) {
+  const response = await fetch(`http://localhost:8000/analyze/results/${videoId}`);
+  if (!response.ok) throw new Error(await response.text());
+  return response.json();
 }
 ```
 
----
+### 4. Listar analisis
 
-## 📁 VERIFICACIÓN DE ARCHIVOS GENERADOS
-
-Después del procesamiento, verificar que se crearon los siguientes archivos:
-
-### Estructura de Directorios
-```
-storage/
-└── camara_bosque_norte_abc12345/
-    ├── videos/
-    │   └── video_prueba.mp4
-    ├── evidencias/
-    │   ├── ave/
-    │   │   └── ave_video_prueba_frame_0_20260530_145130.jpg
-    │   └── felino/
-    │       └── felino_video_prueba_frame_5_20260530_145135.jpg
-    ├── excel/
-    │   └── reporte_20260530_145100.xlsx
-    ├── resultados/
-    │   ├── ultimo_procesamiento.json
-    │   └── procesamiento_20260530_145100.json
-    └── metadata/
-        └── camera_info.json
+```http
+GET /analyze/list
 ```
 
----
+Uso frontend:
 
-## 🎯 FLUJO COMPLETO DE PRUEBA
+- Historial de videos procesados.
+- Tabla de analisis recientes.
+- Reintentar descarga de Excel o visualizacion de evidencias.
 
-### Secuencia Recomendada:
-1. **Crear cámara** → Obtener camera_id
-2. **Subir video** → Confirmar upload exitoso
-3. **Procesar videos** → Esperar completación
-4. **Verificar resultados** → Revisar detecciones
-5. **Comprobar archivos** → Validar estructura generada
+### 5. Estadisticas generales
 
-### Variables de Entorno para Apidog:
-```
-baseUrl: http://localhost:8000
-camera_id: [ID_OBTENIDO_EN_PASO_1]
+```http
+GET /analyze/stats
 ```
 
----
+Respuesta tipica:
 
-## 🐛 Solución de Problemas
+```json
+{
+  "total_videos": 1,
+  "total_detecciones": 13,
+  "especies_unicas": ["Jaguar"],
+  "camaras_unicas": ["EST12B"],
+  "videos_por_camara": {
+    "EST12B": 1
+  },
+  "detecciones_por_especie": {
+    "Jaguar": 13
+  }
+}
+```
 
-### Error de Conexión
-- Verificar que el servidor esté corriendo en puerto 8000
-- Comprobar firewall/antivirus
+### 6. Generar reporte Excel
 
-### Error 500 en Procesamiento
-- Verificar que el video no esté corrupto
-- Comprobar formato de video soportado
-- Revisar logs en `app.log`
+```http
+POST /analyze/report
+```
 
-### Procesamiento Muy Lento
-- Usar videos más cortos para pruebas (<2 minutos)
-- Aumentar `interval_seconds` para procesar menos frames
-- Verificar recursos del sistema (CPU/RAM)
+Para videos especificos:
 
----
+```http
+POST /analyze/report?video_ids=abc123def456&video_ids=xyz789abc123
+```
 
-## 📊 MÉTRICAS DE RENDIMIENTO
+Salida esperada:
 
-### Tiempos Esperados:
-- **Crear cámara**: <1 segundo
-- **Subir video (10MB)**: 2-5 segundos
-- **Procesar video (1 minuto)**: 30-120 segundos
-- **Generar reporte**: 1-3 segundos
+```json
+{
+  "message": "Reporte Excel generado exitosamente",
+  "filename": "Resultados/EST12B/excel_EST12B.xlsx",
+  "videos_incluidos": "todos"
+}
+```
 
-### Recursos:
-- **RAM**: ~500MB durante procesamiento
-- **CPU**: Uso intensivo durante análisis YOLO
-- **Disco**: Videos + evidencias + reportes
+### 7. Evidencias por video
+
+Listar imagenes:
+
+```http
+GET /analyze/evidence/{video_id}/list
+```
+
+Descargar imagen:
+
+```http
+GET /analyze/evidence/{video_id}/{species}/{filename}
+```
+
+Nota: el endpoint de evidencia lee desde `video_analysis/analysis/...`. Las salidas finales corregidas se guardan en `Resultados/<CAMERA_ID>/<Especie>/`. Si el frontend necesita servir directamente `Resultados`, conviene agregar un endpoint estatico o un endpoint `GET /results/{camera_id}/{species}/{filename}`.
+
+## Estructura final generada
+
+```text
+Resultados/
+  EST12B/
+    excel_EST12B.xlsx
+    Jaguar/
+      Jaguar_EST12B_20250731_182019.jpg
+      Jaguar_EST12B_20250731_182019_02.jpg
+      Jaguar_EST12B_20250731_182020.jpg
+```
+
+Columnas del Excel:
+
+| Columna | Ejemplo |
+|---|---|
+| `Camera ID` | `EST12B` |
+| `Especie` | `Jaguar` |
+| `Fecha` | `2025-07-31` |
+| `Hora` | `18:20:19` |
+| `Temperatura °C` | `21.0` |
+| `Nombre archivo` | `Jaguar_EST12B_20250731_182019.jpg` |
+| `Ruta archivo` | `Resultados/EST12B/Jaguar/...jpg` |
+| `Confianza clasificación` | `0.8535` |
+
+## Configuracion en Apidog
+
+Variables de entorno:
+
+```text
+baseUrl=http://localhost:8000
+video_id=
+camera_id=EST12B
+```
+
+Request para un video:
+
+```text
+POST {{baseUrl}}/analyze/upload
+Body: form-data
+file: seleccionar archivo .mp4
+```
+
+Request para multiples videos:
+
+```text
+POST {{baseUrl}}/analyze/upload/batch
+Body: form-data
+files: seleccionar archivo 1
+files: seleccionar archivo 2
+```
+
+Tests sugeridos en Apidog:
+
+```js
+pm.test("status analyzed", function () {
+  pm.expect(pm.response.json().status).to.eql("analyzed");
+});
+
+pm.test("has video_id", function () {
+  pm.expect(pm.response.json().video_id).to.be.a("string");
+});
+
+pm.test("has analysis", function () {
+  pm.expect(pm.response.json().analysis).to.be.an("object");
+});
+```
+
+## cURL
+
+Subir un video:
+
+```bash
+curl -X POST "http://localhost:8000/analyze/upload" \
+  -F "file=@camara-1/WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4"
+```
+
+Consultar resultado:
+
+```bash
+curl "http://localhost:8000/analyze/results/{video_id}"
+```
+
+Generar reporte:
+
+```bash
+curl -X POST "http://localhost:8000/analyze/report"
+```
+
+## Prueba local validada con SpeciesNet
+
+Este bloque reproduce la prueba hecha con el video de `camara-1`.
+
+### 1. Extraer frames desde segundo 0
+
+```powershell
+C:\Users\ale\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -c "import cv2, pathlib; video=r'camara-1\WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4'; out=pathlib.Path('video_analysis/speciesnet_frames/testcam1'); out.mkdir(parents=True, exist_ok=True); cap=cv2.VideoCapture(video); fps=cap.get(cv2.CAP_PROP_FPS) or 30; total=int(cap.get(cv2.CAP_PROP_FRAME_COUNT)); step=max(1,int(round(fps*0.5))); saved=0; indices=sorted(set([0,total-1]+list(range(0,total,step)))); 
+for idx in indices:
+    cap.set(cv2.CAP_PROP_POS_FRAMES, idx); ok, frame=cap.read()
+    if ok:
+        cv2.imwrite(str(out / f'frame_{idx:06d}_{idx/fps:.2f}s.jpg'), frame); saved += 1
+cap.release(); print({'fps':fps,'total_frames':total,'saved_frames':saved,'folder':str(out)})"
+```
+
+### 2. Ejecutar SpeciesNet con geofencing Bolivia
+
+```powershell
+$env:MPLCONFIGDIR="D:\backend-v2\wwf\Backend\.matplotlib"
+$env:KAGGLEHUB_CACHE="D:\backend-v2\wwf\Backend\video_analysis\speciesnet_models"
+
+C:\Users\ale\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m speciesnet.scripts.run_model `
+  --folders "video_analysis\speciesnet_frames\testcam1" `
+  --predictions_json "video_analysis\speciesnet_testcam1_predictions.json" `
+  --country BOL `
+  --bypass_prompts `
+  --ignore_existing_predictions
+```
+
+Resultado validado:
+
+```text
+total_frames: 22
+frames_with_animal: 14
+Jaguar: 13
+blank: 8
+mammal: 1
+avg_confidence_jaguar: 0.9766
+```
+
+### 3. Validar OCR sobre una evidencia
+
+```powershell
+$env:EASYOCR_MODULE_PATH="D:\backend-v2\wwf\Backend\video_analysis\ocr_models"
+
+C:\Users\ale\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -c "import cv2, json; from app.utils.ocr_extractor import OCRExtractor; o=OCRExtractor(); img=cv2.imread(r'Resultados\EST12B\Jaguar\Jaguar_EST12B_20250731_182019.jpg'); print(json.dumps(o.extract_text_from_frame_band(img), ensure_ascii=False, indent=2))"
+```
+
+Salida esperada:
+
+```json
+{
+  "camera_id": "EST12B",
+  "fecha": "2025-07-31",
+  "hora": "18:20:19",
+  "temperatura": 21.0
+}
+```
+
+## Manejo de errores para frontend
+
+| Caso | Codigo esperado | Accion UI |
+|---|---:|---|
+| Sin archivo | `400` | Mostrar "Selecciona un video" |
+| Formato no soportado | `400` | Mostrar formatos permitidos |
+| Error procesando video | `500` | Permitir reintento y mostrar detalle |
+| `video_id` inexistente | `404` | Mostrar "Analisis no encontrado" |
+
+Ejemplo:
+
+```js
+async function requestJson(url, options) {
+  const response = await fetch(url, options);
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+
+  if (!response.ok) {
+    const message = data?.detail || `Error HTTP ${response.status}`;
+    throw new Error(message);
+  }
+
+  return data;
+}
+```
+
+## Checklist de prueba
+
+- El video se procesa desde el segundo 0.
+- No se guardan imagenes vacias en `Resultados`.
+- La especie aparece como una de: `Jaguar`, `Puma`, `Ocelote`, `Tapir`, `Venado`, `Otros`.
+- La imagen final conserva la banda inferior visible.
+- OCR extrae `Camera ID`, `Fecha`, `Hora`, `Temperatura °C`.
+- El Excel por camara existe.
+- Las rutas del Excel apuntan a imagenes reales.
+- El batch devuelve `completed` o `completed_with_errors` con detalle por archivo.
+
+## Notas tecnicas importantes
+
+- No usar EXIF para fecha/hora/camara. La fuente valida es el texto impreso en la imagen.
+- EasyOCR debe leer la banda inferior cruda o suavemente escalada; binarizar agresivamente puede eliminar texto en camaras Bushnell.
+- SpeciesNet es mas apropiado que YOLO COCO para especies latinoamericanas. YOLO COCO no conoce `jaguar`, `tapir` u `ocelote` como clases nativas.
+- Para produccion, cachear los modelos en `video_analysis/speciesnet_models` y evitar descargarlos en cada despliegue.

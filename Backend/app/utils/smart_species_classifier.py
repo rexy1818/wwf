@@ -86,22 +86,22 @@ class SmartSpeciesClassifier:
         frame_area_ratio = roi_area / frame_area if frame_area else 0
 
         return {
-            'has_spots': texture_density > 0.08,
-            'has_rosettes': texture_density > 0.15,
-            'large_spotted_cat': texture_density > 0.10 and (roi_area > 30000 or frame_area_ratio >= 0.06),
-            'is_solid_gold': 10 < h_mean < 25 and s_mean > 50,
-            'long_legs': aspect_ratio < 0.8,
-            'hunched_back': aspect_ratio > 1.2,
-            'is_large': roi_area > 30000 or frame_area_ratio >= 0.06,
-            'is_very_large': roi_area > 150000 or frame_area_ratio >= 0.16,
-            'frame_area_ratio': round(frame_area_ratio, 4),
-            'is_bulky': aspect_ratio > 1.5,
+            'has_spots': bool(texture_density > 0.08),
+            'has_rosettes': bool(texture_density > 0.15),
+            'large_spotted_cat': bool(texture_density > 0.10 and (roi_area > 30000 or frame_area_ratio >= 0.06)),
+            'is_solid_gold': bool(10 < h_mean < 25 and s_mean > 50),
+            'long_legs': bool(aspect_ratio < 0.8),
+            'hunched_back': bool(aspect_ratio > 1.2),
+            'is_large': bool(roi_area > 30000 or frame_area_ratio >= 0.06),
+            'is_very_large': bool(roi_area > 150000 or frame_area_ratio >= 0.16),
+            'frame_area_ratio': round(float(frame_area_ratio), 4),
+            'is_bulky': bool(aspect_ratio > 1.5),
             'has_visible_tail': False,
             'pointed_ears': False,
             'long_snout': False,
-            'slender_build': aspect_ratio < 1.0,
+            'slender_build': bool(aspect_ratio < 1.0),
             'short_tail': True,
-            'dark_color': np.mean(gray) < 80,
+            'dark_color': bool(np.mean(gray) < 80),
         }
 
     def validate_detection_context(self, detections: List[Dict[str, Any]], metadata: Dict[str, Any] = None) -> List[Dict[str, Any]]:

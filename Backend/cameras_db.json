@@ -2,7 +2,7 @@
   "cameras": {},
   "processing_history": {},
   "created_at": "2026-05-30T20:36:04.030887",
-  "last_updated": "2026-05-30T21:27:16.098859",
+  "last_updated": "2026-05-30T22:52:09.152089",
   "video_analyses": {
     "0ddff718-f5a": {
       "video_id": "cb4f923a",
@@ -818,6 +818,240 @@
       },
       "analysis_dir": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8",
       "procesado_en": "2026-05-30T21:27:16.094328"
+    },
+    "9bcd18a9-4ee": {
+      "video_id": "9bcd18a9-4ee",
+      "video_name": "9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "2.0-enhanced",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "enhanced_frame_selection",
+        "contextual_validation"
+      ],
+      "metadata": {
+        "filename": "9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": "2026-05-30",
+        "hora_video": "22:10:12",
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": "2026-05-30T22:10:12.543472"
+      },
+      "detecciones": [
+        {
+          "especie": "jaguar",
+          "confianza": 0.99,
+          "calidad": 1.0,
+          "bbox": [
+            293,
+            201,
+            504,
+            400
+          ],
+          "area": 42151.70170722017,
+          "frame_numero": 49,
+          "timestamp_video": 3.37,
+          "ruta_evidencia": "video_analysis\\analysis\\9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_9bcd18a9-4ee\\evidencias\\venado\\venado_9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
+          "species": "jaguar",
+          "confidence": 0.99,
+          "biological_traits": {
+            "has_spots": "True",
+            "has_rosettes": "True",
+            "large_spotted_cat": true,
+            "is_solid_gold": "False",
+            "long_legs": false,
+            "hunched_back": false,
+            "is_large": true,
+            "is_very_large": false,
+            "frame_area_ratio": 0.1032,
+            "is_bulky": false,
+            "has_visible_tail": false,
+            "pointed_ears": false,
+            "long_snout": false,
+            "slender_build": false,
+            "short_tail": true,
+            "dark_color": "False"
+          },
+          "ruta_evidencia_final": "storage\\UNKNOWN\\evidencias\\jaguar\\jaguar_9bcd18a9-4ee_frame_49_t_3_37s.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 1,
+        "especies_encontradas": [
+          "jaguar"
+        ],
+        "detecciones_por_especie": {
+          "jaguar": 1
+        },
+        "confianza_promedio": 0.99,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "analysis_dir": "video_analysis\\analysis\\9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_9bcd18a9-4ee",
+      "procesado_en": "2026-05-30T22:10:34.913651"
+    },
+    "feae3b2e-ba2": {
+      "video_id": "feae3b2e-ba2",
+      "video_name": "feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "2.0-enhanced",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "enhanced_frame_selection",
+        "contextual_validation"
+      ],
+      "metadata": {
+        "filename": "feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": "2026-05-30",
+        "hora_video": "22:14:33",
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": "2026-05-30T22:14:33.856182"
+      },
+      "detecciones": [
+        {
+          "especie": "jaguar",
+          "confianza": 0.99,
+          "calidad": 1.0,
+          "bbox": [
+            293,
+            201,
+            504,
+            400
+          ],
+          "area": 42151.70170722017,
+          "frame_numero": 49,
+          "timestamp_video": 3.37,
+          "ruta_evidencia": "video_analysis\\analysis\\feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_feae3b2e-ba2\\evidencias\\venado\\venado_feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
+          "species": "jaguar",
+          "confidence": 0.99,
+          "biological_traits": {
+            "has_spots": true,
+            "has_rosettes": true,
+            "large_spotted_cat": true,
+            "is_solid_gold": false,
+            "long_legs": false,
+            "hunched_back": false,
+            "is_large": true,
+            "is_very_large": false,
+            "frame_area_ratio": 0.1032,
+            "is_bulky": false,
+            "has_visible_tail": false,
+            "pointed_ears": false,
+            "long_snout": false,
+            "slender_build": false,
+            "short_tail": true,
+            "dark_color": false
+          },
+          "ruta_evidencia_final": "storage\\UNKNOWN\\evidencias\\jaguar\\jaguar_feae3b2e-ba2_frame_49_t_3_37s.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 1,
+        "especies_encontradas": [
+          "jaguar"
+        ],
+        "detecciones_por_especie": {
+          "jaguar": 1
+        },
+        "confianza_promedio": 0.99,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "analysis_dir": "video_analysis\\analysis\\feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_feae3b2e-ba2",
+      "procesado_en": "2026-05-30T22:14:52.843174"
+    },
+    "d89ff386-c6d": {
+      "video_id": "d89ff386-c6d",
+      "video_name": "d89ff386-c6d_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "2.0-enhanced",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "enhanced_frame_selection",
+        "contextual_validation"
+      ],
+      "metadata": {
+        "filename": "d89ff386-c6d_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": "2026-05-30",
+        "hora_video": "22:51:50",
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": "2026-05-30T22:51:50.727489"
+      },
+      "detecciones": [
+        {
+          "especie": "jaguar",
+          "confianza": 0.99,
+          "calidad": 1.0,
+          "bbox": [
+            293,
+            201,
+            504,
+            400
+          ],
+          "area": 42151.70170722017,
+          "frame_numero": 49,
+          "timestamp_video": 3.37,
+          "ruta_evidencia": "video_analysis\\analysis\\d89ff386-c6d_WhatsApp Video 2026-05-30 at 12.38.25 (1)_d89ff386-c6d\\evidencias\\venado\\venado_d89ff386-c6d_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
+          "species": "jaguar",
+          "confidence": 0.99,
+          "biological_traits": {
+            "has_spots": true,
+            "has_rosettes": true,
+            "large_spotted_cat": true,
+            "is_solid_gold": false,
+            "long_legs": false,
+            "hunched_back": false,
+            "is_large": true,
+            "is_very_large": false,
+            "frame_area_ratio": 0.1032,
+            "is_bulky": false,
+            "has_visible_tail": false,
+            "pointed_ears": false,
+            "long_snout": false,
+            "slender_build": false,
+            "short_tail": true,
+            "dark_color": false
+          },
+          "ruta_evidencia_final": "storage\\UNKNOWN\\evidencias\\jaguar\\jaguar_d89ff386-c6d_frame_49_t_3_37s.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 1,
+        "especies_encontradas": [
+          "jaguar"
+        ],
+        "detecciones_por_especie": {
+          "jaguar": 1
+        },
+        "confianza_promedio": 0.99,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "analysis_dir": "video_analysis\\analysis\\d89ff386-c6d_WhatsApp Video 2026-05-30 at 12.38.25 (1)_d89ff386-c6d",
+      "procesado_en": "2026-05-30T22:52:09.135695"
     }
   }
 }

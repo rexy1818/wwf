@@ -1,0 +1,103 @@
+{
+  "cameras": {},
+  "processing_history": {},
+  "created_at": "2026-05-30T20:36:04.030887",
+  "last_updated": "2026-05-30T20:37:18.850749",
+  "video_analyses": {
+    "0ddff718-f5a": {
+      "video_id": "cb4f923a",
+      "video_name": "0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "2.0-enhanced",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "enhanced_frame_selection",
+        "contextual_validation"
+      ],
+      "metadata": {
+        "filename": "0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": "2026-05-30",
+        "hora_video": "20:37:09",
+        "temperatura": null,
+        "camara_id": "F718",
+        "timestamp_original": "2026-05-30T20:37:09.831237"
+      },
+      "detecciones": [
+        {
+          "especie": "venado",
+          "confianza": 0.769,
+          "calidad": 1.0,
+          "frame_numero": 37,
+          "timestamp_video": 2.54,
+          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\venado\\venado_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_37.jpg",
+          "ruta_evidencia_final": "storage\\F718\\evidencias\\venado\\venado_cb4f923a_venado_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_37.jpg"
+        },
+        {
+          "especie": "jaguar",
+          "confianza": 0.614,
+          "calidad": 1.0,
+          "frame_numero": 19,
+          "timestamp_video": 1.31,
+          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\jaguar\\jaguar_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg",
+          "ruta_evidencia_final": "storage\\F718\\evidencias\\jaguar\\jaguar_cb4f923a_jaguar_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg"
+        },
+        {
+          "especie": "oso",
+          "confianza": 0.591,
+          "calidad": 1.0,
+          "frame_numero": 14,
+          "timestamp_video": 0.96,
+          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\oso\\oso_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg",
+          "ruta_evidencia_final": "storage\\F718\\evidencias\\oso\\oso_cb4f923a_oso_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg"
+        },
+        {
+          "especie": "ave",
+          "confianza": 0.358,
+          "calidad": 1.0,
+          "frame_numero": 18,
+          "timestamp_video": 1.24,
+          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\ave\\ave_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg",
+          "ruta_evidencia_final": "storage\\F718\\evidencias\\ave\\ave_cb4f923a_ave_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg"
+        },
+        {
+          "especie": "agouti",
+          "confianza": 0.625,
+          "calidad": 1.0,
+          "frame_numero": 45,
+          "timestamp_video": 3.09,
+          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\agouti\\agouti_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg",
+          "ruta_evidencia_final": "storage\\F718\\evidencias\\agouti\\agouti_cb4f923a_agouti_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 5,
+        "especies_encontradas": [
+          "venado",
+          "jaguar",
+          "oso",
+          "ave",
+          "agouti"
+        ],
+        "detecciones_por_especie": {
+          "venado": 1,
+          "jaguar": 1,
+          "oso": 1,
+          "ave": 1,
+          "agouti": 1
+        },
+        "confianza_promedio": 0.591,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "analysis_dir": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a",
+      "procesado_en": "2026-05-30T20:37:18.831248"
+    }
+  }
+}

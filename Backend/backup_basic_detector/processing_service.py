@@ -7,8 +7,7 @@ import json
 from datetime import datetime
 
 from app.utils.file_manager import FileManager
-from app.utils.improved_yolo_detector import ImprovedYOLODetector
-from app.utils.smart_species_classifier import SmartSpeciesClassifier
+from app.utils.yolo_detector import YOLODetector
 from app.utils.excel_generator import ExcelGenerator
 from app.utils.json_storage import json_storage
 from app.services.camera_service import CameraService
@@ -19,14 +18,13 @@ logger = logging.getLogger(__name__)
 class ProcessingService:
     def __init__(self):
         self.file_manager = FileManager()
-        self.yolo_detector = ImprovedYOLODetector()
-        self.classifier = SmartSpeciesClassifier()
+        self.yolo_detector = YOLODetector()
         self.excel_generator = ExcelGenerator()
         self.camera_service = CameraService()
         self.video_loader_service = VideoLoaderService()
         
         # Configuración de procesamiento
-        self.default_interval = 3  # intervalo inicial mejorado
+        self.default_interval = 5  # segundos entre frames
         self.default_confidence = 0.5  # umbral de confianza mínimo
         self.max_workers = 2  # número máximo de workers para procesamiento paralelo
     
@@ -34,63 +32,59 @@ class ProcessingService:
                                   interval_seconds: int = None,
                                   confidence_threshold: float = None) -> Dict[str, Any]:
         """
-        Procesar todos los videos de una cámara con detección mejorada
+        Procesar todos los videos de una cámara
+        Args:
+            camera_id: ID de la cámara
+            interval_seconds: Intervalo entre frames (default: 5)
+            confidence_threshold: Umbral de confianza (default: 0.5)
+        Returns:
+            Resultados del procesamiento
         """
         try:
             # Verificar que la cámara existe
             if not self.camera_service.camera_exists(camera_id):
                 raise ValueError(f"Cámara no encontrada: {camera_id}")
             
-            logger.info(f"🚀 Iniciando PROCESAMIENTO INTELIGENTE de cámara {camera_id}")
+            # Usar valores por defecto si no se especifican
+            interval_seconds = interval_seconds or self.default_interval
+            confidence_threshold = confidence_threshold or self.default_confidence
             
-            # Cargar videos
+            logger.info(f"Iniciando procesamiento de cámara {camera_id}")
+            
+            # Cargar videos desde la carpeta de la cámara
             videos = self.video_loader_service.load_videos_from_camera_folder(camera_id)
             
             if not videos:
+                logger.warning(f"No se encontraron videos para procesar en cámara {camera_id}")
                 return self._create_empty_result(camera_id)
             
+            # Procesar videos
             all_detections = []
             processed_videos = 0
             
-            # Procesar cada video con el nuevo motor
-            for video in videos:
-                try:
-                    video_path = video['storage_path']
-                    video_name = video['filename']
-                    
-                    # 1. Detección Mejorada (Algoritmo de selección de mejores frames)
-                    detections = self.yolo_detector.process_video_enhanced(
-                        video_path, 
-                        str(self.file_manager.base_path / camera_id / "resultados"),
-                        {'camara_id': camera_id}
+            # Usar ThreadPoolExecutor para procesamiento paralelo
+            with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+                # Crear tareas para cada video
+                tasks = []
+                for video in videos:
+                    task = executor.submit(
+                        self._process_single_video,
+                        video['storage_path'],  # Usar la ruta en storage
+                        camera_id,
+                        interval_seconds,
+                        confidence_threshold
                     )
-                    
-                    # 2. Clasificación Inteligente y Validación
-                    smart_detections = []
-                    for det in detections:
-                        frame = cv2.imread(det['ruta_evidencia'])
-                        if frame is not None:
-                            smart_det = self.classifier.classify_species_intelligently(det, frame)
-                            smart_detections.append(smart_det)
-                        else:
-                            smart_detections.append(det)
-                    
-                    # 3. Filtrado contextual
-                    final_detections = self.classifier.validate_detection_context(smart_detections)
-                    
-                    # Adaptar formato para el reporte Excel
-                    for det in final_detections:
-                        # Asegurar que campos requeridos por ExcelGenerator estén presentes
-                        det['video'] = video_name
-                        det['especie'] = det.get('species', det.get('especie'))
-                        det['confianza'] = det.get('confidence', det.get('confianza'))
-                        all_detections.append(det)
-                        
-                    processed_videos += 1
-                    logger.info(f"✅ Video {video_name} procesado: {len(final_detections)} detecciones inteligentes")
-                    
-                except Exception as e:
-                    logger.error(f"Error procesando video {video['filename']}: {e}")
+                    tasks.append((task, video['filename']))
+                
+                # Recopilar resultados
+                for task, video_name in tasks:
+                    try:
+                        video_detections = task.result()
+                        all_detections.extend(video_detections)
+                        processed_videos += 1
+                        logger.info(f"Video procesado: {video_name} - {len(video_detections)} detecciones")
+                    except Exception as e:
+                        logger.error(f"Error procesando video {video_name}: {e}")
             
             # Generar reporte Excel
             excel_path = ""
@@ -103,8 +97,19 @@ class ProcessingService:
             stats = self.excel_generator.get_summary_stats(all_detections)
             stats['videos_procesados'] = processed_videos
             
-            # Guardar y actualizar
+            # Guardar resultados del procesamiento
             self._save_processing_results(camera_id, all_detections, stats)
+            
+            # Guardar en JSON storage
+            json_storage.save_processing_result(camera_id, {
+                **stats,
+                'ruta_excel': excel_path,
+                'configuracion': {
+                    'intervalo_segundos': interval_seconds,
+                    'umbral_confianza': confidence_threshold
+                },
+                'detecciones_muestra': all_detections[:5]  # Solo una muestra para no sobrecargar
+            })
             
             # Actualizar estadísticas de la cámara
             self.camera_service.update_camera_stats(
@@ -113,22 +118,45 @@ class ProcessingService:
                 total_detecciones=len(all_detections)
             )
             
-            return {
+            # Preparar respuesta
+            result = {
                 **stats,
                 'ruta_excel': excel_path,
+                'detecciones': all_detections[:100],  # Limitar a 100 para la respuesta
                 'total_detecciones_completas': len(all_detections),
-                'status': 'success',
-                'motor': 'v2.0-enhanced'
+                'configuracion': {
+                    'intervalo_segundos': interval_seconds,
+                    'umbral_confianza': confidence_threshold
+                }
             }
             
+            logger.info(f"Procesamiento completado para cámara {camera_id}: {len(all_detections)} detecciones")
+            return result
+        
         except Exception as e:
-            logger.error(f"Error en procesamiento inteligente de cámara {camera_id}: {e}")
+            logger.error(f"Error en procesamiento de cámara {camera_id}: {e}")
             raise
-
+    
     def _process_single_video(self, video_path: str, camera_id: str,
                             interval_seconds: int, confidence_threshold: float) -> List[Dict[str, Any]]:
-        # Este método se mantiene por compatibilidad pero se usa la lógica mejorada en process_camera_videos
-        return []
+        """
+        Procesar un solo video (función para ejecutar en thread)
+        Args:
+            video_path: Ruta del video
+            camera_id: ID de la cámara
+            interval_seconds: Intervalo entre frames
+            confidence_threshold: Umbral de confianza
+        Returns:
+            Lista de detecciones del video
+        """
+        try:
+            return self.yolo_detector.process_video(
+                video_path, camera_id, self.file_manager,
+                interval_seconds, confidence_threshold
+            )
+        except Exception as e:
+            logger.error(f"Error procesando video {video_path}: {e}")
+            return []
     
     def get_processing_results(self, camera_id: str) -> Dict[str, Any]:
         """

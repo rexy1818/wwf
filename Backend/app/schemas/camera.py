@@ -4,12 +4,12 @@ from datetime import datetime
 
 class CameraCreate(BaseModel):
     nombre: str
-    ubicacion: str
+    ruta_videos: str  # Ruta donde están los videos de la cámara
 
 class CameraResponse(BaseModel):
     id: str
     nombre: str
-    ubicacion: str
+    ruta_videos: str  # Ruta donde están los videos
     fecha_creacion: datetime
     ruta_storage: str
 
@@ -20,10 +20,12 @@ class DetectionResult(BaseModel):
     video: str
     especie: str
     confianza: float
-    fecha: str
-    hora: str
+    fecha_video: str  # Fecha extraída de metadatos del video
+    hora_video: str   # Hora extraída de metadatos del video
+    ubicacion_gps: Optional[str]  # Coordenadas GPS si están disponibles
     frame: int
     ruta_evidencia: str
+    timestamp_video: Optional[str]  # Timestamp original del video
 
 class ProcessingResult(BaseModel):
     videos_procesados: int

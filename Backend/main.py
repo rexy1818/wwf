@@ -6,7 +6,8 @@ import uvicorn
 from pathlib import Path
 
 # Importar routers
-from app.routers import cameras, videos, processing
+from app.routers import videos, processing, video_analysis
+from app.routers.cameras import router as system_router
 
 # Configurar logging
 logging.basicConfig(
@@ -71,9 +72,10 @@ app.add_middleware(
 )
 
 # Incluir routers
-app.include_router(cameras.router)
+app.include_router(system_router)
 app.include_router(videos.router)
 app.include_router(processing.router)
+app.include_router(video_analysis.router)
 
 # Manejador de errores global
 @app.exception_handler(Exception)
@@ -97,8 +99,9 @@ async def root():
         "version": "1.0.0",
         "status": "healthy",
         "endpoints": {
-            "cameras": "/cameras",
-            "videos": "/videos", 
+            "analyze": "/analyze",
+            "system": "/system", 
+            "videos": "/videos",
             "processing": "/process",
             "docs": "/docs",
             "redoc": "/redoc"

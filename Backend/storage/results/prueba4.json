@@ -1,0 +1,231 @@
+{
+    "video": "prueba4",
+    "best_detection": {
+        "species": "review_required",
+        "scientific_name": "pteronura brasiliensis",
+        "species_confidence": 0.41753706336021423,
+        "detected_class": "bird",
+        "detection_confidence": 0.4500793218612671,
+        "bbox": [
+            155,
+            118,
+            380,
+            302
+        ],
+        "crop_path": "storage/crops\\frame_90_crop_0.jpg",
+        "frame": "frame_90.jpg",
+        "camera_metadata": {
+            "camera_id": "MADO4B",
+            "date": "03-04-2024",
+            "time": null,
+            "temperature_c": null
+        }
+    },
+    "best_image": "storage/best/prueba4.jpg",
+    "frames": [
+        {
+            "frame": "frame_0.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_30.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": "23:22:07",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "tapirus bairdii",
+                    "species_confidence": 0.2387160211801529,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.46722516417503357,
+                    "bbox": [
+                        216,
+                        114,
+                        449,
+                        307
+                    ],
+                    "crop_path": "storage/crops\\frame_30_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_60.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_90.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "pteronura brasiliensis",
+                    "species_confidence": 0.41753706336021423,
+                    "detected_class": "bird",
+                    "detection_confidence": 0.4500793218612671,
+                    "bbox": [
+                        155,
+                        118,
+                        380,
+                        302
+                    ],
+                    "crop_path": "storage/crops\\frame_90_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_120.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "cephalophus silvicultor",
+                    "species_confidence": 0.20424212515354156,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.33346545696258545,
+                    "bbox": [
+                        153,
+                        127,
+                        375,
+                        300
+                    ],
+                    "crop_path": "storage/crops\\frame_120_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_150.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "pteronura brasiliensis",
+                    "species_confidence": 0.13949185609817505,
+                    "detected_class": "cat",
+                    "detection_confidence": 0.4453841745853424,
+                    "bbox": [
+                        151,
+                        127,
+                        328,
+                        271
+                    ],
+                    "crop_path": "storage/crops\\frame_150_crop_0.jpg"
+                },
+                {
+                    "species": "review_required",
+                    "scientific_name": "tapirus terrestris",
+                    "species_confidence": 0.14080895483493805,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.3269052505493164,
+                    "bbox": [
+                        151,
+                        126,
+                        329,
+                        271
+                    ],
+                    "crop_path": "storage/crops\\frame_150_crop_1.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_180.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_210.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": "23:22:13",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "dasyprocta punctata",
+                    "species_confidence": 0.2723293602466583,
+                    "detected_class": "bear",
+                    "detection_confidence": 0.4591526687145233,
+                    "bbox": [
+                        152,
+                        114,
+                        222,
+                        236
+                    ],
+                    "crop_path": "storage/crops\\frame_210_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_240.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": "23:22:14",
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_270.jpg",
+            "camera_metadata": {
+                "camera_id": "MADO4B",
+                "date": "03-04-2024",
+                "time": "23:22:15",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "tapirus terrestris",
+                    "species_confidence": 0.16730666160583496,
+                    "detected_class": "bear",
+                    "detection_confidence": 0.3672546148300171,
+                    "bbox": [
+                        0,
+                        86,
+                        96,
+                        187
+                    ],
+                    "crop_path": "storage/crops\\frame_270_crop_0.jpg"
+                }
+            ]
+        }
+    ]
+}

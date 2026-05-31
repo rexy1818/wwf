@@ -1,0 +1,72 @@
+{
+    "video": "WhatsApp Video 2026-05-30 at 12.38.25 PM",
+    "best_detection": {
+        "species": "jaguar",
+        "scientific_name": "panthera onca",
+        "species_confidence": 0.9979816675186157,
+        "detected_class": "giraffe",
+        "detection_confidence": 0.7394341826438904,
+        "bbox": [
+            379,
+            192,
+            542,
+            383
+        ],
+        "crop_path": "storage/crops\\frame_0_crop_0.jpg",
+        "frame": "frame_0.jpg",
+        "camera_metadata": {
+            "camera_id": null,
+            "date": "07-28-2025",
+            "time": null,
+            "temperature_c": null
+        }
+    },
+    "best_image": "storage/best/WhatsApp Video 2026-05-30 at 12.38.25 PM.jpg",
+    "frames": [
+        {
+            "frame": "frame_0.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "07-28-2025",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "jaguar",
+                    "scientific_name": "panthera onca",
+                    "species_confidence": 0.9979816675186157,
+                    "detected_class": "giraffe",
+                    "detection_confidence": 0.7394341826438904,
+                    "bbox": [
+                        379,
+                        192,
+                        542,
+                        383
+                    ],
+                    "crop_path": "storage/crops\\frame_0_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_30.jpg",
+            "camera_metadata": {
+                "camera_id": "EST12B",
+                "date": "07-28-2025",
+                "time": "17:34:53",
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_60.jpg",
+            "camera_metadata": {
+                "camera_id": "EST12B",
+                "date": "07-28-2025",
+                "time": "17:34:56",
+                "temperature_c": null
+            },
+            "detections": []
+        }
+    ]
+}

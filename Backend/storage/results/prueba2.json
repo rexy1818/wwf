@@ -1,0 +1,291 @@
+{
+    "video": "prueba2",
+    "best_detection": {
+        "species": "white-tailed deer",
+        "scientific_name": "odocoileus virginianus",
+        "species_confidence": 0.9319176077842712,
+        "detected_class": "dog",
+        "detection_confidence": 0.6710986495018005,
+        "bbox": [
+            0,
+            82,
+            295,
+            310
+        ],
+        "crop_path": "storage/crops\\frame_30_crop_0.jpg",
+        "frame": "frame_30.jpg",
+        "camera_metadata": {
+            "camera_id": null,
+            "date": "02-27-2024",
+            "time": "01:08:50",
+            "temperature_c": null
+        }
+    },
+    "best_image": "storage/best/prueba2.jpg",
+    "frames": [
+        {
+            "frame": "frame_0.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "capreolus capreolus",
+                    "species_confidence": 0.19926854968070984,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.6219077110290527,
+                    "bbox": [
+                        0,
+                        45,
+                        173,
+                        306
+                    ],
+                    "crop_path": "storage/crops\\frame_0_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_30.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:50",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.9319176077842712,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.6710986495018005,
+                    "bbox": [
+                        0,
+                        82,
+                        295,
+                        310
+                    ],
+                    "crop_path": "storage/crops\\frame_30_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_60.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:51",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.7753981351852417,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.7957894802093506,
+                    "bbox": [
+                        1,
+                        45,
+                        271,
+                        307
+                    ],
+                    "crop_path": "storage/crops\\frame_60_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_90.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:52",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.9068223237991333,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.7889686226844788,
+                    "bbox": [
+                        0,
+                        46,
+                        267,
+                        307
+                    ],
+                    "crop_path": "storage/crops\\frame_90_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_120.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:53",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.8111735582351685,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.5758041143417358,
+                    "bbox": [
+                        1,
+                        46,
+                        271,
+                        308
+                    ],
+                    "crop_path": "storage/crops\\frame_120_crop_0.jpg"
+                },
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.756400465965271,
+                    "detected_class": "cow",
+                    "detection_confidence": 0.4042361378669739,
+                    "bbox": [
+                        0,
+                        46,
+                        270,
+                        309
+                    ],
+                    "crop_path": "storage/crops\\frame_120_crop_1.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_150.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:54",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "white-tailed deer",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.8997305631637573,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.7970736026763916,
+                    "bbox": [
+                        0,
+                        46,
+                        303,
+                        307
+                    ],
+                    "crop_path": "storage/crops\\frame_150_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_180.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:55",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.5301103591918945,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.7025763392448425,
+                    "bbox": [
+                        0,
+                        46,
+                        232,
+                        308
+                    ],
+                    "crop_path": "storage/crops\\frame_180_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_210.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:56",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "mazama temama",
+                    "species_confidence": 0.2022607922554016,
+                    "detected_class": "dog",
+                    "detection_confidence": 0.5479997396469116,
+                    "bbox": [
+                        0,
+                        45,
+                        235,
+                        308
+                    ],
+                    "crop_path": "storage/crops\\frame_210_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_240.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:57",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "rusa timorensis",
+                    "species_confidence": 0.42228177189826965,
+                    "detected_class": "sheep",
+                    "detection_confidence": 0.726698100566864,
+                    "bbox": [
+                        0,
+                        47,
+                        186,
+                        308
+                    ],
+                    "crop_path": "storage/crops\\frame_240_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_270.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "02-27-2024",
+                "time": "01:08:58",
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "odocoileus virginianus",
+                    "species_confidence": 0.16846804320812225,
+                    "detected_class": "sheep",
+                    "detection_confidence": 0.27341127395629883,
+                    "bbox": [
+                        0,
+                        45,
+                        221,
+                        303
+                    ],
+                    "crop_path": "storage/crops\\frame_270_crop_0.jpg"
+                }
+            ]
+        }
+    ]
+}

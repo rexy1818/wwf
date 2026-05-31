@@ -1,0 +1,172 @@
+{
+    "video": "prueba3",
+    "best_detection": {
+        "species": "review_required",
+        "scientific_name": "cerdocyon thous",
+        "species_confidence": 0.5899491906166077,
+        "detected_class": "bear",
+        "detection_confidence": 0.8980689644813538,
+        "bbox": [
+            12,
+            194,
+            173,
+            302
+        ],
+        "crop_path": "storage/crops\\frame_30_crop_0.jpg",
+        "frame": "frame_30.jpg",
+        "camera_metadata": {
+            "camera_id": null,
+            "date": "04-08-2024",
+            "time": null,
+            "temperature_c": null
+        }
+    },
+    "best_image": "storage/best/prueba3.jpg",
+    "frames": [
+        {
+            "frame": "frame_0.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "lycalopex culpaeus",
+                    "species_confidence": 0.2730606198310852,
+                    "detected_class": "bear",
+                    "detection_confidence": 0.546269416809082,
+                    "bbox": [
+                        102,
+                        186,
+                        302,
+                        271
+                    ],
+                    "crop_path": "storage/crops\\frame_0_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_30.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "04-08-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "cerdocyon thous",
+                    "species_confidence": 0.5899491906166077,
+                    "detected_class": "bear",
+                    "detection_confidence": 0.8980689644813538,
+                    "bbox": [
+                        12,
+                        194,
+                        173,
+                        302
+                    ],
+                    "crop_path": "storage/crops\\frame_30_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_60.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "04-08-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": [
+                {
+                    "species": "review_required",
+                    "scientific_name": "lycalopex culpaeus",
+                    "species_confidence": 0.3487837016582489,
+                    "detected_class": "elephant",
+                    "detection_confidence": 0.2587810158729553,
+                    "bbox": [
+                        0,
+                        213,
+                        80,
+                        311
+                    ],
+                    "crop_path": "storage/crops\\frame_60_crop_0.jpg"
+                }
+            ]
+        },
+        {
+            "frame": "frame_90.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_120.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_150.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_180.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_210.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_240.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": "04-08-2024",
+                "time": null,
+                "temperature_c": null
+            },
+            "detections": []
+        },
+        {
+            "frame": "frame_270.jpg",
+            "camera_metadata": {
+                "camera_id": null,
+                "date": null,
+                "time": "08:58:31",
+                "temperature_c": null
+            },
+            "detections": []
+        }
+    ]
+}

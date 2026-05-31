@@ -2,7 +2,7 @@
   "cameras": {},
   "processing_history": {},
   "created_at": "2026-05-31T01:59:55.223235",
-  "last_updated": "2026-05-31T02:13:36.280114",
+  "last_updated": "2026-05-31T07:06:04.631133",
   "video_analyses": {
     "71d8021a-b89": {
       "video_id": "71d8021a-b89",
@@ -1102,6 +1102,514 @@
       },
       "analysis_dir": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e",
       "procesado_en": "2026-05-31T02:13:36.267775"
+    },
+    "b67c5d3e-ea9": {
+      "video_id": "b67c5d3e-ea9",
+      "video_name": "b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30",
+      "status": "success",
+      "analyzer_version": "2.1-controlled-fixes",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "bottom_band_ocr",
+        "per_camera_results"
+      ],
+      "metadata": {
+        "filename": "b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30.mp4",
+        "file_size": 1697793,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": "2024-04-03",
+        "hora_video": "23:22:06",
+        "temperatura": 20.2,
+        "camara_id": "MADO4B",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
+      },
+      "detecciones": [
+        {
+          "especie": "Otros",
+          "confianza": 0.554,
+          "calidad": 1.0,
+          "bbox": [
+            196,
+            154,
+            412,
+            298
+          ],
+          "area": 31205.41287938319,
+          "frame_numero": 55,
+          "timestamp_video": 1.83,
+          "ruta_evidencia": "video_analysis\\analysis\\b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_b67c5d3e-ea9\\evidencias\\cow\\cow_b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_55_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:08",
+          "temperatura_c": 20.0,
+          "ocr_raw_text": [
+            ") :",
+            "MADO 4B",
+            "68 F 20 C",
+            "03-04-2024 23:22:08"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4B_20240403_232208_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Otros\\Otros_MADO4B_20240403_232208_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.48,
+          "calidad": 1.0,
+          "bbox": [
+            154,
+            134,
+            378,
+            291
+          ],
+          "area": 35154.00855036825,
+          "frame_numero": 106,
+          "timestamp_video": 3.53,
+          "ruta_evidencia": "video_analysis\\analysis\\b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_b67c5d3e-ea9\\evidencias\\cow\\cow_b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_106_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": 20.0,
+          "ocr_raw_text": [
+            "Jera 1D:MADO4B",
+            "68 F 20 C",
+            "03-04-2024 23:2"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4B_20240403_232206_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Otros\\Otros_MADO4B_20240403_232206_clean.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.594,
+          "calidad": 1.0,
+          "bbox": [
+            152,
+            121,
+            319,
+            270
+          ],
+          "area": 24828.5038294103,
+          "frame_numero": 157,
+          "timestamp_video": 5.23,
+          "ruta_evidencia": "video_analysis\\analysis\\b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_b67c5d3e-ea9\\evidencias\\venado\\venado_b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_157_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "0"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4B_20240403_232206_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Venado\\Venado_MADO4B_20240403_232206_bbox.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.447,
+          "calidad": 1.0,
+          "bbox": [
+            150,
+            117,
+            222,
+            238
+          ],
+          "area": 8736.403951338376,
+          "frame_numero": 211,
+          "timestamp_video": 7.03,
+          "ruta_evidencia": "video_analysis\\analysis\\b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_b67c5d3e-ea9\\evidencias\\venado\\venado_b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_211_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4B_20240403_232206_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Venado\\Venado_MADO4B_20240403_232206_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 4,
+        "especies_encontradas": [
+          "Otros",
+          "Venado"
+        ],
+        "detecciones_por_especie": {
+          "Otros": 2,
+          "Venado": 2
+        },
+        "confianza_promedio": 0.519,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "excel_files": {
+        "MADO4B": "Resultados\\MADO4B\\excel_MADO4B.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\b67c5d3e-ea9_WhatsApp Video 2026-05-30 at 12.38.30_b67c5d3e-ea9",
+      "procesado_en": "2026-05-31T02:14:39.759002"
+    },
+    "e487386a-211": {
+      "video_id": "e487386a-211",
+      "video_name": "e487386a-211_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "e487386a-211_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9981155395507812,
+          "confianza": 0.9981155395507812,
+          "bbox": [
+            182,
+            195,
+            431,
+            452
+          ],
+          "normalized_bbox": [
+            0.2146226465702057,
+            0.4062500298023224,
+            0.2936320900917053,
+            0.5354166626930237
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\4ab0cf10\\frame_000060.jpg",
+          "timestamp_video": 4.125874125874126,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg"
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9957994818687439,
+          "confianza": 0.9957994818687439,
+          "bbox": [
+            485,
+            212,
+            553,
+            357
+          ],
+          "normalized_bbox": [
+            0.5731131806969643,
+            0.44374997913837433,
+            0.08018867671489716,
+            0.3020833432674408
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\4ab0cf10\\frame_000015.jpg",
+          "timestamp_video": 1.0314685314685315,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg"
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9609965682029724,
+          "confianza": 0.9609965682029724,
+          "bbox": [
+            332,
+            200,
+            504,
+            407
+          ],
+          "normalized_bbox": [
+            0.39150943607091904,
+            0.41874997317790985,
+            0.20400942862033844,
+            0.4312500059604645
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\4ab0cf10\\frame_000045.jpg",
+          "timestamp_video": 3.094405594405594,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 3,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0003_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0003_clean.jpg"
+        },
+        {
+          "species": "No cv result",
+          "especie": "No cv result",
+          "confidence": 0.42286989092826843,
+          "confianza": 0.42286989092826843,
+          "bbox": [
+            0,
+            204,
+            159,
+            425
+          ],
+          "normalized_bbox": [
+            0.0,
+            0.4270833283662796,
+            0.1875,
+            0.4583333432674408
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\4ab0cf10\\frame_000090.jpg",
+          "timestamp_video": 6.188811188811188,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "f2efdae9-efb8-48fb-8a91-eccf79ab4ffb;no cv result;no cv result;no cv result;no cv result;no cv result;no cv result",
+          "especie_final": "No cv result",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "No cv result_UNKNOWN_UNKNOWN_0004_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\No cv result\\No cv result_UNKNOWN_UNKNOWN_0004_bbox.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 4,
+        "especies_encontradas": [
+          "Jaguar",
+          "No cv result"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 3,
+          "No cv result": 1
+        },
+        "confianza_promedio": 0.844,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\e487386a-211_WhatsApp Video 2026-05-30 at 12.38.25 (1)_e487386a-211",
+      "procesado_en": "2026-05-31T07:03:45.795595"
+    },
+    "3b334a95-54a": {
+      "video_id": "3b334a95-54a",
+      "video_name": "3b334a95-54a_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "3.0-speciesnet-official-nodemand",
+      "detector_version": "Google_SpeciesNet_v4.0.2a",
+      "features": [
+        "speciesnet_official",
+        "on_demand_ocr",
+        "per_camera_results",
+        "per_camera_excel"
+      ],
+      "metadata": {
+        "filename": "3b334a95-54a_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": null,
+        "hora_video": null,
+        "temperatura": null,
+        "camara_id": "UNKNOWN",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 0,
+          "texto_detectado": false
+        }
+      },
+      "detecciones": [
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9981155395507812,
+          "confianza": 0.9981155395507812,
+          "bbox": [
+            182,
+            195,
+            431,
+            452
+          ],
+          "normalized_bbox": [
+            0.2146226465702057,
+            0.4062500298023224,
+            0.2936320900917053,
+            0.5354166626930237
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\84c7b715\\frame_000060.jpg",
+          "timestamp_video": 4.125874125874126,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0001_bbox.jpg"
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9957994818687439,
+          "confianza": 0.9957994818687439,
+          "bbox": [
+            485,
+            212,
+            553,
+            357
+          ],
+          "normalized_bbox": [
+            0.5731131806969643,
+            0.44374997913837433,
+            0.08018867671489716,
+            0.3020833432674408
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\84c7b715\\frame_000015.jpg",
+          "timestamp_video": 1.0314685314685315,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 2,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0002_clean.jpg"
+        },
+        {
+          "species": "Jaguar",
+          "especie": "Jaguar",
+          "confidence": 0.9609965682029724,
+          "confianza": 0.9609965682029724,
+          "bbox": [
+            332,
+            200,
+            504,
+            407
+          ],
+          "normalized_bbox": [
+            0.39150943607091904,
+            0.41874997317790985,
+            0.20400942862033844,
+            0.4312500059604645
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\84c7b715\\frame_000045.jpg",
+          "timestamp_video": 3.094405594405594,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "9b7fea59-cfa3-499c-a420-bcf36277dcd8;mammalia;carnivora;felidae;panthera;onca;jaguar",
+          "especie_final": "Jaguar",
+          "has_bounding_box": false,
+          "photo_rank": 3,
+          "photo_type": "clean",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "Jaguar_UNKNOWN_UNKNOWN_0003_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\Jaguar\\Jaguar_UNKNOWN_UNKNOWN_0003_clean.jpg"
+        },
+        {
+          "species": "No cv result",
+          "especie": "No cv result",
+          "confidence": 0.42286989092826843,
+          "confianza": 0.42286989092826843,
+          "bbox": [
+            0,
+            204,
+            159,
+            425
+          ],
+          "normalized_bbox": [
+            0.0,
+            0.4270833283662796,
+            0.1875,
+            0.4583333432674408
+          ],
+          "ruta_evidencia": "video_analysis\\temp_frames\\84c7b715\\frame_000090.jpg",
+          "timestamp_video": 6.188811188811188,
+          "calidad": 0.95,
+          "detector_source": "Google_SpeciesNet_v4.0.2a",
+          "original_prediction": "f2efdae9-efb8-48fb-8a91-eccf79ab4ffb;no cv result;no cv result;no cv result;no cv result;no cv result;no cv result",
+          "especie_final": "No cv result",
+          "has_bounding_box": true,
+          "photo_rank": 1,
+          "photo_type": "with_bbox",
+          "camera_id": "UNKNOWN",
+          "nombre_archivo": "No cv result_UNKNOWN_UNKNOWN_0004_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\UNKNOWN\\No cv result\\No cv result_UNKNOWN_UNKNOWN_0004_bbox.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 4,
+        "especies_encontradas": [
+          "Jaguar",
+          "No cv result"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 3,
+          "No cv result": 1
+        },
+        "confianza_promedio": 0.844,
+        "calidad_promedio": 0.95
+      },
+      "excel_files": {
+        "UNKNOWN": "Resultados\\UNKNOWN\\excel_UNKNOWN.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\3b334a95-54a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_3b334a95-54a",
+      "procesado_en": "2026-05-31T07:06:04.629696"
     }
   }
 }

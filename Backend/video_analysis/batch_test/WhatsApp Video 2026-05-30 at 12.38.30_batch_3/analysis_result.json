@@ -1,0 +1,169 @@
+{
+  "video_id": "batch_3",
+  "video_name": "WhatsApp Video 2026-05-30 at 12.38.30",
+  "status": "success",
+  "analyzer_version": "2.1-controlled-fixes",
+  "detector_version": "enhanced_v2.0",
+  "features": [
+    "improved_yolo_detection",
+    "smart_species_classification",
+    "bottom_band_ocr",
+    "per_camera_results"
+  ],
+  "metadata": {
+    "filename": "WhatsApp Video 2026-05-30 at 12.38.30.mp4",
+    "file_size": 1697793,
+    "duration": 9.999,
+    "fps": 30.003000300030003,
+    "resolution": "480x368",
+    "fecha_video": "2024-04-03",
+    "hora_video": "23:22:06",
+    "temperatura": 20.2,
+    "camara_id": "MADO4B",
+    "timestamp_original": null,
+    "ocr_info": {
+      "frames_procesados": 5,
+      "texto_detectado": true
+    }
+  },
+  "detecciones": [
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9973347783088684,
+      "confianza": 0.9973347783088684,
+      "bbox": [
+        157,
+        134,
+        386,
+        302
+      ],
+      "normalized_bbox": [
+        0.3291666507720947,
+        0.364130437374115,
+        0.47708332538604736,
+        0.45652174949645996
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\dd443677\\frame_000105.jpg",
+      "timestamp_video": 3.49965,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "39e5ea73-38f1-454a-8054-7c67f20fbced;mammalia;perissodactyla;tapiridae;tapirus;terrestris;lowland tapir",
+      "camera_id": "MADO4B",
+      "fecha": "2024-04-03",
+      "hora": "23:22:09",
+      "temperatura_c": 20.0,
+      "ocr_raw_text": [
+        "0",
+        "Bushneu]",
+        "Camera 1D:MADO4B",
+        "68 F 20 C",
+        "03-04-2024 23:22:09"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": true,
+      "photo_rank": 1,
+      "photo_type": "with_bbox",
+      "nombre_archivo": "Tapir_MADO4B_20240403_232209_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4B\\Tapir\\Tapir_MADO4B_20240403_232209_bbox.jpg"
+    },
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9953197836875916,
+      "confianza": 0.9953197836875916,
+      "bbox": [
+        261,
+        183,
+        470,
+        307
+      ],
+      "normalized_bbox": [
+        0.5437500029802322,
+        0.49728260934352875,
+        0.43541666865348816,
+        0.33695653080940247
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\dd443677\\frame_000000.jpg",
+      "timestamp_video": 0.0,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "39e5ea73-38f1-454a-8054-7c67f20fbced;mammalia;perissodactyla;tapiridae;tapirus;terrestris;lowland tapir",
+      "camera_id": "MADO4B",
+      "fecha": "2024-04-03",
+      "hora": "23:22:06",
+      "temperatura_c": 20.0,
+      "ocr_raw_text": [
+        "@",
+        "Bushnev",
+        "Camera ID:MADO4B",
+        "68 F 20 C",
+        "03-04-2024 23:22:06"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": false,
+      "photo_rank": 2,
+      "photo_type": "clean",
+      "nombre_archivo": "Tapir_MADO4B_20240403_232206_clean.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4B\\Tapir\\Tapir_MADO4B_20240403_232206_clean.jpg"
+    },
+    {
+      "species": "Tapir",
+      "especie": "Tapir",
+      "confidence": 0.9933608770370483,
+      "confianza": 0.9933608770370483,
+      "bbox": [
+        193,
+        160,
+        433,
+        307
+      ],
+      "normalized_bbox": [
+        0.4020833373069763,
+        0.43478260934352875,
+        0.5,
+        0.39945653080940247
+      ],
+      "ruta_evidencia": "video_analysis\\temp_frames\\dd443677\\frame_000045.jpg",
+      "timestamp_video": 1.49985,
+      "calidad": 0.95,
+      "detector_source": "Google_SpeciesNet_v4.0.2a",
+      "original_prediction": "39e5ea73-38f1-454a-8054-7c67f20fbced;mammalia;perissodactyla;tapiridae;tapirus;terrestris;lowland tapir",
+      "camera_id": "MADO4B",
+      "fecha": "2024-04-03",
+      "hora": "23:22:07",
+      "temperatura_c": 21.0,
+      "ocr_raw_text": [
+        "0",
+        "Bushneu]",
+        "Camera 7D:MADO4B",
+        "69 F 21 C",
+        "03-04-2024 23:22:07"
+      ],
+      "especie_final": "Tapir",
+      "has_bounding_box": false,
+      "photo_rank": 3,
+      "photo_type": "clean",
+      "nombre_archivo": "Tapir_MADO4B_20240403_232207_clean.jpg",
+      "ruta_evidencia_final": "Resultados\\MADO4B\\Tapir\\Tapir_MADO4B_20240403_232207_clean.jpg"
+    }
+  ],
+  "estadisticas": {
+    "total_animales": 3,
+    "especies_encontradas": [
+      "Tapir"
+    ],
+    "detecciones_por_especie": {
+      "Tapir": 3
+    },
+    "confianza_promedio": 0.995,
+    "calidad_promedio": 0.95,
+    "correcciones_aplicadas": 0,
+    "porcentaje_correcciones": 0.0
+  },
+  "excel_files": {
+    "MADO4B": "Resultados\\MADO4B\\excel_MADO4B.xlsx"
+  },
+  "analysis_dir": "video_analysis\\batch_test\\WhatsApp Video 2026-05-30 at 12.38.30_batch_3",
+  "procesado_en": "2026-05-31T03:22:35.644687"
+}

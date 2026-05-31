@@ -1,166 +1,96 @@
 {
   "cameras": {},
   "processing_history": {},
-  "created_at": "2026-05-30T20:36:04.030887",
-  "last_updated": "2026-05-30T22:14:52.858920",
+  "created_at": "2026-05-31T01:59:55.223235",
+  "last_updated": "2026-05-31T02:13:36.280114",
   "video_analyses": {
-    "0ddff718-f5a": {
-      "video_id": "cb4f923a",
-      "video_name": "0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+    "71d8021a-b89": {
+      "video_id": "71d8021a-b89",
+      "video_name": "71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
       "status": "success",
-      "analyzer_version": "2.0-enhanced",
+      "analyzer_version": "2.1-controlled-fixes",
       "detector_version": "enhanced_v2.0",
       "features": [
         "improved_yolo_detection",
         "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
+        "bottom_band_ocr",
+        "per_camera_results"
       ],
       "metadata": {
-        "filename": "0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "filename": "71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
         "file_size": 936335,
         "duration": 9.833333333333334,
         "fps": 14.542372881355933,
         "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "20:37:09",
-        "temperatura": null,
-        "camara_id": "F718",
-        "timestamp_original": "2026-05-30T20:37:09.831237"
+        "fecha_video": "2025-07-31",
+        "hora_video": "18:20:19",
+        "temperatura": 20.6,
+        "camara_id": "EST12B",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
       },
       "detecciones": [
         {
-          "especie": "venado",
-          "confianza": 0.769,
+          "especie": "Venado",
+          "confianza": 0.752,
           "calidad": 1.0,
-          "frame_numero": 37,
-          "timestamp_video": 2.54,
-          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\venado\\venado_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_37.jpg",
-          "ruta_evidencia_final": "storage\\F718\\evidencias\\venado\\venado_cb4f923a_venado_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_37.jpg"
+          "bbox": [
+            453,
+            212,
+            554,
+            367
+          ],
+          "area": 15579.052139213309,
+          "frame_numero": 24,
+          "timestamp_video": 1.65,
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\venado\\venado_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_24_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_EST12B_20250731_182019_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Venado\\Venado_EST12B_20250731_182019_bbox.jpg"
         },
         {
-          "especie": "jaguar",
-          "confianza": 0.614,
+          "especie": "Venado",
+          "confianza": 0.335,
           "calidad": 1.0,
-          "frame_numero": 19,
-          "timestamp_video": 1.31,
-          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\jaguar\\jaguar_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg",
-          "ruta_evidencia_final": "storage\\F718\\evidencias\\jaguar\\jaguar_cb4f923a_jaguar_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg"
+          "bbox": [
+            485,
+            212,
+            599,
+            336
+          ],
+          "area": 14193.34478279762,
+          "frame_numero": 1,
+          "timestamp_video": 0.07,
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\venado\\venado_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_1_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_EST12B_20250731_182019_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Venado\\Venado_EST12B_20250731_182019_clean.jpg"
         },
         {
-          "especie": "oso",
-          "confianza": 0.591,
-          "calidad": 1.0,
-          "frame_numero": 14,
-          "timestamp_video": 0.96,
-          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\oso\\oso_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg",
-          "ruta_evidencia_final": "storage\\F718\\evidencias\\oso\\oso_cb4f923a_oso_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg"
-        },
-        {
-          "especie": "ave",
-          "confianza": 0.358,
-          "calidad": 1.0,
-          "frame_numero": 18,
-          "timestamp_video": 1.24,
-          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\ave\\ave_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg",
-          "ruta_evidencia_final": "storage\\F718\\evidencias\\ave\\ave_cb4f923a_ave_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg"
-        },
-        {
-          "especie": "agouti",
+          "especie": "Otros",
           "confianza": 0.625,
           "calidad": 1.0,
-          "frame_numero": 45,
-          "timestamp_video": 3.09,
-          "ruta_evidencia": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a\\evidencias\\agouti\\agouti_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg",
-          "ruta_evidencia_final": "storage\\F718\\evidencias\\agouti\\agouti_cb4f923a_agouti_0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg"
-        }
-      ],
-      "estadisticas": {
-        "total_animales": 5,
-        "especies_encontradas": [
-          "venado",
-          "jaguar",
-          "oso",
-          "ave",
-          "agouti"
-        ],
-        "detecciones_por_especie": {
-          "venado": 1,
-          "jaguar": 1,
-          "oso": 1,
-          "ave": 1,
-          "agouti": 1
-        },
-        "confianza_promedio": 0.591,
-        "calidad_promedio": 1.0,
-        "correcciones_aplicadas": 0,
-        "porcentaje_correcciones": 0.0
-      },
-      "analysis_dir": "video_analysis\\analysis\\0ddff718-f5a_WhatsApp Video 2026-05-30 at 12.38.25 (1)_cb4f923a",
-      "procesado_en": "2026-05-30T20:37:18.831248"
-    },
-    "2c8d6e0b-8e2": {
-      "video_id": "2c8d6e0b-8e2",
-      "video_name": "2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
-      "status": "success",
-      "analyzer_version": "2.0-enhanced",
-      "detector_version": "enhanced_v2.0",
-      "features": [
-        "improved_yolo_detection",
-        "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
-      ],
-      "metadata": {
-        "filename": "2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
-        "file_size": 936335,
-        "duration": 9.833333333333334,
-        "fps": 14.542372881355933,
-        "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "21:22:57",
-        "temperatura": null,
-        "camara_id": "C8",
-        "timestamp_original": "2026-05-30T21:22:57.623863"
-      },
-      "detecciones": [
-        {
-          "especie": "ocelote",
-          "confianza": 0.99,
-          "calidad": 1.0,
-          "bbox": [
-            293,
-            201,
-            504,
-            400
-          ],
-          "area": 42151.71388993552,
-          "frame_numero": 49,
-          "timestamp_video": 3.37,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\venado\\venado_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
-          "species": "ocelote",
-          "confidence": 0.99,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": false,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_venado_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.875,
-          "calidad": 1.0,
           "bbox": [
             332,
             203,
@@ -170,62 +100,26 @@
           "area": 34650.182484059595,
           "frame_numero": 45,
           "timestamp_video": 3.09,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\agouti\\agouti_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg",
-          "species": "ocelote",
-          "confidence": 0.875,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_agouti_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.8595999999999999,
-          "calidad": 1.0,
-          "bbox": [
-            473,
-            214,
-            553,
-            358
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\agouti\\agouti_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "T",
+            "or"
           ],
-          "area": 11398.305677045137,
-          "frame_numero": 19,
-          "timestamp_video": 1.31,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\jaguar\\jaguar_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg",
-          "species": "ocelote",
-          "confidence": 0.8595999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_jaguar_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg"
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_EST12B_20250731_182019_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_bbox.jpg"
         },
         {
-          "especie": "ocelote",
-          "confianza": 0.8273999999999999,
+          "especie": "Otros",
+          "confianza": 0.591,
           "calidad": 1.0,
           "bbox": [
             491,
@@ -233,619 +127,52 @@
             553,
             359
           ],
-          "area": 8910.279122230131,
+          "area": 8910.267982148565,
           "frame_numero": 14,
           "timestamp_video": 0.96,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\oso\\oso_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg",
-          "species": "ocelote",
-          "confidence": 0.8273999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_oso_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg"
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\oso\\oso_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14_bbox.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_EST12B_20250731_182019_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_clean.jpg"
         },
         {
-          "especie": "ocelote",
-          "confianza": 0.5012,
+          "especie": "Otros",
+          "confianza": 0.412,
           "calidad": 1.0,
           "bbox": [
-            475,
-            214,
-            554,
-            356
-          ],
-          "area": 11358.3201065436,
-          "frame_numero": 18,
-          "timestamp_video": 1.24,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\ave\\ave_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg",
-          "species": "ocelote",
-          "confidence": 0.5012,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_ave_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.3514,
-          "calidad": 1.0,
-          "bbox": [
-            261,
-            196,
-            453,
-            424
-          ],
-          "area": 44098.04164558556,
-          "frame_numero": 53,
-          "timestamp_video": 3.64,
-          "ruta_evidencia": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2\\evidencias\\cow\\cow_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg",
-          "species": "ocelote",
-          "confidence": 0.3514,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\C8\\evidencias\\ocelote\\ocelote_2c8d6e0b-8e2_cow_2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg"
-        }
-      ],
-      "estadisticas": {
-        "total_animales": 6,
-        "especies_encontradas": [
-          "ocelote"
-        ],
-        "detecciones_por_especie": {
-          "ocelote": 6
-        },
-        "confianza_promedio": 0.734,
-        "calidad_promedio": 1.0,
-        "correcciones_aplicadas": 0,
-        "porcentaje_correcciones": 0.0
-      },
-      "analysis_dir": "video_analysis\\analysis\\2c8d6e0b-8e2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_2c8d6e0b-8e2",
-      "procesado_en": "2026-05-30T21:23:28.101520"
-    },
-    "aa4d73ae-530": {
-      "video_id": "aa4d73ae-530",
-      "video_name": "aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
-      "status": "success",
-      "analyzer_version": "2.0-enhanced",
-      "detector_version": "enhanced_v2.0",
-      "features": [
-        "improved_yolo_detection",
-        "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
-      ],
-      "metadata": {
-        "filename": "aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
-        "file_size": 936335,
-        "duration": 9.833333333333334,
-        "fps": 14.542372881355933,
-        "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "21:24:18",
-        "temperatura": null,
-        "camara_id": "EO",
-        "timestamp_original": "2026-05-30T21:24:18.823312"
-      },
-      "detecciones": [
-        {
-          "especie": "ocelote",
-          "confianza": 0.99,
-          "calidad": 1.0,
-          "bbox": [
-            293,
+            343,
             201,
-            504,
+            507,
             400
           ],
-          "area": 42151.71388993552,
-          "frame_numero": 49,
-          "timestamp_video": 3.37,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\venado\\venado_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
-          "species": "ocelote",
-          "confidence": 0.99,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": false,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_venado_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg"
+          "area": 32538.058463467285,
+          "frame_numero": 43,
+          "timestamp_video": 2.96,
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\oso\\oso_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_43_clean.jpg",
+          "photo_rank": 3,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_EST12B_20250731_182019_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_clean.jpg"
         },
         {
-          "especie": "ocelote",
-          "confianza": 0.875,
-          "calidad": 1.0,
-          "bbox": [
-            332,
-            203,
-            505,
-            403
-          ],
-          "area": 34650.182484059595,
-          "frame_numero": 45,
-          "timestamp_video": 3.09,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\agouti\\agouti_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg",
-          "species": "ocelote",
-          "confidence": 0.875,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_agouti_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.8595999999999999,
-          "calidad": 1.0,
-          "bbox": [
-            473,
-            214,
-            553,
-            358
-          ],
-          "area": 11398.305677045137,
-          "frame_numero": 19,
-          "timestamp_video": 1.31,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\jaguar\\jaguar_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg",
-          "species": "ocelote",
-          "confidence": 0.8595999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_jaguar_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.8273999999999999,
-          "calidad": 1.0,
-          "bbox": [
-            491,
-            216,
-            553,
-            359
-          ],
-          "area": 8910.279122230131,
-          "frame_numero": 14,
-          "timestamp_video": 0.96,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\oso\\oso_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg",
-          "species": "ocelote",
-          "confidence": 0.8273999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_oso_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.5012,
-          "calidad": 1.0,
-          "bbox": [
-            475,
-            214,
-            554,
-            356
-          ],
-          "area": 11358.3201065436,
-          "frame_numero": 18,
-          "timestamp_video": 1.24,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\ave\\ave_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg",
-          "species": "ocelote",
-          "confidence": 0.5012,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_ave_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.3514,
-          "calidad": 1.0,
-          "bbox": [
-            261,
-            196,
-            453,
-            424
-          ],
-          "area": 44098.04164558556,
-          "frame_numero": 53,
-          "timestamp_video": 3.64,
-          "ruta_evidencia": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530\\evidencias\\cow\\cow_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg",
-          "species": "ocelote",
-          "confidence": 0.3514,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_aa4d73ae-530_cow_aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg"
-        }
-      ],
-      "estadisticas": {
-        "total_animales": 6,
-        "especies_encontradas": [
-          "ocelote"
-        ],
-        "detecciones_por_especie": {
-          "ocelote": 6
-        },
-        "confianza_promedio": 0.734,
-        "calidad_promedio": 1.0,
-        "correcciones_aplicadas": 0,
-        "porcentaje_correcciones": 0.0
-      },
-      "analysis_dir": "video_analysis\\analysis\\aa4d73ae-530_WhatsApp Video 2026-05-30 at 12.38.25 (1)_aa4d73ae-530",
-      "procesado_en": "2026-05-30T21:24:47.981397"
-    },
-    "828ec402-9e8": {
-      "video_id": "828ec402-9e8",
-      "video_name": "828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
-      "status": "success",
-      "analyzer_version": "2.0-enhanced",
-      "detector_version": "enhanced_v2.0",
-      "features": [
-        "improved_yolo_detection",
-        "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
-      ],
-      "metadata": {
-        "filename": "828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
-        "file_size": 936335,
-        "duration": 9.833333333333334,
-        "fps": 14.542372881355933,
-        "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "21:26:36",
-        "temperatura": null,
-        "camara_id": "EO",
-        "timestamp_original": "2026-05-30T21:26:36.269017"
-      },
-      "detecciones": [
-        {
-          "especie": "ocelote",
-          "confianza": 0.99,
-          "calidad": 1.0,
-          "bbox": [
-            293,
-            201,
-            504,
-            400
-          ],
-          "area": 42151.71388993552,
-          "frame_numero": 49,
-          "timestamp_video": 3.37,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\venado\\venado_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
-          "species": "ocelote",
-          "confidence": 0.99,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": false,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_venado_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.875,
-          "calidad": 1.0,
-          "bbox": [
-            332,
-            203,
-            505,
-            403
-          ],
-          "area": 34650.182484059595,
-          "frame_numero": 45,
-          "timestamp_video": 3.09,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\agouti\\agouti_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg",
-          "species": "ocelote",
-          "confidence": 0.875,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_agouti_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_45.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.8595999999999999,
-          "calidad": 1.0,
-          "bbox": [
-            473,
-            214,
-            553,
-            358
-          ],
-          "area": 11398.305677045137,
-          "frame_numero": 19,
-          "timestamp_video": 1.31,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\jaguar\\jaguar_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg",
-          "species": "ocelote",
-          "confidence": 0.8595999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_jaguar_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.8273999999999999,
-          "calidad": 1.0,
-          "bbox": [
-            491,
-            216,
-            553,
-            359
-          ],
-          "area": 8910.279122230131,
-          "frame_numero": 14,
-          "timestamp_video": 0.96,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\oso\\oso_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg",
-          "species": "ocelote",
-          "confidence": 0.8273999999999999,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_oso_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_14.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.5012,
-          "calidad": 1.0,
-          "bbox": [
-            475,
-            214,
-            554,
-            356
-          ],
-          "area": 11358.3201065436,
-          "frame_numero": 18,
-          "timestamp_video": 1.24,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\ave\\ave_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg",
-          "species": "ocelote",
-          "confidence": 0.5012,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": true,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_ave_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18.jpg"
-        },
-        {
-          "especie": "ocelote",
-          "confianza": 0.3514,
-          "calidad": 1.0,
-          "bbox": [
-            261,
-            196,
-            453,
-            424
-          ],
-          "area": 44098.04164558556,
-          "frame_numero": 53,
-          "timestamp_video": 3.64,
-          "ruta_evidencia": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8\\evidencias\\cow\\cow_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg",
-          "species": "ocelote",
-          "confidence": 0.3514,
-          "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "is_solid_gold": "False",
-            "long_legs": false,
-            "hunched_back": false,
-            "is_large": false,
-            "is_very_large": false,
-            "is_bulky": false,
-            "has_visible_tail": false,
-            "pointed_ears": false,
-            "long_snout": false,
-            "slender_build": true,
-            "dark_color": "False"
-          },
-          "ruta_evidencia_final": "storage\\EO\\evidencias\\ocelote\\ocelote_828ec402-9e8_cow_828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_53.jpg"
-        }
-      ],
-      "estadisticas": {
-        "total_animales": 6,
-        "especies_encontradas": [
-          "ocelote"
-        ],
-        "detecciones_por_especie": {
-          "ocelote": 6
-        },
-        "confianza_promedio": 0.734,
-        "calidad_promedio": 1.0,
-        "correcciones_aplicadas": 0,
-        "porcentaje_correcciones": 0.0
-      },
-      "analysis_dir": "video_analysis\\analysis\\828ec402-9e8_WhatsApp Video 2026-05-30 at 12.38.25 (1)_828ec402-9e8",
-      "procesado_en": "2026-05-30T21:27:16.094328"
-    },
-    "9bcd18a9-4ee": {
-      "video_id": "9bcd18a9-4ee",
-      "video_name": "9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
-      "status": "success",
-      "analyzer_version": "2.0-enhanced",
-      "detector_version": "enhanced_v2.0",
-      "features": [
-        "improved_yolo_detection",
-        "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
-      ],
-      "metadata": {
-        "filename": "9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
-        "file_size": 936335,
-        "duration": 9.833333333333334,
-        "fps": 14.542372881355933,
-        "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "22:10:12",
-        "temperatura": null,
-        "camara_id": "UNKNOWN",
-        "timestamp_original": "2026-05-30T22:10:12.543472"
-      },
-      "detecciones": [
-        {
-          "especie": "jaguar",
+          "especie": "Jaguar",
           "confianza": 0.99,
           "calidad": 1.0,
           "bbox": [
@@ -857,123 +184,924 @@
           "area": 42151.70170722017,
           "frame_numero": 49,
           "timestamp_video": 3.37,
-          "ruta_evidencia": "video_analysis\\analysis\\9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_9bcd18a9-4ee\\evidencias\\venado\\venado_9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
-          "species": "jaguar",
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\venado\\venado_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "original_species": "venado",
+          "species": "Jaguar",
           "confidence": 0.99,
+          "correction_applied": true,
           "biological_traits": {
-            "has_spots": "True",
-            "has_rosettes": "True",
-            "large_spotted_cat": true,
-            "is_solid_gold": "False",
-            "long_legs": false,
+            "has_spots": true,
+            "has_rosettes": true,
+            "large_spotted_cat": false,
+            "is_solid_gold": false,
+            "long_legs": true,
             "hunched_back": false,
+            "is_large": false,
+            "is_very_large": false,
+            "frame_area_ratio": 0.0478,
+            "is_bulky": false,
+            "has_visible_tail": false,
+            "pointed_ears": false,
+            "long_snout": false,
+            "slender_build": true,
+            "short_tail": true,
+            "dark_color": false
+          },
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Jaguar",
+          "nombre_archivo": "Jaguar_EST12B_20250731_182019_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Jaguar\\Jaguar_EST12B_20250731_182019_bbox.jpg"
+        },
+        {
+          "especie": "Jaguar",
+          "confianza": 0.614,
+          "calidad": 1.0,
+          "bbox": [
+            473,
+            214,
+            553,
+            358
+          ],
+          "area": 11398.310525577515,
+          "frame_numero": 19,
+          "timestamp_video": 1.31,
+          "ruta_evidencia": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89\\evidencias\\jaguar\\jaguar_71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19_bbox.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Jaguar",
+          "species": "Jaguar",
+          "nombre_archivo": "Jaguar_EST12B_20250731_182019_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Jaguar\\Jaguar_EST12B_20250731_182019_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 7,
+        "especies_encontradas": [
+          "Venado",
+          "Otros",
+          "Jaguar"
+        ],
+        "detecciones_por_especie": {
+          "Venado": 2,
+          "Otros": 3,
+          "Jaguar": 2
+        },
+        "confianza_promedio": 0.617,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 1,
+        "porcentaje_correcciones": 14.3
+      },
+      "excel_files": {
+        "EST12B": "Resultados\\EST12B\\excel_EST12B.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\71d8021a-b89_WhatsApp Video 2026-05-30 at 12.38.25 (1)_71d8021a-b89",
+      "procesado_en": "2026-05-31T02:02:15.206658"
+    },
+    "bcb04db1-80c": {
+      "video_id": "bcb04db1-80c",
+      "video_name": "bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)",
+      "status": "success",
+      "analyzer_version": "2.1-controlled-fixes",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "bottom_band_ocr",
+        "per_camera_results"
+      ],
+      "metadata": {
+        "filename": "bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1).mp4",
+        "file_size": 1239201,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": "2024-07-03",
+        "hora_video": "06:04:30",
+        "temperatura": 18.9,
+        "camara_id": "MADO4A",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
+      },
+      "detecciones": [
+        {
+          "especie": "Jaguar",
+          "confianza": 0.4,
+          "calidad": 1.0,
+          "bbox": [
+            401,
+            84,
+            479,
+            278
+          ],
+          "area": 15141.262656629551,
+          "frame_numero": 27,
+          "timestamp_video": 0.9,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\jaguar\\jaguar_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_27_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:31",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "2024 06:04:31"
+          ],
+          "especie_final": "Jaguar",
+          "species": "Jaguar",
+          "nombre_archivo": "Jaguar_MADO4A_20240703_060431_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Jaguar\\Jaguar_MADO4A_20240703_060431_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.732,
+          "calidad": 1.0,
+          "bbox": [
+            319,
+            93,
+            479,
+            306
+          ],
+          "area": 34216.12720166892,
+          "frame_numero": 91,
+          "timestamp_video": 3.03,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\agouti\\agouti_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_91_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:30",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "\"C",
+            "03-07-202406 *04*33"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4A_20240703_060430_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Otros\\Otros_MADO4A_20240703_060430_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.265,
+          "calidad": 1.0,
+          "bbox": [
+            295,
+            47,
+            479,
+            284
+          ],
+          "area": 43714.43560231011,
+          "frame_numero": 295,
+          "timestamp_video": 9.83,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\agouti\\agouti_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_295_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:40",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "r",
+            "F 19 %",
+            "03-07-2024 06:04:40"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4A_20240703_060440_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Otros\\Otros_MADO4A_20240703_060440_clean.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.261,
+          "calidad": 1.0,
+          "bbox": [
+            300,
+            47,
+            479,
+            282
+          ],
+          "area": 42138.05166295264,
+          "frame_numero": 169,
+          "timestamp_video": 5.63,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\agouti\\agouti_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_169_clean.jpg",
+          "photo_rank": 3,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:36",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "Cae",
+            "19 %C",
+            "03-07-2024 06:04:36"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4A_20240703_060436_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Otros\\Otros_MADO4A_20240703_060436_clean.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.665,
+          "calidad": 1.0,
+          "bbox": [
+            293,
+            47,
+            479,
+            278
+          ],
+          "area": 42985.01222122181,
+          "frame_numero": 109,
+          "timestamp_video": 3.63,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\venado\\venado_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_109_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:30",
+          "temperatura_c": -13.9,
+          "ocr_raw_text": [
+            "7",
+            "F 19 %€",
+            "03-07-2024 06:04*34"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4A_20240703_060430_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060430_bbox.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.635,
+          "calidad": 1.0,
+          "bbox": [
+            303,
+            47,
+            479,
+            280
+          ],
+          "area": 40897.61908869143,
+          "frame_numero": 157,
+          "timestamp_video": 5.23,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\venado\\venado_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_157_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:36",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "19 %C",
+            "03-07-2024 06:04:36"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4A_20240703_060436_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060436_clean.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.462,
+          "calidad": 1.0,
+          "bbox": [
+            296,
+            47,
+            479,
+            276
+          ],
+          "area": 41893.18527491391,
+          "frame_numero": 211,
+          "timestamp_video": 7.03,
+          "ruta_evidencia": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c\\evidencias\\venado\\venado_bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_211_clean.jpg",
+          "photo_rank": 3,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:37",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "es",
+            "F 19 %",
+            "03-07-2024 06:04:37"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4A_20240703_060437_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060437_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 7,
+        "especies_encontradas": [
+          "Jaguar",
+          "Otros",
+          "Venado"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 1,
+          "Otros": 3,
+          "Venado": 3
+        },
+        "confianza_promedio": 0.489,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "excel_files": {
+        "MADO4A": "Resultados\\MADO4A\\excel_MADO4A.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\bcb04db1-80c_WhatsApp Video 2026-05-30 at 12.38.30 (1)_bcb04db1-80c",
+      "procesado_en": "2026-05-31T02:04:01.881153"
+    },
+    "e6fc4929-7ac": {
+      "video_id": "e6fc4929-7ac",
+      "video_name": "e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30",
+      "status": "success",
+      "analyzer_version": "2.1-controlled-fixes",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "bottom_band_ocr",
+        "per_camera_results"
+      ],
+      "metadata": {
+        "filename": "e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30.mp4",
+        "file_size": 1697793,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": "2024-04-03",
+        "hora_video": "23:22:06",
+        "temperatura": 20.2,
+        "camara_id": "MADO4B",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
+      },
+      "detecciones": [
+        {
+          "especie": "Jaguar",
+          "confianza": 0.89755,
+          "calidad": 1.0,
+          "bbox": [
+            151,
+            119,
+            254,
+            246
+          ],
+          "area": 13107.881495563779,
+          "frame_numero": 187,
+          "timestamp_video": 6.23,
+          "ruta_evidencia": "video_analysis\\analysis\\e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_e6fc4929-7ac\\evidencias\\cow\\cow_e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_187_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "original_species": "cow",
+          "species": "Jaguar",
+          "confidence": 0.89755,
+          "correction_applied": true,
+          "biological_traits": {
+            "has_spots": true,
+            "has_rosettes": true,
+            "large_spotted_cat": false,
+            "is_solid_gold": false,
+            "long_legs": true,
+            "hunched_back": false,
+            "is_large": false,
+            "is_very_large": false,
+            "frame_area_ratio": 0.0305,
+            "is_bulky": false,
+            "has_visible_tail": false,
+            "pointed_ears": false,
+            "long_snout": false,
+            "slender_build": true,
+            "short_tail": true,
+            "dark_color": true
+          },
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Jaguar",
+          "nombre_archivo": "Jaguar_MADO4B_20240403_232206_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Jaguar\\Jaguar_MADO4B_20240403_232206_bbox.jpg"
+        },
+        {
+          "especie": "Jaguar",
+          "confianza": 0.8033,
+          "calidad": 1.0,
+          "bbox": [
+            196,
+            154,
+            412,
+            298
+          ],
+          "area": 31205.41287938319,
+          "frame_numero": 55,
+          "timestamp_video": 1.83,
+          "ruta_evidencia": "video_analysis\\analysis\\e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_e6fc4929-7ac\\evidencias\\cow\\cow_e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_55_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "original_species": "cow",
+          "species": "Jaguar",
+          "confidence": 0.8033,
+          "correction_applied": true,
+          "biological_traits": {
+            "has_spots": true,
+            "has_rosettes": false,
+            "large_spotted_cat": true,
+            "is_solid_gold": false,
+            "long_legs": false,
+            "hunched_back": true,
             "is_large": true,
             "is_very_large": false,
-            "frame_area_ratio": 0.1032,
-            "is_bulky": false,
+            "frame_area_ratio": 0.1422,
+            "is_bulky": true,
             "has_visible_tail": false,
             "pointed_ears": false,
             "long_snout": false,
             "slender_build": false,
             "short_tail": true,
-            "dark_color": "False"
+            "dark_color": true
           },
-          "ruta_evidencia_final": "storage\\UNKNOWN\\evidencias\\jaguar\\jaguar_9bcd18a9-4ee_frame_49_t_3_37s.jpg"
-        }
-      ],
-      "estadisticas": {
-        "total_animales": 1,
-        "especies_encontradas": [
-          "jaguar"
-        ],
-        "detecciones_por_especie": {
-          "jaguar": 1
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:08",
+          "temperatura_c": 20.0,
+          "ocr_raw_text": [
+            ") :",
+            "MADO 4B",
+            "68 F 20 C",
+            "03-04-2024 23:22:08"
+          ],
+          "especie_final": "Jaguar",
+          "nombre_archivo": "Jaguar_MADO4B_20240403_232208_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Jaguar\\Jaguar_MADO4B_20240403_232208_clean.jpg"
         },
-        "confianza_promedio": 0.99,
-        "calidad_promedio": 1.0,
-        "correcciones_aplicadas": 0,
-        "porcentaje_correcciones": 0.0
-      },
-      "analysis_dir": "video_analysis\\analysis\\9bcd18a9-4ee_WhatsApp Video 2026-05-30 at 12.38.25 (1)_9bcd18a9-4ee",
-      "procesado_en": "2026-05-30T22:10:34.913651"
-    },
-    "feae3b2e-ba2": {
-      "video_id": "feae3b2e-ba2",
-      "video_name": "feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
-      "status": "success",
-      "analyzer_version": "2.0-enhanced",
-      "detector_version": "enhanced_v2.0",
-      "features": [
-        "improved_yolo_detection",
-        "smart_species_classification",
-        "enhanced_frame_selection",
-        "contextual_validation"
-      ],
-      "metadata": {
-        "filename": "feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
-        "file_size": 936335,
-        "duration": 9.833333333333334,
-        "fps": 14.542372881355933,
-        "resolution": "848x480",
-        "fecha_video": "2026-05-30",
-        "hora_video": "22:14:33",
-        "temperatura": null,
-        "camara_id": "UNKNOWN",
-        "timestamp_original": "2026-05-30T22:14:33.856182"
-      },
-      "detecciones": [
         {
-          "especie": "jaguar",
-          "confianza": 0.99,
+          "especie": "Jaguar",
+          "confianza": 0.696,
           "calidad": 1.0,
           "bbox": [
-            293,
-            201,
-            504,
-            400
+            154,
+            134,
+            378,
+            291
           ],
-          "area": 42151.70170722017,
-          "frame_numero": 49,
-          "timestamp_video": 3.37,
-          "ruta_evidencia": "video_analysis\\analysis\\feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_feae3b2e-ba2\\evidencias\\venado\\venado_feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_49.jpg",
-          "species": "jaguar",
-          "confidence": 0.99,
+          "area": 35154.00855036825,
+          "frame_numero": 106,
+          "timestamp_video": 3.53,
+          "ruta_evidencia": "video_analysis\\analysis\\e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_e6fc4929-7ac\\evidencias\\cow\\cow_e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_106_clean.jpg",
+          "photo_rank": 3,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "original_species": "cow",
+          "species": "Jaguar",
+          "confidence": 0.696,
+          "correction_applied": true,
           "biological_traits": {
             "has_spots": true,
             "has_rosettes": true,
             "large_spotted_cat": true,
             "is_solid_gold": false,
             "long_legs": false,
-            "hunched_back": false,
+            "hunched_back": true,
             "is_large": true,
-            "is_very_large": false,
-            "frame_area_ratio": 0.1032,
-            "is_bulky": false,
+            "is_very_large": true,
+            "frame_area_ratio": 0.2656,
+            "is_bulky": true,
             "has_visible_tail": false,
             "pointed_ears": false,
             "long_snout": false,
             "slender_build": false,
             "short_tail": true,
-            "dark_color": false
+            "dark_color": true
           },
-          "ruta_evidencia_final": "storage\\UNKNOWN\\evidencias\\jaguar\\jaguar_feae3b2e-ba2_frame_49_t_3_37s.jpg"
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": 20.0,
+          "ocr_raw_text": [
+            "Jera 1D:MADO4B",
+            "68 F 20 C",
+            "03-04-2024 23:2"
+          ],
+          "especie_final": "Jaguar",
+          "nombre_archivo": "Jaguar_MADO4B_20240403_232206_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Jaguar\\Jaguar_MADO4B_20240403_232206_clean.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.447,
+          "calidad": 1.0,
+          "bbox": [
+            150,
+            117,
+            222,
+            238
+          ],
+          "area": 8736.403951338376,
+          "frame_numero": 211,
+          "timestamp_video": 7.03,
+          "ruta_evidencia": "video_analysis\\analysis\\e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_e6fc4929-7ac\\evidencias\\venado\\venado_e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_211_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4B",
+          "fecha": "2024-04-03",
+          "hora": "23:22:06",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4B_20240403_232206_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4B\\Venado\\Venado_MADO4B_20240403_232206_bbox.jpg"
         }
       ],
       "estadisticas": {
-        "total_animales": 1,
+        "total_animales": 4,
         "especies_encontradas": [
-          "jaguar"
+          "Jaguar",
+          "Venado"
         ],
         "detecciones_por_especie": {
-          "jaguar": 1
+          "Jaguar": 3,
+          "Venado": 1
         },
-        "confianza_promedio": 0.99,
+        "confianza_promedio": 0.711,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 3,
+        "porcentaje_correcciones": 75.0
+      },
+      "excel_files": {
+        "MADO4B": "Resultados\\MADO4B\\excel_MADO4B.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\e6fc4929-7ac_WhatsApp Video 2026-05-30 at 12.38.30_e6fc4929-7ac",
+      "procesado_en": "2026-05-31T02:05:31.111313"
+    },
+    "e7d92930-160": {
+      "video_id": "e7d92930-160",
+      "video_name": "e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+      "status": "success",
+      "analyzer_version": "2.1-controlled-fixes",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "bottom_band_ocr",
+        "per_camera_results"
+      ],
+      "metadata": {
+        "filename": "e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+        "file_size": 936335,
+        "duration": 9.833333333333334,
+        "fps": 14.542372881355933,
+        "resolution": "848x480",
+        "fecha_video": "2025-07-31",
+        "hora_video": "18:20:19",
+        "temperatura": 20.6,
+        "camara_id": "EST12B",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
+      },
+      "detecciones": [
+        {
+          "especie": "Venado",
+          "confianza": 0.335,
+          "calidad": 1.0,
+          "bbox": [
+            485,
+            212,
+            599,
+            336
+          ],
+          "area": 14193.34478279762,
+          "frame_numero": 1,
+          "timestamp_video": 0.07,
+          "ruta_evidencia": "video_analysis\\analysis\\e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_e7d92930-160\\evidencias\\venado\\venado_e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_1_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_EST12B_20250731_182019_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Venado\\Venado_EST12B_20250731_182019_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.412,
+          "calidad": 1.0,
+          "bbox": [
+            343,
+            201,
+            507,
+            400
+          ],
+          "area": 32538.058463467285,
+          "frame_numero": 43,
+          "timestamp_video": 2.96,
+          "ruta_evidencia": "video_analysis\\analysis\\e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_e7d92930-160\\evidencias\\oso\\oso_e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_43_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_EST12B_20250731_182019_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.358,
+          "calidad": 1.0,
+          "bbox": [
+            475,
+            214,
+            554,
+            356
+          ],
+          "area": 11358.3201065436,
+          "frame_numero": 18,
+          "timestamp_video": 1.24,
+          "ruta_evidencia": "video_analysis\\analysis\\e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_e7d92930-160\\evidencias\\ave\\ave_e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_18_bbox.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "EST12B",
+          "fecha": "2025-07-31",
+          "hora": "18:20:19",
+          "temperatura_c": null,
+          "ocr_raw_text": [],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_EST12B_20250731_182019_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 3,
+        "especies_encontradas": [
+          "Venado",
+          "Otros"
+        ],
+        "detecciones_por_especie": {
+          "Venado": 1,
+          "Otros": 2
+        },
+        "confianza_promedio": 0.368,
         "calidad_promedio": 1.0,
         "correcciones_aplicadas": 0,
         "porcentaje_correcciones": 0.0
       },
-      "analysis_dir": "video_analysis\\analysis\\feae3b2e-ba2_WhatsApp Video 2026-05-30 at 12.38.25 (1)_feae3b2e-ba2",
-      "procesado_en": "2026-05-30T22:14:52.843174"
+      "excel_files": {
+        "EST12B": "Resultados\\EST12B\\excel_EST12B.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\e7d92930-160_WhatsApp Video 2026-05-30 at 12.38.25 (1)_e7d92930-160",
+      "procesado_en": "2026-05-31T02:12:25.374931"
+    },
+    "c95bb655-28e": {
+      "video_id": "c95bb655-28e",
+      "video_name": "c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)",
+      "status": "success",
+      "analyzer_version": "2.1-controlled-fixes",
+      "detector_version": "enhanced_v2.0",
+      "features": [
+        "improved_yolo_detection",
+        "smart_species_classification",
+        "bottom_band_ocr",
+        "per_camera_results"
+      ],
+      "metadata": {
+        "filename": "c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1).mp4",
+        "file_size": 1239201,
+        "duration": 9.999,
+        "fps": 30.003000300030003,
+        "resolution": "480x368",
+        "fecha_video": "2024-07-03",
+        "hora_video": "06:04:30",
+        "temperatura": 18.9,
+        "camara_id": "MADO4A",
+        "timestamp_original": null,
+        "ocr_info": {
+          "frames_procesados": 5,
+          "texto_detectado": true
+        }
+      },
+      "detecciones": [
+        {
+          "especie": "Jaguar",
+          "confianza": 0.4,
+          "calidad": 1.0,
+          "bbox": [
+            401,
+            84,
+            479,
+            278
+          ],
+          "area": 15141.262656629551,
+          "frame_numero": 27,
+          "timestamp_video": 0.9,
+          "ruta_evidencia": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e\\evidencias\\jaguar\\jaguar_c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_27_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:31",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "2024 06:04:31"
+          ],
+          "especie_final": "Jaguar",
+          "species": "Jaguar",
+          "nombre_archivo": "Jaguar_MADO4A_20240703_060431_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Jaguar\\Jaguar_MADO4A_20240703_060431_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.732,
+          "calidad": 1.0,
+          "bbox": [
+            319,
+            93,
+            479,
+            306
+          ],
+          "area": 34216.12720166892,
+          "frame_numero": 91,
+          "timestamp_video": 3.03,
+          "ruta_evidencia": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e\\evidencias\\agouti\\agouti_c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_91_bbox.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:30",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "\"C",
+            "03-07-202406 *04*33"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4A_20240703_060430_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Otros\\Otros_MADO4A_20240703_060430_bbox.jpg"
+        },
+        {
+          "especie": "Otros",
+          "confianza": 0.265,
+          "calidad": 1.0,
+          "bbox": [
+            295,
+            47,
+            479,
+            284
+          ],
+          "area": 43714.43560231011,
+          "frame_numero": 295,
+          "timestamp_video": 9.83,
+          "ruta_evidencia": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e\\evidencias\\agouti\\agouti_c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_295_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:40",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "r",
+            "F 19 %",
+            "03-07-2024 06:04:40"
+          ],
+          "especie_final": "Otros",
+          "species": "Otros",
+          "nombre_archivo": "Otros_MADO4A_20240703_060440_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Otros\\Otros_MADO4A_20240703_060440_clean.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.635,
+          "calidad": 1.0,
+          "bbox": [
+            303,
+            47,
+            479,
+            280
+          ],
+          "area": 40897.61908869143,
+          "frame_numero": 157,
+          "timestamp_video": 5.23,
+          "ruta_evidencia": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e\\evidencias\\venado\\venado_c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_157_clean.jpg",
+          "photo_rank": 1,
+          "has_bounding_box": true,
+          "photo_type": "with_bbox",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:36",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "19 %C",
+            "03-07-2024 06:04:36"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4A_20240703_060436_bbox.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060436_bbox.jpg"
+        },
+        {
+          "especie": "Venado",
+          "confianza": 0.462,
+          "calidad": 1.0,
+          "bbox": [
+            296,
+            47,
+            479,
+            276
+          ],
+          "area": 41893.18527491391,
+          "frame_numero": 211,
+          "timestamp_video": 7.03,
+          "ruta_evidencia": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e\\evidencias\\venado\\venado_c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_211_clean.jpg",
+          "photo_rank": 2,
+          "has_bounding_box": false,
+          "photo_type": "clean",
+          "camera_id": "MADO4A",
+          "fecha": "2024-07-03",
+          "hora": "06:04:37",
+          "temperatura_c": null,
+          "ocr_raw_text": [
+            "es",
+            "F 19 %",
+            "03-07-2024 06:04:37"
+          ],
+          "especie_final": "Venado",
+          "species": "Venado",
+          "nombre_archivo": "Venado_MADO4A_20240703_060437_clean.jpg",
+          "ruta_evidencia_final": "Resultados\\MADO4A\\Venado\\Venado_MADO4A_20240703_060437_clean.jpg"
+        }
+      ],
+      "estadisticas": {
+        "total_animales": 5,
+        "especies_encontradas": [
+          "Jaguar",
+          "Otros",
+          "Venado"
+        ],
+        "detecciones_por_especie": {
+          "Jaguar": 1,
+          "Otros": 2,
+          "Venado": 2
+        },
+        "confianza_promedio": 0.499,
+        "calidad_promedio": 1.0,
+        "correcciones_aplicadas": 0,
+        "porcentaje_correcciones": 0.0
+      },
+      "excel_files": {
+        "MADO4A": "Resultados\\MADO4A\\excel_MADO4A.xlsx"
+      },
+      "analysis_dir": "video_analysis\\analysis\\c95bb655-28e_WhatsApp Video 2026-05-30 at 12.38.30 (1)_c95bb655-28e",
+      "procesado_en": "2026-05-31T02:13:36.267775"
     }
   }
 }

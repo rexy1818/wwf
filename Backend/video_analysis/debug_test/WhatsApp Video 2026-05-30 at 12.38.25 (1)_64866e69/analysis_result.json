@@ -1,0 +1,134 @@
+{
+  "video_id": "64866e69",
+  "video_name": "WhatsApp Video 2026-05-30 at 12.38.25 (1)",
+  "status": "success",
+  "analyzer_version": "2.1-controlled-fixes",
+  "detector_version": "enhanced_v2.0",
+  "features": [
+    "improved_yolo_detection",
+    "smart_species_classification",
+    "bottom_band_ocr",
+    "per_camera_results"
+  ],
+  "metadata": {
+    "filename": "WhatsApp Video 2026-05-30 at 12.38.25 (1).mp4",
+    "file_size": 936335,
+    "duration": 9.833333333333334,
+    "fps": 14.542372881355933,
+    "resolution": "848x480",
+    "fecha_video": "2025-07-31",
+    "hora_video": "18:20:19",
+    "temperatura": 20.6,
+    "camara_id": "EST12B",
+    "timestamp_original": null,
+    "ocr_info": {
+      "frames_procesados": 5,
+      "texto_detectado": true
+    }
+  },
+  "detecciones": [
+    {
+      "especie": "Venado",
+      "confianza": 0.335,
+      "calidad": 1.0,
+      "bbox": [
+        485,
+        212,
+        599,
+        336
+      ],
+      "area": 14193.34478279762,
+      "frame_numero": 1,
+      "timestamp_video": 0.07,
+      "ruta_evidencia": "video_analysis\\debug_test\\WhatsApp Video 2026-05-30 at 12.38.25 (1)_64866e69\\evidencias\\venado\\venado_WhatsApp Video 2026-05-30 at 12.38.25 (1)_1_clean.jpg",
+      "photo_rank": 1,
+      "has_bounding_box": true,
+      "photo_type": "with_bbox",
+      "camera_id": "EST12B",
+      "fecha": "2025-07-31",
+      "hora": "18:20:19",
+      "temperatura_c": null,
+      "ocr_raw_text": [],
+      "especie_final": "Venado",
+      "species": "Venado",
+      "nombre_archivo": "Venado_EST12B_20250731_182019_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\EST12B\\Venado\\Venado_EST12B_20250731_182019_bbox.jpg"
+    },
+    {
+      "especie": "Jaguar",
+      "confianza": 0.614,
+      "calidad": 1.0,
+      "bbox": [
+        473,
+        214,
+        553,
+        358
+      ],
+      "area": 11398.310525577515,
+      "frame_numero": 19,
+      "timestamp_video": 1.31,
+      "ruta_evidencia": "video_analysis\\debug_test\\WhatsApp Video 2026-05-30 at 12.38.25 (1)_64866e69\\evidencias\\jaguar\\jaguar_WhatsApp Video 2026-05-30 at 12.38.25 (1)_19_bbox.jpg",
+      "photo_rank": 1,
+      "has_bounding_box": true,
+      "photo_type": "with_bbox",
+      "camera_id": "EST12B",
+      "fecha": "2025-07-31",
+      "hora": "18:20:19",
+      "temperatura_c": null,
+      "ocr_raw_text": [],
+      "especie_final": "Jaguar",
+      "species": "Jaguar",
+      "nombre_archivo": "Jaguar_EST12B_20250731_182019_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\EST12B\\Jaguar\\Jaguar_EST12B_20250731_182019_bbox.jpg"
+    },
+    {
+      "especie": "Otros",
+      "confianza": 0.412,
+      "calidad": 1.0,
+      "bbox": [
+        343,
+        201,
+        507,
+        400
+      ],
+      "area": 32538.058463467285,
+      "frame_numero": 43,
+      "timestamp_video": 2.96,
+      "ruta_evidencia": "video_analysis\\debug_test\\WhatsApp Video 2026-05-30 at 12.38.25 (1)_64866e69\\evidencias\\oso\\oso_WhatsApp Video 2026-05-30 at 12.38.25 (1)_43_clean.jpg",
+      "photo_rank": 1,
+      "has_bounding_box": true,
+      "photo_type": "with_bbox",
+      "camera_id": "EST12B",
+      "fecha": "2025-07-31",
+      "hora": "18:20:19",
+      "temperatura_c": null,
+      "ocr_raw_text": [],
+      "especie_final": "Otros",
+      "species": "Otros",
+      "nombre_archivo": "Otros_EST12B_20250731_182019_bbox.jpg",
+      "ruta_evidencia_final": "Resultados\\EST12B\\Otros\\Otros_EST12B_20250731_182019_bbox.jpg"
+    }
+  ],
+  "estadisticas": {
+    "total_animales": 3,
+    "especies_encontradas": [
+      "Venado",
+      "Jaguar",
+      "Otros"
+    ],
+    "detecciones_por_especie": {
+      "Venado": 1,
+      "Jaguar": 1,
+      "Otros": 1
+    },
+    "confianza_promedio": 0.454,
+    "calidad_promedio": 1.0,
+    "correcciones_aplicadas": 0,
+    "porcentaje_correcciones": 0.0
+  },
+  "excel_files": {
+    "EST12B": "Resultados\\EST12B\\excel_EST12B.xlsx"
+  },
+  "analysis_dir": "video_analysis\\debug_test\\WhatsApp Video 2026-05-30 at 12.38.25 (1)_64866e69",
+  "procesado_en": "2026-05-31T02:21:32.091819"
+}

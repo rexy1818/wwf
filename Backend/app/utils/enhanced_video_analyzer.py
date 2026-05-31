@@ -51,34 +51,86 @@ class EnhancedVideoAnalyzer:
                     self._apply_ocr_to_detection(det, frame_ocr, metadata)
                 smart_detections.append(det)
 
-            final_detections = self.classifier.validate_detection_context(smart_detections, metadata)
+            # 1. Validación de contexto inicial (eliminar duplicados temporales cercanos)
+            temp_detections = self.classifier.validate_detection_context(smart_detections, metadata)
+            
+            # 2. Normalización de especies antes de la selección final
+            for det in temp_detections:
+                det["especie_final"] = self._normalize_species(det.get("especie") or det.get("species"))
 
+            # 3. SELECCIÓN FINAL (Mejora Quirúrgica): Máximo 3 por especie_final, 1 con bbox
+            species_groups = {}
+            for det in temp_detections:
+                sp = det["especie_final"]
+                species_groups.setdefault(sp, []).append(det)
+            
+            final_detections = []
+            for sp, group in species_groups.items():
+                # Ordenar por confianza y calidad
+                group.sort(key=lambda x: (float(x.get("confianza", 0)) * float(x.get("calidad", 0.5))), reverse=True)
+                
+                # Tomar solo las 3 mejores
+                top_3 = group[:3]
+                
+                # Marcar la mejor para tener bounding box
+                for i, det in enumerate(top_3):
+                    det["has_bounding_box"] = (i == 0)
+                    det["photo_rank"] = i + 1
+                    det["photo_type"] = "with_bbox" if i == 0 else "clean"
+                
+                final_detections.extend(top_3)
+
+            # 4. Proceso de guardado final respetando la selección
             for index, det in enumerate(final_detections, start=1):
-                frame = cv2.imread(det.get("ruta_evidencia", ""))
-                if frame is None:
+                ruta_original = det.get("ruta_evidencia", "")
+                if not ruta_original or not Path(ruta_original).exists():
                     continue
 
-                species = self._normalize_species(det.get("especie") or det.get("species"))
+                species = det["especie_final"]
                 camera_id = self._sanitize_token(det.get("camera_id") or metadata.get("camara_id") or "UNKNOWN")
                 date_value = det.get("fecha") or metadata.get("fecha_video")
                 time_value = det.get("hora") or metadata.get("hora_video")
+                
+                # Mantener el tipo de foto (bbox o clean)
+                suffix = "_bbox" if det.get("has_bounding_box") else "_clean"
                 stamp = self._build_capture_stamp(date_value, time_value, index)
 
                 species_dir = self.results_base / camera_id / species
                 species_dir.mkdir(parents=True, exist_ok=True)
-                evidence_name = f"{species}_{camera_id}_{stamp}.jpg"
+                
+                evidence_name = f"{species}_{camera_id}_{stamp}{suffix}.jpg"
                 evidence_path = species_dir / evidence_name
-                cv2.imwrite(str(evidence_path), frame)
+                
+                # Si necesita bounding box, lo generamos aquí mismo para asegurar que los metadatos estén correctos
+                if det.get("has_bounding_box"):
+                    frame = cv2.imread(ruta_original)
+                    if frame is not None:
+                        # Usar el detector para dibujar (centralizando la lógica visual)
+                        from app.utils.improved_yolo_detector import ImprovedYOLODetector
+                        # Preparamos los datos para el dibujo
+                        draw_det = {
+                            "species": species,
+                            "confidence": det.get("confianza", 0),
+                            "bbox": det.get("bbox")
+                        }
+                        # El detector tiene la lógica de dibujo
+                        roi_with_bbox = self.yolo_detector._add_professional_bounding_box(
+                            frame, draw_det, det.get("bbox"), (0, 0), metadata
+                        )
+                        cv2.imwrite(str(evidence_path), roi_with_bbox)
+                    else:
+                        import shutil
+                        shutil.copy2(ruta_original, evidence_path)
+                else:
+                    import shutil
+                    shutil.copy2(ruta_original, evidence_path)
 
                 det["especie"] = species
                 det["species"] = species
                 det["camera_id"] = camera_id
-                det["fecha"] = date_value
-                det["hora"] = time_value
-                det["temperatura_c"] = det.get("temperatura_c", metadata.get("temperatura"))
                 det["nombre_archivo"] = evidence_name
                 det["ruta_evidencia_final"] = str(evidence_path)
-                logger.info("Evidencia guardada en: %s", evidence_path)
+                logger.info(f"✅ Evidencia final ({suffix}) guardada en: {evidence_path}")
 
             excel_files = self._write_camera_excels(final_detections)
             stats = self._generate_enhanced_statistics(final_detections)
@@ -193,20 +245,43 @@ class EnhancedVideoAnalyzer:
 
     def _normalize_species(self, species: Optional[str]) -> str:
         value = (species or "").strip().lower()
+        # Mapeo extendido para SpeciesNet
         aliases = {
             "jaguar": "Jaguar",
+            "panthera onca": "Jaguar",
             "puma": "Puma",
+            "puma concolor": "Puma",
+            "ocelot": "Ocelote",
             "ocelote": "Ocelote",
+            "leopardus pardalis": "Ocelote",
             "tapir": "Tapir",
             "danta": "Tapir",
-            "tapir_amazonico": "Tapir",
+            "tapirus": "Tapir",
+            "tapirus terrestris": "Tapir",
+            "deer": "Venado",
             "venado": "Venado",
-            "venado_cola_blanca": "Venado",
-            "corzuela": "Venado",
-            "horse": "Venado",
-            "sheep": "Venado",
+            "odocoileus": "Venado",
+            "mazama": "Venado",
+            "agouti": "Agouti",
+            "dasyprocta": "Agouti",
+            "pecari": "Pecari",
+            "tayassu": "Pecari",
+            "oso": "Oso",
+            "bear": "Oso",
+            "tremarctos": "Oso",
+            "ave": "Ave",
+            "bird": "Ave",
+            "vaca": "Vaca",
+            "cow": "Vaca",
+            "bos taurus": "Vaca"
         }
-        return aliases.get(value, "Otros")
+        
+        # Buscar en el mapa de alias
+        for key, display_name in aliases.items():
+            if key in value:
+                return display_name
+                
+        return value.capitalize() if value else "Otros"
 
     def _sanitize_token(self, value: Any) -> str:
         token = re.sub(r"[^A-Za-z0-9_-]", "_", str(value or "UNKNOWN").strip())

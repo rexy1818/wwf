@@ -1,0 +1,165 @@
+.videos-container {
+  margin-left: 260px;
+  padding: 40px;
+  min-height: 100vh;
+  background: #f5f7f6;
+}
+
+.videos-header h1 {
+  color: #1f3f32;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.videos-header p {
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+/* Upload */
+
+.upload-section {
+  margin-bottom: 30px;
+}
+
+.upload-box {
+  background: white;
+
+  border: 2px dashed #2f6752;
+  border-radius: 20px;
+
+  padding: 60px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.upload-box svg {
+  color: #2f6752;
+}
+
+.upload-box h2 {
+  color: #1f3f32;
+}
+
+.upload-box p {
+  color: #64748b;
+}
+
+.upload-btn {
+  border: none;
+  cursor: pointer;
+
+  padding: 14px 28px;
+
+  border-radius: 10px;
+
+  background: #2f6752;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background: #244f40;
+}
+
+/* Resumen */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.summary-card svg {
+  color: #2f6752;
+}
+
+.summary-card h3 {
+  margin-top: 10px;
+  font-size: 2rem;
+  color: #1f3f32;
+}
+
+.summary-card span {
+  color: #64748b;
+}
+
+/* Tabla */
+
+.videos-table {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.table-header {
+  margin-bottom: 20px;
+}
+
+.table-header h2 {
+  color: #1f3f32;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f3f4f6;
+}
+
+th,
+td {
+  padding: 16px;
+  text-align: left;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  .videos-container {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

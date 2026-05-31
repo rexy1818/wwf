@@ -1,6 +1,23 @@
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    toast.success("Bienvenido al sistema WWF", {
+      position: "top-right",
+      autoClose: 2000,
+    });
+
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 2000);
+  };
+
   return (
     <div className="login-container">
       {/* Panel Izquierdo */}
@@ -39,7 +56,7 @@ const Login = () => {
             y análisis de fauna silvestre
           </p>
 
-          <form className="login-form">
+          <form className="login-form" onSubmit={handleLogin}>
             <div className="form-group">
               <label>Correo electrónico</label>
               <input

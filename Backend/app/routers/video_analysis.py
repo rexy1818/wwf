@@ -37,13 +37,15 @@ async def upload_and_analyze_videos(files: List[UploadFile] = File(..., descript
     return await video_analysis_service.upload_and_analyze_videos(files)
 
 
-@router.get("/results/{video_id}", response_model=Dict[str, Any])
-async def get_analysis_result(video_id: str):
-    """Obtener resultado completo de analisis por ID de video."""
+@router.post("/detection/{video_id}/{detection_index}/extract-ocr", response_model=Dict[str, Any])
+async def extract_ocr_for_detection(video_id: str, detection_index: int):
+    """Extraer OCR para una detección específica bajo demanda."""
     try:
-        return video_analysis_service.get_analysis_result(video_id)
+        return video_analysis_service.extract_ocr_on_demand(video_id, detection_index)
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc))
 
 
 @router.get("/list", response_model=List[Dict[str, Any]])

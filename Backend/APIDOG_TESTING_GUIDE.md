@@ -165,12 +165,20 @@ Campos que el frontend normalmente necesita:
 | `analysis.excel_files` | Ruta del Excel generado por camara |
 | `analysis.estadisticas` | Resumen para cards/dashboard |
 
-### 2. Subir y analizar multiples videos
+### 2. (Nuevo) Extraer OCR bajo demanda
+
+Este endpoint realiza la extracción de OCR para una detección específica, actualizando los resultados almacenados. Es más rápido que el flujo original porque el análisis principal ahora omite el OCR.
 
 ```http
-POST /analyze/upload/batch
-Content-Type: multipart/form-data
+POST /analyze/detection/{video_id}/{detection_index}/extract-ocr
 ```
+
+Parámetros:
+- `video_id`: ID del análisis retornado en `/analyze/upload`.
+- `detection_index`: Índice de la detección en el array `detecciones`.
+
+Respuesta:
+Retorna el objeto de la detección actualizado con los campos `camera_id`, `fecha`, `hora`, `temperatura_c` y `ocr_raw_text`.
 
 Form data:
 

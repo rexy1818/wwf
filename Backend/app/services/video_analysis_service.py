@@ -87,11 +87,23 @@ class VideoAnalysisService:
             "processed_at": datetime.now().isoformat(),
         }
 
-    def get_analysis_result(self, video_id: str) -> Dict[str, Any]:
-        all_analyses = json_storage.data.get("video_analyses", {})
-        if video_id in all_analyses:
-            return all_analyses[video_id]
-        raise ValueError(f"Analisis no encontrado: {video_id}")
+    def extract_ocr_on_demand(self, video_id: str, detection_index: int) -> Dict[str, Any]:
+        """Extraer OCR para una detección específica y actualizar el almacenamiento."""
+        analysis = self.get_analysis_result(video_id)
+        detections = analysis.get("detecciones", [])
+        
+        if detection_index < 0 or detection_index >= len(detections):
+            raise ValueError("Indice de detección fuera de rango")
+            
+        detection = detections[detection_index]
+        
+        # Ejecutar OCR bajo demanda (ahora sin metadata)
+        self.video_analyzer.extract_ocr_for_detection(detection)
+        
+        # Actualizar almacenamiento
+        self._save_analysis_to_storage(video_id, analysis)
+        
+        return detection
 
     def list_all_analyses(self) -> List[Dict[str, Any]]:
         all_analyses = json_storage.data.get("video_analyses", {})

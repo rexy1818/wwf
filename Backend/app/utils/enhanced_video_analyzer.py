@@ -41,14 +41,6 @@ class EnhancedVideoAnalyzer:
             detections = self.detector.process_video(video_path)
 
             final_detections = self._select_final_detections(detections)
-            for detection in final_detections:
-                frame = cv2.imread(detection.get("ruta_evidencia", ""))
-                if frame is not None:
-                    ocr_data = self.ocr_extractor.extract_text_from_frame_band(
-                        frame,
-                        float(detection.get("timestamp_video", 0) or 0),
-                    )
-                    self._apply_ocr_to_detection(detection, ocr_data, metadata)
 
             self._save_final_evidence(final_detections, metadata)
 
@@ -58,11 +50,11 @@ class EnhancedVideoAnalyzer:
                 "video_id": video_id,
                 "video_name": video_name,
                 "status": "success",
-                "analyzer_version": "3.0-speciesnet-official",
+                "analyzer_version": "3.0-speciesnet-official-nodemand",
                 "detector_version": "Google_SpeciesNet_v4.0.2a",
                 "features": [
                     "speciesnet_official",
-                    "bottom_band_ocr",
+                    "on_demand_ocr",
                     "per_camera_results",
                     "per_camera_excel",
                 ],
@@ -77,11 +69,25 @@ class EnhancedVideoAnalyzer:
             with open(analysis_dir / "analysis_result.json", "w", encoding="utf-8") as handle:
                 json.dump(result, handle, indent=2, ensure_ascii=False, default=str)
 
-            logger.info("Analisis completado. Especies: %s", stats["especies_encontradas"])
+            logger.info("Analisis completado (deteccion solo). Especies: %s", stats["especies_encontradas"])
             return result
         except Exception as exc:
             logger.error("Error en analisis de video: %s", exc)
             raise
+
+    def extract_ocr_for_detection(
+        self, detection: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """Extraer OCR para una detección específica bajo demanda, sin usar metadata."""
+        frame = cv2.imread(detection.get("ruta_evidencia", ""))
+        ocr_data = {}
+        if frame is not None:
+            ocr_data = self.ocr_extractor.extract_text_from_frame_band(
+                frame,
+                float(detection.get("timestamp_video", 0) or 0),
+            )
+            self._apply_ocr_to_detection(detection, ocr_data)
+        return ocr_data
 
     def _extract_enhanced_metadata(self, video_path: str) -> Dict[str, Any]:
         metadata = self._extract_video_technical_metadata(video_path)
@@ -106,15 +112,12 @@ class EnhancedVideoAnalyzer:
         self,
         detection: Dict[str, Any],
         ocr_data: Dict[str, Any],
-        metadata: Dict[str, Any],
     ) -> None:
-        camera_id = (ocr_data or {}).get("camera_id")
-        if not self._is_plausible_camera_id(camera_id):
-            camera_id = metadata.get("camara_id")
-        detection["camera_id"] = camera_id or "UNKNOWN"
-        detection["fecha"] = (ocr_data or {}).get("fecha") or metadata.get("fecha_video")
-        detection["hora"] = (ocr_data or {}).get("hora") or metadata.get("hora_video")
-        detection["temperatura_c"] = (ocr_data or {}).get("temperatura", metadata.get("temperatura"))
+        """Aplicar OCR extraído a la detección, ignorando metadata externa."""
+        detection["camera_id"] = (ocr_data or {}).get("camera_id") or "UNKNOWN"
+        detection["fecha"] = (ocr_data or {}).get("fecha")
+        detection["hora"] = (ocr_data or {}).get("hora")
+        detection["temperatura_c"] = (ocr_data or {}).get("temperatura")
         detection["ocr_raw_text"] = (ocr_data or {}).get("raw_text", [])
 
     def _select_final_detections(self, detections: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -143,7 +146,7 @@ class EnhancedVideoAnalyzer:
                 * float(item.get("calidad") or 0.5),
                 reverse=True,
             )
-            for index, detection in enumerate(group[:3]):
+            for index, detection in enumerate(group[:2]):
                 detection["has_bounding_box"] = index == 0
                 detection["photo_rank"] = index + 1
                 detection["photo_type"] = "with_bbox" if index == 0 else "clean"
